@@ -1,26 +1,41 @@
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter/material.dart';
+import 'package:todo_flutter/models/app_state.dart';
 
-enum Actions {
-  Increase,
+enum Actions { Increase, LogoutSuccess }
+
+class LoginSuccessAction {
+  final String account;
+  LoginSuccessAction({this.account});
 }
 
-int mainReducer(int state, dynamic action) {
+AppState mainReducer(AppState state, dynamic action) {
   if (Actions.Increase == action) {
-    return state + 1;
+    state.main.counter += 1;
+  }
+
+  if (Actions.LogoutSuccess == action) {
+    state.auth.isLogin = false;
+    state.auth.account = null;
+  }
+
+  if (action is LoginSuccessAction) {
+    state.auth.isLogin = true;
+    state.auth.account = action.account;
   }
 
   return state;
 }
 
 void main() {
-  Store<int> store = new Store<int>(mainReducer, initialState: 0);
+  Store<AppState> store = new Store<AppState>(mainReducer,
+      initialState: AppState(main: MainPageState(), auth: AuthState()));
   runApp(MyApp(store: store));
 }
 
 class MyApp extends StatelessWidget {
-  final Store<int> store;
+  final Store<AppState> store;
 
   MyApp({this.store});
 
@@ -32,20 +47,26 @@ class MyApp extends StatelessWidget {
             title: 'Flutter Demo',
             theme: ThemeData(primarySwatch: Colors.blue),
             home: new StoreConnector(
-                builder: (BuildContext context, int counter) {
+                builder: (BuildContext context, AppState state) {
               return new MyHomePage(
-                  title: 'Flutter Demo Home Page', counter: counter);
-            }, converter: (Store<int> store) {
+                  title: 'Flutter Demo Home Page',
+                  counter: state.main.counter,
+                  isLogin: state.auth.isLogin,
+                  account: state.auth.account);
+            }, converter: (Store<AppState> store) {
               return store.state;
             })));
   }
 }
 
 class MyHomePage extends StatelessWidget {
-  MyHomePage({Key key, this.title, this.counter}) : super(key: key);
+  MyHomePage({Key key, this.title, this.counter, this.isLogin, this.account})
+      : super(key: key);
 
   final String title;
   final int counter;
+  final bool isLogin;
+  final String account;
 
   @override
   Widget build(BuildContext context) {
@@ -62,17 +83,42 @@ class MyHomePage extends StatelessWidget {
                 '$counter',
                 style: Theme.of(context).textTheme.display1,
               ),
+              isLogin
+                  ? StoreConnector(
+                      key: ValueKey('login'),
+                      builder: (BuildContext context, VoidCallback logout) {
+                        return new RaisedButton(
+                          onPressed: logout,
+                          child: new Text("您好:$account,点击退出"),
+                        );
+                      },
+                      converter: (Store<AppState> store) {
+                        return () => store.dispatch(Actions.LogoutSuccess);
+                      })
+                  : StoreConnector<AppState, VoidCallback>(
+                      key: ValueKey('logout'),
+                      builder: (BuildContext context, VoidCallback login) {
+                        return new RaisedButton(
+                          onPressed: login,
+                          child: new Text("登录"),
+                        );
+                      },
+                      converter: (Store<AppState> store) {
+                        return () => store.dispatch(
+                            new LoginSuccessAction(account: 'xxx account!'));
+                      })
             ],
           ),
         ),
-        floatingActionButton: StoreConnector<int, VoidCallback>(
+        floatingActionButton: StoreConnector<AppState, VoidCallback>(
           builder: (BuildContext context, VoidCallback callback) {
             return FloatingActionButton(
               onPressed: callback,
               tooltip: 'Increment',
               child: Icon(Icons.add),
             );
-          },converter: (Store<int> store) {
+          },
+          converter: (Store<AppState> store) {
             return () => store.dispatch(Actions.Increase);
           },
         ));
