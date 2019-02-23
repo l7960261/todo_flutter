@@ -1,8 +1,8 @@
 import  'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:todo_flutter/models/mock.dart';
-import 'package:todo_flutter/models/data.dart';
+import 'package:todo_flutter/samples/mock.dart';
+import 'package:todo_flutter/samples/data.dart';
 
 void main() {
   group('jsonparse test', () {
