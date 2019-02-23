@@ -31,13 +31,13 @@ AppState mainReducer(AppState state, dynamic action) {
 void main() {
   Store<AppState> store = new Store<AppState>(mainReducer,
       initialState: AppState(main: MainPageState(), auth: AuthState()));
-  runApp(MyApp(store: store));
+  runApp(ReduxApp(store: store));
 }
 
-class MyApp extends StatelessWidget {
+class ReduxApp extends StatelessWidget {
   final Store<AppState> store;
 
-  MyApp({this.store});
+  ReduxApp({this.store});
 
   @override
   Widget build(BuildContext context) {
