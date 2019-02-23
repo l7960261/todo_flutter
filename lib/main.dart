@@ -46,16 +46,20 @@ class ReduxApp extends StatelessWidget {
         child: MaterialApp(
             title: 'Flutter Demo',
             theme: ThemeData(primarySwatch: Colors.blue),
-            home: new StoreConnector(
-                builder: (BuildContext context, AppState state) {
-              return new MyHomePage(
-                  title: 'Flutter Demo Home Page',
-                  counter: state.main.counter,
-                  isLogin: state.auth.isLogin,
-                  account: state.auth.account);
-            }, converter: (Store<AppState> store) {
-              return store.state;
-            })));
+            routes: {
+              '/': (context) {
+                return StoreConnector(
+                    builder: (BuildContext context, AppState state) {
+                  return new MyHomePage(
+                      title: 'Flutter Demo Home Page',
+                      counter: state.main.counter,
+                      isLogin: state.auth.isLogin,
+                      account: state.auth.account);
+                }, converter: (Store<AppState> store) {
+                  return store.state;
+                });
+              }
+            }));
   }
 }
 
