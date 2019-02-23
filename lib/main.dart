@@ -122,7 +122,12 @@ class MyHomePage extends StatelessWidget {
                       converter: (Store<AppState> store) {
                         return () => store.dispatch(
                             new LoginSuccessAction(account: 'xxx account!'));
-                      })
+                      }),
+              RaisedButton(
+                  onPressed: () {
+                    Navigator.pushNamed(context, '/second');
+                  },
+                  child: Text('Go to second page'))
             ],
           ),
         ),
@@ -188,7 +193,12 @@ class SecondPage extends StatelessWidget {
                       converter: (Store<AppState> store) {
                         return () => store.dispatch(
                             new LoginSuccessAction(account: 'xxx account!'));
-                      })
+                      }),
+              RaisedButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: Text('Go back home page'))
             ],
           ),
         ),
