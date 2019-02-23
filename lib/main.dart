@@ -2,34 +2,11 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter/material.dart';
 import 'package:todo_flutter/models/app_state.dart';
+import 'package:todo_flutter/reducers/app_state_reducer.dart';
 
-enum Actions { Increase, LogoutSuccess }
-
-class LoginSuccessAction {
-  final String account;
-  LoginSuccessAction({this.account});
-}
-
-AppState mainReducer(AppState state, dynamic action) {
-  if (Actions.Increase == action) {
-    state.main.counter += 1;
-  }
-
-  if (Actions.LogoutSuccess == action) {
-    state.auth.isLogin = false;
-    state.auth.account = null;
-  }
-
-  if (action is LoginSuccessAction) {
-    state.auth.isLogin = true;
-    state.auth.account = action.account;
-  }
-
-  return state;
-}
 
 void main() {
-  Store<AppState> store = new Store<AppState>(mainReducer,
+  Store<AppState> store = Store<AppState>(appReducer,
       initialState: AppState(main: MainPageState(), auth: AuthState()));
   runApp(ReduxApp(store: store));
 }
