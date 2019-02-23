@@ -15,9 +15,7 @@ final persistor = Persistor<AppState>(
 void main() async {
   final initialState = await persistor.load();
 
-  final store = Store<AppState>(appReducer,
-      initialState: initialState,
-          // initialState ?? AppState(main: MainPageState(), auth: AuthState()),
+  final store = Store<AppState>(appReducer, initialState: initialState,
       middleware: [persistor.createMiddleware()]);
 
   runApp(ReduxApp(store: store));

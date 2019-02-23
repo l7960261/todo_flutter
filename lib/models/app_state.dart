@@ -3,6 +3,20 @@ import 'package:json_annotation/json_annotation.dart';
 part 'app_state.g.dart';
 
 @JsonSerializable()
+class AppState {
+  AuthState auth;
+  MainPageState main;
+
+  AppState({this.main, this.auth});
+
+  static AppState fromJson(dynamic json) => json == null
+      ? AppState(main: MainPageState(), auth: AuthState())
+      : _$AppStateFromJson(json);
+
+  Map<String, dynamic> toJson() => _$AppStateToJson(this);
+}
+
+@JsonSerializable()
 class AuthState {
   bool isLogin;
   String account;
@@ -23,18 +37,4 @@ class MainPageState {
       _$MainPageStateFromJson(json);
 
   Map<String, dynamic> toJson() => _$MainPageStateToJson(this);
-}
-
-@JsonSerializable()
-class AppState {
-  AuthState auth;
-  MainPageState main;
-
-  AppState({this.main, this.auth});
-
-  static AppState fromJson(dynamic json) => json == null
-      ? AppState(main: MainPageState(), auth: AuthState())
-      : _$AppStateFromJson(json);
-
-  Map<String, dynamic> toJson() => _$AppStateToJson(this);
 }
