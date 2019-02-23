@@ -1,11 +1,5 @@
+import 'package:todo_flutter/actions/actions.dart';
 import 'package:todo_flutter/models/app_state.dart';
-
-enum Actions { Increase, LogoutSuccess }
-
-class LoginSuccessAction {
-  final String account;
-  LoginSuccessAction({this.account});
-}
 
 AppState appReducer(AppState state, dynamic action) {
   if (Actions.Increase == action) {

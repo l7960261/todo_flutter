@@ -72,7 +72,8 @@ class MyHomePage extends StatelessWidget {
               tooltip: 'Increment',
               child: Icon(Icons.add),
             );
-          },converter: (Store<int> store) {
+          },
+          converter: (Store<int> store) {
             return () => store.dispatch(Actions.Increase);
           },
         ));

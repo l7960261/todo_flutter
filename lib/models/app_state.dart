@@ -9,7 +9,7 @@ class MainPageState {
   MainPageState({this.counter: 0});
 }
 
-class AppState{
+class AppState {
   AuthState auth;
   MainPageState main;
 
