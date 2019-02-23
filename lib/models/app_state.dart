@@ -9,6 +9,9 @@ class AppState {
 
   AppState({this.main, this.auth});
 
+  // factory AppState.fromJson(Map<String, dynamic> json) =>
+  //     _$AppStateFromJson(json);
+
   static AppState fromJson(dynamic json) => json == null
       ? AppState(main: MainPageState(), auth: AuthState())
       : _$AppStateFromJson(json);
