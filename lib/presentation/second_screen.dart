@@ -32,9 +32,9 @@ class SecondPage extends StatelessWidget {
                   ? StoreConnector(
                       key: ValueKey('login'),
                       builder: (BuildContext context, VoidCallback logout) {
-                        return new RaisedButton(
+                        return RaisedButton(
                           onPressed: logout,
-                          child: new Text("您好:$account,点击退出"),
+                          child: Text("您好:$account,点击退出"),
                         );
                       },
                       converter: (Store<AppState> store) {
@@ -43,14 +43,14 @@ class SecondPage extends StatelessWidget {
                   : StoreConnector<AppState, VoidCallback>(
                       key: ValueKey('logout'),
                       builder: (BuildContext context, VoidCallback login) {
-                        return new RaisedButton(
+                        return RaisedButton(
                           onPressed: login,
-                          child: new Text("登录"),
+                          child: Text("登录"),
                         );
                       },
                       converter: (Store<AppState> store) {
                         return () => store.dispatch(
-                            new LoginSuccessAction(account: 'xxx account!'));
+                            LoginSuccessAction(account: 'xxx account!'));
                       }),
               RaisedButton(
                   onPressed: () {

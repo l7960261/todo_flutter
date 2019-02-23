@@ -19,7 +19,7 @@ class ReduxApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new StoreProvider(
+    return StoreProvider(
         store: store,
         child: MaterialApp(
             title: 'Flutter Demo',

@@ -15,7 +15,7 @@ int mainReducer(int state, dynamic action) {
 }
 
 void main() {
-  Store<int> store = new Store<int>(mainReducer, initialState: 0);
+  Store<int> store = Store<int>(mainReducer, initialState: 0);
   runApp(MyApp(store: store));
 }
 
@@ -26,14 +26,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new StoreProvider(
+    return StoreProvider(
         store: store,
         child: MaterialApp(
             title: 'Flutter Demo',
             theme: ThemeData(primarySwatch: Colors.blue),
-            home: new StoreConnector(
-                builder: (BuildContext context, int counter) {
-              return new MyHomePage(
+            home: StoreConnector(builder: (BuildContext context, int counter) {
+              return MyHomePage(
                   title: 'Flutter Demo Home Page', counter: counter);
             }, converter: (Store<int> store) {
               return store.state;
