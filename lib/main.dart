@@ -50,8 +50,20 @@ class ReduxApp extends StatelessWidget {
               '/': (context) {
                 return StoreConnector(
                     builder: (BuildContext context, AppState state) {
-                  return new MyHomePage(
+                  return MyHomePage(
                       title: 'Flutter Demo Home Page',
+                      counter: state.main.counter,
+                      isLogin: state.auth.isLogin,
+                      account: state.auth.account);
+                }, converter: (Store<AppState> store) {
+                  return store.state;
+                });
+              },
+              '/second': (context) {
+                return StoreConnector(
+                    builder: (BuildContext context, AppState state) {
+                  return SecondPage(
+                      title: 'Flutter Demo Second Page',
                       counter: state.main.counter,
                       isLogin: state.auth.isLogin,
                       account: state.auth.account);
@@ -71,6 +83,72 @@ class MyHomePage extends StatelessWidget {
   final int counter;
   final bool isLogin;
   final String account;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+        appBar: AppBar(title: Text(title)),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'You have pushed the button this many times:',
+              ),
+              Text(
+                '$counter',
+                style: Theme.of(context).textTheme.display1,
+              ),
+              isLogin
+                  ? StoreConnector(
+                      key: ValueKey('login'),
+                      builder: (BuildContext context, VoidCallback logout) {
+                        return new RaisedButton(
+                          onPressed: logout,
+                          child: new Text("您好:$account,点击退出"),
+                        );
+                      },
+                      converter: (Store<AppState> store) {
+                        return () => store.dispatch(Actions.LogoutSuccess);
+                      })
+                  : StoreConnector<AppState, VoidCallback>(
+                      key: ValueKey('logout'),
+                      builder: (BuildContext context, VoidCallback login) {
+                        return new RaisedButton(
+                          onPressed: login,
+                          child: new Text("登录"),
+                        );
+                      },
+                      converter: (Store<AppState> store) {
+                        return () => store.dispatch(
+                            new LoginSuccessAction(account: 'xxx account!'));
+                      })
+            ],
+          ),
+        ),
+        floatingActionButton: StoreConnector<AppState, VoidCallback>(
+          builder: (BuildContext context, VoidCallback callback) {
+            return FloatingActionButton(
+              onPressed: callback,
+              tooltip: 'Increment',
+              child: Icon(Icons.add),
+            );
+          },
+          converter: (Store<AppState> store) {
+            return () => store.dispatch(Actions.Increase);
+          },
+        ));
+  }
+}
+
+class SecondPage extends StatelessWidget {
+  final String title;
+  final int counter;
+  final bool isLogin;
+  final String account;
+
+  SecondPage({Key key, this.title, this.counter, this.isLogin, this.account})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
