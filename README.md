@@ -6,11 +6,21 @@ A new Flutter project.
 
 This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+## Dependency
 
-- [Lab: Write your first Flutter app](https://flutter.io/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.io/docs/cookbook)
+- [json_annotation](https://pub.dartlang.org/packages/json_annotation)
+- [flutter_redux](https://pub.dartlang.org/packages/flutter_redux)
+- [redux_persist](https://pub.dartlang.org/packages/redux_persist)
+- [redux_persist_flutter](https://pub.dartlang.org/packages/redux_persist_flutter)
 
-For help getting started with Flutter, view our 
-[online documentation](https://flutter.io/docs), which offers tutorials, 
-samples, guidance on mobile development, and a full API reference.
+## devDependency
+
+- [build_runner](https://pub.dartlang.org/packages/build_runner)
+- [json_serializable](https://pub.dartlang.org/packages/json_serializable)
+
+## Document Reference
+
+- [Flutter Json自动反序列化——json_serializable v1.5.1 | 掘金技术征文](https://juejin.im/post/5b5f00e7e51d45190571172f)
+- [flutter-dart 类的构造函数](https://juejin.im/post/5b2b4c36f265da59b243cac9)
+- [flutter中使用redux之基础](https://segmentfault.com/a/1190000015579633)
+- [基於 Redux + Redux Persist 進行狀態管理的 Flutter 應用示例](https://www.jishuwen.com/d/2Cgp/zh-tw)
