@@ -17,9 +17,13 @@ void main() async {
       Store<AppState>(appReducer, initialState: initialState, middleware: [
     persistor.createMiddleware(),
     (Store<AppState> store, dynamic action, NextDispatcher next) async {
-      var state = store.state;
-      print('$state');
+      print('自製中間件 (一) 開始');
+      print('AppState: ${store.state}');
+
       next(action);
+      
+      print('自製中間件 (一) 結束');
+      print('AppState: ${store.state}');
     }
   ]);
 
