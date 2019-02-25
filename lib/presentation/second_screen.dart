@@ -38,7 +38,7 @@ class SecondPage extends StatelessWidget {
                         );
                       },
                       converter: (Store<AppState> store) {
-                        return () => store.dispatch(Actions.LogoutSuccess);
+                        return () => store.dispatch(LogoutSuccessAction());
                       })
                   : StoreConnector<AppState, VoidCallback>(
                       key: ValueKey('logout'),
@@ -69,7 +69,7 @@ class SecondPage extends StatelessWidget {
             );
           },
           converter: (Store<AppState> store) {
-            return () => store.dispatch(Actions.Increase);
+            return () => store.dispatch(IncreaseAction());
           },
         ));
   }
