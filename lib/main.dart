@@ -8,15 +8,20 @@ import 'package:todo_flutter/containers/second.dart';
 import 'package:todo_flutter/models/app_state.dart';
 import 'package:todo_flutter/reducers/app_state_reducer.dart';
 
-final persistor = Persistor<AppState>(
-    storage: FlutterStorage(),
-    serializer: JsonSerializer<AppState>(AppState.fromJson));
-
 void main() async {
+  final persistor = Persistor<AppState>(
+      storage: FlutterStorage(),
+      serializer: JsonSerializer<AppState>(AppState.fromJson));
   final initialState = await persistor.load();
-
-  final store = Store<AppState>(appReducer, initialState: initialState,
-      middleware: [persistor.createMiddleware()]);
+  final store =
+      Store<AppState>(appReducer, initialState: initialState, middleware: [
+    persistor.createMiddleware(),
+    (Store<AppState> store, dynamic action, NextDispatcher next) async {
+      var state = store.state;
+      print('$state');
+      next(action);
+    }
+  ]);
 
   runApp(ReduxApp(store: store));
 }

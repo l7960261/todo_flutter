@@ -17,6 +17,11 @@ class AppState {
       : _$AppStateFromJson(json);
 
   Map<String, dynamic> toJson() => _$AppStateToJson(this);
+
+  @override
+  String toString() {
+    return 'AppState: {auth:$auth, main:$main}';
+  }
 }
 
 @JsonSerializable()
@@ -29,6 +34,11 @@ class AuthState {
       _$AuthStateFromJson(json);
 
   Map<String, dynamic> toJson() => _$AuthStateToJson(this);
+
+  @override
+  String toString() {
+    return '{account:$account, isLogin:$isLogin}';
+  }
 }
 
 @JsonSerializable()
@@ -40,4 +50,9 @@ class MainPageState {
       _$MainPageStateFromJson(json);
 
   Map<String, dynamic> toJson() => _$MainPageStateToJson(this);
+
+  @override
+  String toString() {
+    return '{counter: $counter}';
+  }
 }
