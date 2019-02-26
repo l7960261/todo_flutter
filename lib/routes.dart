@@ -1,5 +1,18 @@
+import 'package:flutter/material.dart';
+
 class AppRoutes {
-  static final splash = '/';
-  static final home = '/home';
-  static final login = '/login';
+  static const splash = '/';
+  static const home = '/home';
+  static const login = '/login';
+}
+
+class NoTransitionRoute<T> extends MaterialPageRoute<T> {
+  NoTransitionRoute({WidgetBuilder builder, RouteSettings settings})
+      : super(builder: builder, settings: settings);
+
+  @override
+  Widget buildTransitions(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation, Widget child) {
+    return child;
+  }
 }

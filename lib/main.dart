@@ -45,15 +45,19 @@ class ReduxApp extends StatelessWidget {
             title: 'Flutter Demo',
             theme: ThemeData(primarySwatch: Colors.blue),
             initialRoute: AppRoutes.splash,
-            routes: {
-              AppRoutes.splash: (context) {
-                return Splash();
-              },
-              AppRoutes.home: (context) {
-                return Home();
-              },
-              AppRoutes.login: (context) {
-                return Login();
+            onGenerateRoute: (RouteSettings settings) {
+              switch (settings.name) {
+                case AppRoutes.splash:
+                  return NoTransitionRoute(
+                      builder: (_) => Splash(), settings: settings);
+                case AppRoutes.home:
+                  return NoTransitionRoute(
+                      builder: (_) => Home(), settings: settings);
+                case AppRoutes.login:
+                  return NoTransitionRoute(
+                      builder: (_) => Login(), settings: settings);
+                default:
+                  return null;
               }
             }));
   }
