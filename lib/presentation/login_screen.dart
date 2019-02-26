@@ -3,6 +3,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:todo_flutter/actions/actions.dart';
 import 'package:todo_flutter/models/app_state.dart';
+import 'package:todo_flutter/routes.dart';
 
 class LoginScreen extends StatelessWidget {
   final String title;
@@ -36,7 +37,7 @@ class LoginScreen extends StatelessWidget {
               }, converter: (Store<AppState> store) {
                 return () {
                   store.dispatch(LoginSuccessAction(account: 'xxx account!'));
-                  Navigator.pushReplacementNamed(context, '/home');
+                  Navigator.pushReplacementNamed(context, AppRoutes.home);
                 };
               })
             ],

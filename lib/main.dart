@@ -8,6 +8,7 @@ import 'package:todo_flutter/containers/login.dart';
 import 'package:todo_flutter/containers/splash.dart';
 import 'package:todo_flutter/models/app_state.dart';
 import 'package:todo_flutter/reducers/app_state_reducer.dart';
+import 'package:todo_flutter/routes.dart';
 
 void main() async {
   final persistor = Persistor<AppState>(
@@ -45,10 +46,10 @@ class ReduxApp extends StatelessWidget {
             theme: ThemeData(primarySwatch: Colors.blue),
             home: Splash(),
             routes: {
-              '/home': (context) {
+              AppRoutes.home: (context) {
                 return Home();
               },
-              '/login': (context) {
+              AppRoutes.login: (context) {
                 return Login();
               }
             }));

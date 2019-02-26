@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:todo_flutter/routes.dart';
 
 class SplashScreen extends StatelessWidget {
   final bool isLogin;
@@ -10,9 +11,9 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Timer(Duration(milliseconds: 3000), () {
       if (isLogin) {
-        Navigator.of(context).pushReplacementNamed('/home');
+        Navigator.of(context).pushReplacementNamed(AppRoutes.home);
       } else {
-        Navigator.of(context).pushReplacementNamed('/login');
+        Navigator.of(context).pushReplacementNamed(AppRoutes.login);
       }
     });
 
