@@ -5,8 +5,8 @@ import 'package:redux_persist/redux_persist.dart';
 import 'package:redux_persist_flutter/redux_persist_flutter.dart';
 import 'package:todo_flutter/containers/home.dart';
 import 'package:todo_flutter/containers/login.dart';
-import 'package:todo_flutter/containers/splash.dart';
 import 'package:todo_flutter/models/app_state.dart';
+import 'package:todo_flutter/presentation/splash_screen.dart';
 import 'package:todo_flutter/reducers/app_state_reducer.dart';
 import 'package:todo_flutter/routes.dart';
 
@@ -41,24 +41,27 @@ class ReduxApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreProvider(
         store: store,
-        child: MaterialApp(
-            title: 'Flutter Demo',
-            theme: ThemeData(primarySwatch: Colors.blue),
-            initialRoute: AppRoutes.splash,
-            onGenerateRoute: (RouteSettings settings) {
-              switch (settings.name) {
-                case AppRoutes.splash:
-                  return NoTransitionRoute(
-                      builder: (_) => Splash(), settings: settings);
-                case AppRoutes.home:
-                  return NoTransitionRoute(
-                      builder: (_) => Home(), settings: settings);
-                case AppRoutes.login:
-                  return NoTransitionRoute(
-                      builder: (_) => Login(), settings: settings);
-                default:
-                  return null;
-              }
-            }));
+        child: StoreBuilder(builder: (context, Store<AppState> store) {
+          return MaterialApp(
+              title: 'Flutter Demo',
+              theme: ThemeData(primarySwatch: Colors.blue),
+              initialRoute: AppRoutes.splash,
+              onGenerateRoute: (RouteSettings settings) {
+                switch (settings.name) {
+                  case AppRoutes.splash:
+                    return NoTransitionRoute(
+                        builder: (_) => SplashScreen(state: store.state.auth),
+                        settings: settings);
+                  case AppRoutes.home:
+                    return NoTransitionRoute(
+                        builder: (_) => Home(), settings: settings);
+                  case AppRoutes.login:
+                    return NoTransitionRoute(
+                        builder: (_) => Login(), settings: settings);
+                  default:
+                    return null;
+                }
+              });
+        }));
   }
 }

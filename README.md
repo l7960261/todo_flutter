@@ -24,3 +24,4 @@ This project is a starting point for a Flutter application.
 - [flutter-dart 类的构造函数](https://juejin.im/post/5b2b4c36f265da59b243cac9)
 - [flutter中使用redux之基础](https://segmentfault.com/a/1190000015579633)
 - [基於 Redux + Redux Persist 進行狀態管理的 Flutter 應用示例](https://www.jishuwen.com/d/2Cgp/zh-tw)
+- [Flutter完整开发实战详解(四、 Redux、主题、国际化) | 掘金技术征文](https://juejin.im/post/5b79767ff265da435450a873)
