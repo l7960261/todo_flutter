@@ -5,6 +5,7 @@ import 'package:redux_persist/redux_persist.dart';
 import 'package:redux_persist_flutter/redux_persist_flutter.dart';
 import 'package:todo_flutter/containers/home.dart';
 import 'package:todo_flutter/containers/second.dart';
+import 'package:todo_flutter/containers/splash.dart';
 import 'package:todo_flutter/models/app_state.dart';
 import 'package:todo_flutter/reducers/app_state_reducer.dart';
 
@@ -21,7 +22,7 @@ void main() async {
       print('AppState: ${store.state}');
 
       next(action);
-      
+
       print('自製中間件 (一) 結束');
       print('AppState: ${store.state}');
     }
@@ -42,8 +43,9 @@ class ReduxApp extends StatelessWidget {
         child: MaterialApp(
             title: 'Flutter Demo',
             theme: ThemeData(primarySwatch: Colors.blue),
+            home: Splash(),
             routes: {
-              '/': (context) {
+              '/main': (context) {
                 return Home();
               },
               '/second': (context) {
