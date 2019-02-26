@@ -10,8 +10,8 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return StoreConnector(builder: (BuildContext context, AppState state) {
-      return MyHomePage(
-          title: 'Flutter Demo Home Page',
+      return HomeScreen(
+          title: 'Home Page',
           counter: state.main.counter,
           isLogin: state.auth.isLogin,
           account: state.auth.account);

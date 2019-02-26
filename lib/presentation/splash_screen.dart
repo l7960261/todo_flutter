@@ -10,9 +10,9 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Timer(Duration(milliseconds: 3000), () {
       if (isLogin) {
-        Navigator.of(context).pushReplacementNamed('/second');
+        Navigator.of(context).pushReplacementNamed('/home');
       } else {
-        Navigator.of(context).pushReplacementNamed('/main');
+        Navigator.of(context).pushReplacementNamed('/login');
       }
     });
 

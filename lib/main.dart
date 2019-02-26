@@ -4,7 +4,7 @@ import 'package:redux/redux.dart';
 import 'package:redux_persist/redux_persist.dart';
 import 'package:redux_persist_flutter/redux_persist_flutter.dart';
 import 'package:todo_flutter/containers/home.dart';
-import 'package:todo_flutter/containers/second.dart';
+import 'package:todo_flutter/containers/login.dart';
 import 'package:todo_flutter/containers/splash.dart';
 import 'package:todo_flutter/models/app_state.dart';
 import 'package:todo_flutter/reducers/app_state_reducer.dart';
@@ -45,11 +45,11 @@ class ReduxApp extends StatelessWidget {
             theme: ThemeData(primarySwatch: Colors.blue),
             home: Splash(),
             routes: {
-              '/main': (context) {
+              '/home': (context) {
                 return Home();
               },
-              '/second': (context) {
-                return Second();
+              '/login': (context) {
+                return Login();
               }
             }));
   }

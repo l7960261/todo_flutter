@@ -4,13 +4,13 @@ import 'package:redux/redux.dart';
 import 'package:todo_flutter/actions/actions.dart';
 import 'package:todo_flutter/models/app_state.dart';
 
-class HomeScreen extends StatelessWidget {
+class LoginScreen extends StatelessWidget {
   final String title;
   final int counter;
   final bool isLogin;
   final String account;
 
-  HomeScreen({Key key, this.title, this.counter, this.isLogin, this.account})
+  LoginScreen({Key key, this.title, this.counter, this.isLogin, this.account})
       : super(key: key);
 
   @override
@@ -28,16 +28,16 @@ class HomeScreen extends StatelessWidget {
                 '$counter',
                 style: Theme.of(context).textTheme.display1,
               ),
-              StoreConnector(
-                  builder: (BuildContext context, VoidCallback logout) {
+              StoreConnector<AppState, VoidCallback>(
+                  builder: (BuildContext context, VoidCallback login) {
                 return RaisedButton(
-                  onPressed: logout,
-                  child: Text("您好:$account,点击退出"),
+                  onPressed: login,
+                  child: Text("登录"),
                 );
               }, converter: (Store<AppState> store) {
                 return () {
-                  store.dispatch(LogoutSuccessAction());
-                  Navigator.pushReplacementNamed(context, '/login');
+                  store.dispatch(LoginSuccessAction(account: 'xxx account!'));
+                  Navigator.pushReplacementNamed(context, '/home');
                 };
               })
             ],
