@@ -13,7 +13,6 @@ class Home extends StatelessWidget {
       return HomeScreen(
           title: 'Home Page',
           counter: state.main.counter,
-          isLogin: state.auth.isLogin,
           account: state.auth.account);
     }, converter: (Store<AppState> store) {
       return store.state;

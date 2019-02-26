@@ -7,10 +7,9 @@ import 'package:todo_flutter/models/app_state.dart';
 class HomeScreen extends StatelessWidget {
   final String title;
   final int counter;
-  final bool isLogin;
   final String account;
 
-  HomeScreen({Key key, this.title, this.counter, this.isLogin, this.account})
+  HomeScreen({Key key, this.title, this.counter, this.account})
       : super(key: key);
 
   @override
