@@ -5,22 +5,22 @@ part 'app_state.g.dart';
 @JsonSerializable()
 class AppState {
   AuthState auth;
-  MainPageState main;
+  HomePageState home;
 
-  AppState({this.main, this.auth});
+  AppState({this.home, this.auth});
 
   // factory AppState.fromJson(Map<String, dynamic> json) =>
   //     _$AppStateFromJson(json);
 
   static AppState fromJson(dynamic json) => json == null
-      ? AppState(main: MainPageState(), auth: AuthState())
+      ? AppState(home: HomePageState(), auth: AuthState())
       : _$AppStateFromJson(json);
 
   Map<String, dynamic> toJson() => _$AppStateToJson(this);
 
   @override
   String toString() {
-    return 'AppState: {auth:$auth, main:$main}';
+    return 'AppState: {auth:$auth, main:$home}';
   }
 }
 
@@ -42,11 +42,11 @@ class AuthState {
 }
 
 @JsonSerializable()
-class MainPageState {
+class HomePageState {
   int counter;
-  MainPageState({this.counter: 0});
+  HomePageState({this.counter: 0});
 
-  factory MainPageState.fromJson(Map<String, dynamic> json) =>
+  factory HomePageState.fromJson(Map<String, dynamic> json) =>
       _$MainPageStateFromJson(json);
 
   Map<String, dynamic> toJson() => _$MainPageStateToJson(this);

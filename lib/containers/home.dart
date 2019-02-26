@@ -11,8 +11,8 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreConnector(builder: (BuildContext context, AppState state) {
       return HomeScreen(
-          title: 'Home Page',
-          counter: state.main.counter,
+          title: 'Home',
+          counter: state.home.counter,
           account: state.auth.account);
     }, converter: (Store<AppState> store) {
       return store.state;

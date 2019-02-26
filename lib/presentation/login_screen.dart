@@ -31,12 +31,13 @@ class LoginScreen extends StatelessWidget {
               StoreConnector<AppState, VoidCallback>(
                   builder: (BuildContext context, VoidCallback login) {
                 return RaisedButton(
+                  color: Colors.lightGreen,
                   onPressed: login,
                   child: Text("登录"),
                 );
               }, converter: (Store<AppState> store) {
                 return () {
-                  store.dispatch(LoginSuccessAction(account: 'xxx account!'));
+                  store.dispatch(LoginSuccessAction(account: 'Tester'));
                   Navigator.pushReplacementNamed(context, AppRoutes.home);
                 };
               })

@@ -31,8 +31,9 @@ class HomeScreen extends StatelessWidget {
               StoreConnector(
                   builder: (BuildContext context, VoidCallback logout) {
                 return RaisedButton(
+                  color: Colors.redAccent,
                   onPressed: logout,
-                  child: Text("您好:$account,点击退出"),
+                  child: Text("您好: $account, 点击退出"),
                 );
               }, converter: (Store<AppState> store) {
                 return () {

@@ -14,22 +14,22 @@ AuthState _$AuthStateFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$AuthStateToJson(AuthState instance) =>
     <String, dynamic>{'isLogin': instance.isLogin, 'account': instance.account};
 
-MainPageState _$MainPageStateFromJson(Map<String, dynamic> json) {
-  return MainPageState(counter: json['counter'] as int);
+HomePageState _$MainPageStateFromJson(Map<String, dynamic> json) {
+  return HomePageState(counter: json['counter'] as int);
 }
 
-Map<String, dynamic> _$MainPageStateToJson(MainPageState instance) =>
+Map<String, dynamic> _$MainPageStateToJson(HomePageState instance) =>
     <String, dynamic>{'counter': instance.counter};
 
 AppState _$AppStateFromJson(Map<String, dynamic> json) {
   return AppState(
-      main: json['main'] == null
+      home: json['main'] == null
           ? null
-          : MainPageState.fromJson(json['main'] as Map<String, dynamic>),
+          : HomePageState.fromJson(json['main'] as Map<String, dynamic>),
       auth: json['auth'] == null
           ? null
           : AuthState.fromJson(json['auth'] as Map<String, dynamic>));
 }
 
 Map<String, dynamic> _$AppStateToJson(AppState instance) =>
-    <String, dynamic>{'auth': instance.auth, 'main': instance.main};
+    <String, dynamic>{'auth': instance.auth, 'main': instance.home};

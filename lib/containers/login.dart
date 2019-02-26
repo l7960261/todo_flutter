@@ -11,8 +11,8 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     return StoreConnector(builder: (BuildContext context, AppState state) {
       return LoginScreen(
-          title: 'Login Page',
-          counter: state.main.counter,
+          title: 'Login',
+          counter: state.home.counter,
           account: state.auth.account);
     }, converter: (Store<AppState> store) {
       return store.state;
