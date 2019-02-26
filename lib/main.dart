@@ -44,8 +44,11 @@ class ReduxApp extends StatelessWidget {
         child: MaterialApp(
             title: 'Flutter Demo',
             theme: ThemeData(primarySwatch: Colors.blue),
-            home: Splash(),
+            initialRoute: AppRoutes.splash,
             routes: {
+              AppRoutes.splash: (context) {
+                return Splash();
+              },
               AppRoutes.home: (context) {
                 return Home();
               },
