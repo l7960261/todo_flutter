@@ -53,7 +53,7 @@ class LoginScreen extends StatelessWidget {
             );
           },
           converter: (Store<AppState> store) {
-            return () => store.dispatch(IncreaseAction());
+            return () => store.dispatch(asyncIncrease);
           },
         ));
   }
