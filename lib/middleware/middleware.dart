@@ -12,6 +12,7 @@ List<Middleware<AppState>> createMiddleware(
     TypedMiddleware<AppState, IncreaseAction>(_normalMiddleware()),
     TypedMiddleware<AppState, CheckLoggedInAction>(loadFile),
     TypedMiddleware<AppState, LoginSuccessAction>(saveFile),
+    TypedMiddleware<AppState, LogoutSuccessAction>(saveFile),
     TypedMiddleware<AppState, LoadedAction>(saveFile)
   ];
 }

@@ -5,7 +5,7 @@ import 'package:todo_flutter/models/app_state.dart';
 AppState appReducer(AppState state, dynamic action) {
   return AppState(
       auth: authStateReducer(state.auth, action),
-      home: mainPageStateReducer(state.home, action));
+      home: homePageStateReducer(state.home, action));
 }
 
 final Reducer<AuthState> authStateReducer = combineReducers<AuthState>([
@@ -23,7 +23,7 @@ AuthState _login(AuthState state, LoginSuccessAction action) =>
 AuthState _loaded(AuthState state, LoadedAction action) =>
     AuthState(isLogin: action.isLogin, account: action.account);
 
-final Reducer<HomePageState> mainPageStateReducer =
+final Reducer<HomePageState> homePageStateReducer =
     combineReducers<HomePageState>(
         [TypedReducer<HomePageState, IncreaseAction>(_increase)]);
 

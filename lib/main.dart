@@ -38,8 +38,7 @@ class ReduxApp extends StatelessWidget {
                     return NoTransitionRoute(
                         builder: (_) => SplashScreen(
                               onInit: () {
-                                StoreProvider.of<AppState>(context)
-                                    .dispatch(CheckLoggedInAction());
+                                store.dispatch(CheckLoggedInAction());
                               },
                             ),
                         settings: settings);
