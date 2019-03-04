@@ -11,6 +11,8 @@ AppState appReducer(AppState state, dynamic action) {
 final Reducer<AuthState> authStateReducer = combineReducers<AuthState>([
   TypedReducer<AuthState, LoginSuccessAction>(_login),
   TypedReducer<AuthState, LogoutSuccessAction>(_logout),
+  TypedReducer<AuthState, LoadAction>(_load),
+  TypedReducer<AuthState, LoadedAction>(_loaded)
 ]);
 
 AuthState _logout(AuthState state, LogoutSuccessAction action) =>
@@ -18,6 +20,12 @@ AuthState _logout(AuthState state, LogoutSuccessAction action) =>
 
 AuthState _login(AuthState state, LoginSuccessAction action) =>
     AuthState(isLogin: true, account: action.account);
+
+AuthState _load(AuthState state, LoadAction action) =>
+    AuthState(isLogin: true, account: state.account);
+
+AuthState _loaded(AuthState state, LoadedAction action) =>
+    AuthState(isLogin: true, account: state.account);
 
 final Reducer<HomePageState> mainPageStateReducer =
     combineReducers<HomePageState>(
