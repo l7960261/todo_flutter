@@ -10,7 +10,8 @@ List<Middleware<AppState>> createMiddleware(
 
   return [
     TypedMiddleware<AppState, IncreaseAction>(_normalMiddleware()),
-    TypedMiddleware<AppState, LoadAction>(loadFile),
+    TypedMiddleware<AppState, CheckLoggedInAction>(loadFile),
+    TypedMiddleware<AppState, LoginSuccessAction>(saveFile),
     TypedMiddleware<AppState, LoadedAction>(saveFile)
   ];
 }
@@ -35,9 +36,10 @@ Middleware<AppState> _loadMiddleware(FileStorage storage) {
     print('AppState: ${store.state}');
 
     storage.read().then((json) {
-      store.dispatch(
-        LoadedAction(account: AuthState.fromJson(json).account ?? 'Tester')
-      );
+      final state = AuthState.fromJson(json);
+      print('state login: ${state.isLogin}');
+      store.dispatch(LoadedAction(
+          isLogin: state.isLogin ??= false, account: state.account));
     });
 
     next(action);

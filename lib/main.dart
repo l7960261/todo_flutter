@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
+import 'package:todo_flutter/actions/actions.dart';
 import 'package:todo_flutter/containers/home.dart';
 import 'package:todo_flutter/containers/login.dart';
 import 'package:todo_flutter/middleware/middleware.dart';
@@ -35,7 +36,12 @@ class ReduxApp extends StatelessWidget {
                 switch (settings.name) {
                   case AppRoutes.splash:
                     return NoTransitionRoute(
-                        builder: (_) => SplashScreen(state: store.state.auth),
+                        builder: (_) => SplashScreen(
+                              onInit: () {
+                                StoreProvider.of<AppState>(context)
+                                    .dispatch(CheckLoggedInAction());
+                              },
+                            ),
                         settings: settings);
                   case AppRoutes.home:
                     return NoTransitionRoute(

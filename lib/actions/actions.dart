@@ -1,5 +1,7 @@
 class IncreaseAction {}
 
+class CheckLoggedInAction {}
+
 class LogoutSuccessAction {}
 
 class LoginSuccessAction {
@@ -7,9 +9,8 @@ class LoginSuccessAction {
   LoginSuccessAction({this.account});
 }
 
-class LoadAction {}
-
 class LoadedAction {
+  final bool isLogin;
   final String account;
-  LoadedAction({this.account});
+  LoadedAction({this.isLogin, this.account});
 }

@@ -9,7 +9,7 @@ AppState appReducer(AppState state, dynamic action) {
 }
 
 final Reducer<AuthState> authStateReducer = combineReducers<AuthState>([
-  // TypedReducer<AuthState, LoginSuccessAction>(_login),
+  TypedReducer<AuthState, LoginSuccessAction>(_login),
   TypedReducer<AuthState, LogoutSuccessAction>(_logout),
   TypedReducer<AuthState, LoadedAction>(_loaded)
 ]);
@@ -17,11 +17,11 @@ final Reducer<AuthState> authStateReducer = combineReducers<AuthState>([
 AuthState _logout(AuthState state, LogoutSuccessAction action) =>
     AuthState(isLogin: false, account: null);
 
-// AuthState _login(AuthState state, LoginSuccessAction action) =>
-//     AuthState(isLogin: true, account: action.account);
+AuthState _login(AuthState state, LoginSuccessAction action) =>
+    AuthState(isLogin: true, account: action.account);
 
 AuthState _loaded(AuthState state, LoadedAction action) =>
-    AuthState(isLogin: true, account: action.account);
+    AuthState(isLogin: action.isLogin, account: action.account);
 
 final Reducer<HomePageState> mainPageStateReducer =
     combineReducers<HomePageState>(

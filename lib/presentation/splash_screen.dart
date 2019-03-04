@@ -1,28 +1,32 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:todo_flutter/models/app_state.dart';
 import 'package:todo_flutter/routes.dart';
 
 class SplashScreen extends StatefulWidget {
-  final AuthState state;
+  final void Function() onInit;
 
-  SplashScreen({Key key, this.state}) : super(key: key);
+  SplashScreen({Key key, @required this.onInit}) : super(key: key);
 
   @override
-  _SplashScreenState createState() =>
-      _SplashScreenState(isLogin: state.isLogin);
+  _SplashScreenState createState() => _SplashScreenState();
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  final bool isLogin;
   Timer _mTimer;
 
-  _SplashScreenState({Key key, this.isLogin});
+  _SplashScreenState();
 
   @override
   void initState() {
+    widget.onInit();
     super.initState();
-    _mTimer = Timer(Duration(milliseconds: 3000), () {
+    _mTimer = Timer.periodic(Duration(milliseconds: 3000), (Timer timer) {
+      print('tick: ${timer.tick}');
+
+      final isLogin = StoreProvider.of<AppState>(context).state.auth.isLogin;
+
       if (isLogin) {
         Navigator.of(context).pushReplacementNamed(AppRoutes.home);
       } else {

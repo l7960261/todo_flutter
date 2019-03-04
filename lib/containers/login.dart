@@ -9,7 +9,8 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StoreConnector(builder: (BuildContext context, AppState state) {
+    return StoreConnector<AppState, AppState>(
+        builder: (BuildContext context, AppState state) {
       return LoginScreen(
           title: 'Login',
           counter: state.home.counter,

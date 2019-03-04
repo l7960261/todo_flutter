@@ -43,9 +43,9 @@ class HomePageState {
   HomePageState({this.counter: 0});
 
   factory HomePageState.fromJson(Map<String, dynamic> json) =>
-      _$MainPageStateFromJson(json);
+      _$HomePageStateFromJson(json);
 
-  Map<String, dynamic> toJson() => _$MainPageStateToJson(this);
+  Map<String, dynamic> toJson() => _$HomePageStateToJson(this);
 
   @override
   String toString() {
