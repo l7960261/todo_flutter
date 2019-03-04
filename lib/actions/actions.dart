@@ -10,6 +10,6 @@ class LoginSuccessAction {
 class LoadAction {}
 
 class LoadedAction {
-  final bool isLogin;
-  LoadedAction({this.isLogin});
+  final String account;
+  LoadedAction({this.account});
 }

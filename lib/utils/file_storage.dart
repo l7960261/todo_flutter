@@ -10,16 +10,15 @@ class FileStorage {
   const FileStorage(this.tag,
       [this.getDirectory = getApplicationDocumentsDirectory]);
 
-  Future<Map<String, dynamic>> load() async {
+  Future<Map<String, dynamic>> read() async {
     final file = await _getLocalFile();
 
     try {
       final contents = await file.readAsString();
-      print('contents:$contents');
       final json = JsonDecoder().convert(contents);
       return json;
     } catch (e) {
-      var empty = Map<String, dynamic>();
+      final empty = Map<String, dynamic>();
       write(empty);
       return empty;
     }

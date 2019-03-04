@@ -37,7 +37,7 @@ class LoginScreen extends StatelessWidget {
                 );
               }, converter: (Store<AppState> store) {
                 return () {
-                  store.dispatch(LoginSuccessAction(account: 'Tester'));
+                  // store.dispatch(LoginSuccessAction(account: 'Tester'));
                   Navigator.pushReplacementNamed(context, AppRoutes.home);
                 };
               })
