@@ -37,7 +37,6 @@ Middleware<AppState> _loadMiddleware(FileStorage storage) {
 
     storage.read().then((json) {
       final state = AuthState.fromJson(json);
-      print('state login: ${state.isLogin}');
       store.dispatch(LoadedAction(
           isLogin: state.isLogin ??= false, account: state.account));
     });
