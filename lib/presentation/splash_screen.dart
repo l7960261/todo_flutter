@@ -1,13 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-import 'package:todo_flutter/models/app_state.dart';
+import 'package:todo_flutter/containers/splash.dart';
 import 'package:todo_flutter/routes.dart';
 
 class SplashScreen extends StatefulWidget {
-  final void Function() onInit;
+  const SplashScreen({Key key, @required this.viewModel}) : super(key: key);
 
-  SplashScreen({Key key, @required this.onInit}) : super(key: key);
+  final SplashVM viewModel;
 
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -18,21 +17,21 @@ class _SplashScreenState extends State<SplashScreen> {
 
   _SplashScreenState();
 
-  @override
-  void initState() {
-    widget.onInit();
-    super.initState();
-    _mTimer = Timer.periodic(Duration(milliseconds: 3000), (Timer timer) {
-      print('tick: ${timer.tick}');
-
-      final isLogin = StoreProvider.of<AppState>(context).state.auth.isLogin;
-
+  _handleAfterInit(bool isLogin) {
+    print('isLogin: $isLogin');
+    _mTimer = Timer(Duration(milliseconds: 3000), () {
       if (isLogin) {
         Navigator.of(context).pushReplacementNamed(AppRoutes.home);
       } else {
         Navigator.of(context).pushReplacementNamed(AppRoutes.login);
       }
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    widget.viewModel.onInit(_handleAfterInit);
   }
 
   @override
@@ -47,7 +46,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void dispose() {
-    super.dispose();
     _mTimer.cancel();
+    super.dispose();
   }
 }

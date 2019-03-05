@@ -40,6 +40,7 @@ Middleware<AppState> _loadMiddleware(FileStorage storage) {
       final state = AuthState.fromJson(json);
       store.dispatch(LoadedAction(
           isLogin: state.isLogin ??= false, account: state.account));
+      action.completer.complete(null);
     });
 
     next(action);
