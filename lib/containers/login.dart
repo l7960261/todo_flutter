@@ -13,8 +13,8 @@ class Login extends StatelessWidget {
         builder: (BuildContext context, AppState state) {
       return LoginScreen(
           title: 'Login',
-          counter: state.home.counter,
-          account: state.auth.account);
+          counter: state.homeState.counter,
+          account: state.authState.account);
     }, converter: (Store<AppState> store) {
       return store.state;
     });

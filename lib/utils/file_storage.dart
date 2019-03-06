@@ -27,26 +27,6 @@ class FileStorage {
     return file.writeAsString(data);
   }
 
-  Future<Map<String, dynamic>> read() async {
-    final file = await _getLocalFile();
-
-    try {
-      final contents = await file.readAsString();
-      final json = JsonDecoder().convert(contents);
-      return json;
-    } catch (e) {
-      final empty = Map<String, dynamic>();
-      write(empty);
-      return empty;
-    }
-  }
-
-  Future<File> write(Map<String, dynamic> object) async {
-    final file = await _getLocalFile();
-
-    return file.writeAsString(JsonEncoder().convert(object));
-  }
-
   Future<FileSystemEntity> clean() async {
     final file = await _getLocalFile();
 

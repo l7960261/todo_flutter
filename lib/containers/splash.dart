@@ -28,7 +28,7 @@ class SplashVM {
     return SplashVM(onInit: (Function(bool isLogin) callback) {
       final Completer<Null> completer = Completer<Null>();
       store.dispatch(CheckLoggedInAction(completer: completer));
-      completer.future.then((_) => callback(store.state.auth.isLogin));
+      completer.future.then((_) => callback(store.state.authState.isLogin));
     });
   }
 }

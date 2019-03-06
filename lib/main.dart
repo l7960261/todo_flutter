@@ -11,7 +11,7 @@ import 'package:todo_flutter/routes.dart';
 
 void main() async {
   final store = Store<AppState>(appReducer,
-      initialState: AppState(home: HomePageState(), auth: AuthState()),
+      initialState: AppState(),
       middleware: createMiddleware());
 
   runApp(ReduxApp(store: store));

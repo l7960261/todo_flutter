@@ -1,11 +1,13 @@
 import 'package:redux/redux.dart';
 import 'package:todo_flutter/actions/actions.dart';
 import 'package:todo_flutter/models/app_state.dart';
+import 'package:todo_flutter/models/auth_state.dart';
+import 'package:todo_flutter/models/home_state.dart';
 
 AppState appReducer(AppState state, dynamic action) {
-  return AppState(
-      auth: authStateReducer(state.auth, action),
-      home: homePageStateReducer(state.home, action));
+  return state.rebuild((b) => b
+    ..authState.replace(authStateReducer(state.authState, action))
+    ..homeState.replace(homeStateReducer(state.homeState, action)));
 }
 
 final Reducer<AuthState> authStateReducer = combineReducers<AuthState>([
@@ -15,17 +17,25 @@ final Reducer<AuthState> authStateReducer = combineReducers<AuthState>([
 ]);
 
 AuthState _logout(AuthState state, LogoutSuccessAction action) =>
-    AuthState(isLogin: false, account: null);
+    state.rebuild((b) => b
+    ..account = null
+    ..isLogin = false
+    );
 
 AuthState _login(AuthState state, LoginSuccessAction action) =>
-    AuthState(isLogin: true, account: action.account);
+    state.rebuild((b) => b
+    ..account = action.account
+    ..isLogin = true
+    );
 
 AuthState _loaded(AuthState state, LoadedAction action) =>
-    AuthState(isLogin: action.isLogin, account: action.account);
+    state.rebuild((b) => b
+    ..account = action.account
+    ..isLogin = action.isLogin
+    );
 
-final Reducer<HomePageState> homePageStateReducer =
-    combineReducers<HomePageState>(
-        [TypedReducer<HomePageState, IncreaseAction>(_increase)]);
+final Reducer<HomeState> homeStateReducer = combineReducers<HomeState>(
+    [TypedReducer<HomeState, IncreaseAction>(_increase)]);
 
-HomePageState _increase(HomePageState state, IncreaseAction action) =>
-    HomePageState(counter: state.counter + 1);
+HomeState _increase(HomeState state, IncreaseAction action) =>
+    state.rebuild((b) => b..counter = b.counter + 1);

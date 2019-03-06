@@ -1,7 +1,10 @@
+import 'dart:convert';
 import 'package:path_provider/path_provider.dart';
 import 'package:redux/redux.dart';
 import 'package:todo_flutter/actions/actions.dart';
 import 'package:todo_flutter/models/app_state.dart';
+import 'package:todo_flutter/models/auth_state.dart';
+import 'package:todo_flutter/models/serializers.dart';
 import 'package:todo_flutter/utils/file_storage.dart';
 
 List<Middleware<AppState>> createMiddleware(
@@ -26,7 +29,9 @@ Middleware<AppState> _saveMiddleware(FileStorage storage) {
 
     next(action);
 
-    storage.write(store.state.auth.toJson());
+    final data =
+        serializers.serializeWith(AuthState.serializer, store.state.authState);
+    storage.save(json.encode(data));
 
     print('_saveMiddleware 結束');
     print('AppState: ${store.state}');
@@ -38,10 +43,11 @@ Middleware<AppState> _loadMiddleware(FileStorage storage) {
     print('_loadMiddleware 開始');
     print('AppState: ${store.state}');
 
-    storage.read().then((json) {
-      final state = AuthState.fromJson(json);
-      store.dispatch(LoadedAction(
-          isLogin: state.isLogin ??= false, account: state.account));
+    storage.load().then((data) {
+      print('storage json: $json');
+      final state = serializers.deserializeWith(AuthState.serializer, json.decode(data));
+      store.dispatch(
+          LoadedAction(isLogin: state.isLogin, account: state.account));
       action.completer.complete(null);
     });
 
