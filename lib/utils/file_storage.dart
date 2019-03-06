@@ -1,14 +1,31 @@
 import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
-import 'package:path_provider/path_provider.dart';
 
 class FileStorage {
+  const FileStorage(this.tag, this.getDirectory);
+
   final String tag;
   final Future<Directory> Function() getDirectory;
 
-  const FileStorage(this.tag,
-      [this.getDirectory = getApplicationDocumentsDirectory]);
+  Future<File> _getLocalFile() async {
+    final dir = await getDirectory();
+
+    return File('${dir.path}/todo_flutter_storage_$tag.json');
+  }
+
+  Future<dynamic> load() async {
+    final file = await _getLocalFile();
+    final contents = await file.readAsString();
+
+    return contents;
+  }
+
+  Future<File> save(String data) async {
+    final file = await _getLocalFile();
+
+    return file.writeAsString(data);
+  }
 
   Future<Map<String, dynamic>> read() async {
     final file = await _getLocalFile();
@@ -30,15 +47,15 @@ class FileStorage {
     return file.writeAsString(JsonEncoder().convert(object));
   }
 
-  Future<File> _getLocalFile() async {
-    final dir = await getDirectory();
-
-    return File('${dir.path}/todo_flutter_storage_$tag.json');
-  }
-
   Future<FileSystemEntity> clean() async {
     final file = await _getLocalFile();
 
     return file.delete();
+  }
+
+  Future<bool> exists() async {
+    final file = await _getLocalFile();
+
+    return file.existsSync();
   }
 }
