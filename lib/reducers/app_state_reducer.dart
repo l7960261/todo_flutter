@@ -18,21 +18,18 @@ final Reducer<AuthState> authStateReducer = combineReducers<AuthState>([
 
 AuthState _logout(AuthState state, LogoutSuccessAction action) =>
     state.rebuild((b) => b
-    ..account = ''
-    ..isLogin = false
-    );
+      ..account = ''
+      ..isLogin = false);
 
 AuthState _login(AuthState state, LoginSuccessAction action) =>
     state.rebuild((b) => b
-    ..account = action.account
-    ..isLogin = true
-    );
+      ..account = action.account
+      ..isLogin = true);
 
 AuthState _loaded(AuthState state, LoadedAction action) =>
     state.rebuild((b) => b
-    ..account = action.account
-    ..isLogin = action.isLogin
-    );
+      ..account = action.account
+      ..isLogin = action.isLogin);
 
 final Reducer<HomeState> homeStateReducer = combineReducers<HomeState>(
     [TypedReducer<HomeState, IncreaseAction>(_increase)]);
