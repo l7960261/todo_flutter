@@ -2,8 +2,8 @@ import 'dart:async';
 
 class IncreaseAction {}
 
-class CheckLoggedInAction {
-  CheckLoggedInAction({this.completer});
+class LoadStateRequest {
+  LoadStateRequest({this.completer});
   final Completer completer;
 }
 

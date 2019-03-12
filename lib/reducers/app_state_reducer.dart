@@ -18,7 +18,7 @@ final Reducer<AuthState> authStateReducer = combineReducers<AuthState>([
 
 AuthState _logout(AuthState state, LogoutSuccessAction action) =>
     state.rebuild((b) => b
-    ..account = null
+    ..account = ''
     ..isLogin = false
     );
 

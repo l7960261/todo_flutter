@@ -10,16 +10,34 @@ import 'package:todo_flutter/utils/file_storage.dart';
 List<Middleware<AppState>> createMiddleware(
     [FileStorage storage =
         const FileStorage('_redux_app_', getApplicationDocumentsDirectory)]) {
-  final loadFile = _loadMiddleware(storage);
   final saveFile = _saveMiddleware(storage);
+  final loadState = _createLoadState(storage);
 
   return [
     TypedMiddleware<AppState, IncreaseAction>(_normalMiddleware()),
-    TypedMiddleware<AppState, CheckLoggedInAction>(loadFile),
+    TypedMiddleware<AppState, LoadStateRequest>(loadState),
     TypedMiddleware<AppState, LoginSuccessAction>(saveFile),
     TypedMiddleware<AppState, LogoutSuccessAction>(saveFile),
     TypedMiddleware<AppState, LoadedAction>(saveFile)
   ];
+}
+
+Middleware<AppState> _createLoadState(FileStorage storage) {
+  return (Store<AppState> store, action, NextDispatcher next) async {
+    try {
+      final String data = await storage.load();
+      final AuthState authState =
+          serializers.deserializeWith(AuthState.serializer, json.decode(data));
+      store.dispatch(
+          LoadedAction(isLogin: authState.isLogin, account: authState.account));
+    } catch (error) {
+      print(error);
+    }
+
+    action.completer.complete(null);
+
+    next(action);
+  };
 }
 
 Middleware<AppState> _saveMiddleware(FileStorage storage) {
@@ -34,26 +52,6 @@ Middleware<AppState> _saveMiddleware(FileStorage storage) {
     storage.save(json.encode(data));
 
     print('_saveMiddleware 結束');
-    print('AppState: ${store.state}');
-  };
-}
-
-Middleware<AppState> _loadMiddleware(FileStorage storage) {
-  return (Store<AppState> store, action, NextDispatcher next) {
-    print('_loadMiddleware 開始');
-    print('AppState: ${store.state}');
-
-    storage.load().then((data) {
-      print('storage json: $json');
-      final state = serializers.deserializeWith(AuthState.serializer, json.decode(data));
-      store.dispatch(
-          LoadedAction(isLogin: state.isLogin, account: state.account));
-      action.completer.complete(null);
-    });
-
-    next(action);
-
-    print('_loadMiddleware 結束');
     print('AppState: ${store.state}');
   };
 }
