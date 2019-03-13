@@ -11,32 +11,11 @@ List<Middleware<AppState>> createStoreAuthMiddleware(
     [FileStorage storage =
         const FileStorage('_redux_app_', getApplicationDocumentsDirectory)]) {
   final saveFile = _saveMiddleware(storage);
-  final loadState = _createLoadState(storage);
 
   return [
-    TypedMiddleware<AppState, LoadStateRequest>(loadState),
     TypedMiddleware<AppState, LoginSuccessAction>(saveFile),
     TypedMiddleware<AppState, LogoutSuccessAction>(saveFile),
-    TypedMiddleware<AppState, LoadedAction>(saveFile)
   ];
-}
-
-Middleware<AppState> _createLoadState(FileStorage storage) {
-  return (Store<AppState> store, action, NextDispatcher next) async {
-    try {
-      final String data = await storage.load();
-      final AuthState authState =
-          serializers.deserializeWith(AuthState.serializer, json.decode(data));
-      store.dispatch(
-          LoadedAction(isLogin: authState.isLogin, account: authState.account));
-    } catch (error) {
-      print(error);
-    }
-
-    action.completer.complete(null);
-
-    next(action);
-  };
 }
 
 Middleware<AppState> _saveMiddleware(FileStorage storage) {

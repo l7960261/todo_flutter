@@ -14,7 +14,7 @@ void main() async {
   final store = Store<AppState>(appReducer,
       initialState: AppState(),
       middleware: []
-        ..addAll(createMiddleware())
+        ..addAll(createStorePersistenceMiddleware())
         ..addAll(createStoreAuthMiddleware()));
 
   runApp(ReduxApp(store: store));

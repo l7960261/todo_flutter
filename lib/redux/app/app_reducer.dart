@@ -2,9 +2,14 @@ import 'package:redux/redux.dart';
 import 'package:todo_flutter/redux/app/app_actions.dart';
 import 'package:todo_flutter/redux/app/app_state.dart';
 import 'package:todo_flutter/redux/app/home_state.dart';
+import 'package:todo_flutter/redux/auth/auth_actions.dart';
 import 'package:todo_flutter/redux/auth/auth_reducer.dart';
 
 AppState appReducer(AppState state, dynamic action) {
+  if (action is LoadStateSuccess) {
+    return action.state.rebuild((b) => b);
+  }
+
   return state.rebuild((b) => b
     ..authState.replace(authStateReducer(state.authState, action))
     ..homeState.replace(homeStateReducer(state.homeState, action)));

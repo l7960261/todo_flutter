@@ -10,7 +10,7 @@ import 'package:todo_flutter/utils/file_storage.dart';
 class PersistenceRepository {
   final FileStorage fileStorage;
 
-  PersistenceRepository({
+  const PersistenceRepository({
     @required this.fileStorage
   });
 
