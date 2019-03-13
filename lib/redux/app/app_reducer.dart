@@ -9,7 +9,7 @@ AppState appReducer(AppState state, dynamic action) {
   if (action is LoadStateSuccess) {
     return action.state.rebuild((b) => b);
   }
-
+  
   return state.rebuild((b) => b
     ..authState.replace(authStateReducer(state.authState, action))
     ..homeState.replace(homeStateReducer(state.homeState, action)));
@@ -18,5 +18,5 @@ AppState appReducer(AppState state, dynamic action) {
 final Reducer<HomeState> homeStateReducer = combineReducers<HomeState>(
     [TypedReducer<HomeState, IncreaseAction>(_increase)]);
 
-HomeState _increase(HomeState state, IncreaseAction action) =>
-    state.rebuild((b) => b..counter = b.counter + 1);
+HomeState _increase(HomeState homeState, IncreaseAction action) =>
+    homeState.rebuild((b) => b..counter = b.counter + 1);

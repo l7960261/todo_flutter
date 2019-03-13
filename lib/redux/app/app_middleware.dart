@@ -1,7 +1,6 @@
 import 'package:path_provider/path_provider.dart';
 import 'package:redux/redux.dart';
 import 'package:todo_flutter/data/repositories/persistence_repository.dart';
-import 'package:todo_flutter/redux/app/app_actions.dart';
 import 'package:todo_flutter/redux/app/app_state.dart';
 import 'package:todo_flutter/redux/auth/auth_actions.dart';
 import 'package:todo_flutter/redux/auth/auth_state.dart';
@@ -12,22 +11,14 @@ List<Middleware<AppState>> createStorePersistenceMiddleware(
         fileStorage: const FileStorage(
             'auth_state', getApplicationDocumentsDirectory))]) {
   final loadState = _createLoadState(authRepository);
+  final userLoggedIn = _createUserLoggedIn(authRepository);
+  final deleteState = _createDeleteState(authRepository);
+
   return [
     TypedMiddleware<AppState, LoadStateRequest>(loadState),
-    TypedMiddleware<AppState, IncreaseAction>(_normalMiddleware())
+    TypedMiddleware<AppState, UserLoginSuccess>(userLoggedIn),
+    TypedMiddleware<AppState, UserLogout>(deleteState)
   ];
-}
-
-Middleware<AppState> _normalMiddleware() {
-  return (Store<AppState> store, action, NextDispatcher next) {
-    print('_normalMiddleware 開始');
-    print('AppState: ${store.state}');
-
-    next(action);
-
-    print('_normalMiddleware 結束');
-    print('AppState: ${store.state}');
-  };
 }
 
 Middleware<AppState> _createLoadState(PersistenceRepository authRepository) {
@@ -45,6 +36,24 @@ Middleware<AppState> _createLoadState(PersistenceRepository authRepository) {
     }
 
     action.completer.complete(null);
+
+    next(action);
+  };
+}
+
+Middleware<AppState> _createUserLoggedIn(PersistenceRepository authRepository) {
+  return (Store<AppState> store, action, NextDispatcher next) async {
+    next(action);
+
+    final state = store.state;
+
+    authRepository.saveAuthState(state.authState);
+  };
+}
+
+Middleware<AppState> _createDeleteState(PersistenceRepository authRepository) {
+  return (Store<AppState> store, action, NextDispatcher next) async {
+    authRepository.delete();
 
     next(action);
   };

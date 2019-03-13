@@ -54,7 +54,7 @@ class Home extends StatelessWidget {
                 );
               }, converter: (Store<AppState> store) {
                 return () {
-                  store.dispatch(LogoutSuccessAction());
+                  store.dispatch(UserLogout());
                   Navigator.pushReplacementNamed(context, AppRoutes.login);
                 };
               })

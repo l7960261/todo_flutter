@@ -12,9 +12,9 @@ class LoadStateSuccess {
   LoadStateSuccess(this.state);
 }
 
-class LogoutSuccessAction {}
-
-class LoginSuccessAction {
-  LoginSuccessAction({this.account});
+class UserLoginSuccess {
   final String account;
+  UserLoginSuccess(this.account);
 }
+
+class UserLogout {}

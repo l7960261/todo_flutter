@@ -55,7 +55,7 @@ class LoginView extends StatelessWidget {
                 );
               }, converter: (Store<AppState> store) {
                 return () {
-                  store.dispatch(LoginSuccessAction(account: 'Tester'));
+                  store.dispatch(UserLoginSuccess('Tester'));
                   Navigator.pushReplacementNamed(context, AppRoutes.home);
                 };
               })

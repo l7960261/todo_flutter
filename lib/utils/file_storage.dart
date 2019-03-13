@@ -26,7 +26,7 @@ class FileStorage {
     return file.writeAsString(data);
   }
 
-  Future<FileSystemEntity> clean() async {
+  Future<FileSystemEntity> delete() async {
     final file = await _getLocalFile();
 
     return file.delete();

@@ -10,9 +10,7 @@ import 'package:todo_flutter/utils/file_storage.dart';
 class PersistenceRepository {
   final FileStorage fileStorage;
 
-  const PersistenceRepository({
-    @required this.fileStorage
-  });
+  const PersistenceRepository({@required this.fileStorage});
 
   Future<File> saveAuthState(AuthState state) async {
     final data = serializers.serializeWith(AuthState.serializer, state);
@@ -21,6 +19,13 @@ class PersistenceRepository {
 
   Future<AuthState> loadAuthState() async {
     final data = await fileStorage.load();
-    return await serializers.deserializeWith(AuthState.serializer, json.decode(data));    
+    return await serializers.deserializeWith(
+        AuthState.serializer, json.decode(data));
+  }
+
+  Future<FileSystemEntity> delete() async {
+    return await fileStorage
+        .exists()
+        .then((exists) => exists ? fileStorage.delete() : null);
   }
 }
