@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:redux/redux.dart';
-import 'package:todo_flutter/models/app_state.dart';
+import 'package:todo_flutter/redux/app/app_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:todo_flutter/redux/auth/auth_actions.dart';

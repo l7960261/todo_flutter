@@ -1,6 +1,6 @@
 import 'package:redux/redux.dart';
-import 'package:todo_flutter/models/auth_state.dart';
 import 'package:todo_flutter/redux/auth/auth_actions.dart';
+import 'package:todo_flutter/redux/auth/auth_state.dart';
 
 final Reducer<AuthState> authStateReducer = combineReducers<AuthState>([
   TypedReducer<AuthState, LoginSuccessAction>(_login),

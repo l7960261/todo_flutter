@@ -5,9 +5,9 @@ import 'package:todo_flutter/redux/auth/auth_middleware.dart';
 import 'package:todo_flutter/ui/app/home.dart';
 import 'package:todo_flutter/ui/auth/login.dart';
 import 'package:todo_flutter/ui/splash_vm.dart';
-import 'package:todo_flutter/middleware/middleware.dart';
-import 'package:todo_flutter/models/app_state.dart';
-import 'package:todo_flutter/reducers/app_state_reducer.dart';
+import 'package:todo_flutter/redux/app/app_middleware.dart';
+import 'package:todo_flutter/redux/app/app_state.dart';
+import 'package:todo_flutter/redux/app/app_reducer.dart';
 import 'package:todo_flutter/routes.dart';
 
 void main() async {
