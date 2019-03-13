@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:path_provider/path_provider.dart';
 import 'package:redux/redux.dart';
 import 'package:todo_flutter/redux/app/app_state.dart';
-import 'package:todo_flutter/models/serializers.dart';
+import 'package:todo_flutter/data/serializers.dart';
 import 'package:todo_flutter/redux/auth/auth_actions.dart';
 import 'package:todo_flutter/redux/auth/auth_state.dart';
 import 'package:todo_flutter/utils/file_storage.dart';
