@@ -8,15 +8,15 @@ This project is a starting point for a Flutter application.
 
 ## Dependency
 
-- [json_annotation](https://pub.dartlang.org/packages/json_annotation)
+- [built_value](https://pub.dartlang.org/packages/built_value)
+- [built_collection](https://pub.dartlang.org/packages/built_collection)
 - [flutter_redux](https://pub.dartlang.org/packages/flutter_redux)
-- [redux_persist](https://pub.dartlang.org/packages/redux_persist)
-- [redux_persist_flutter](https://pub.dartlang.org/packages/redux_persist_flutter)
+- [path_provider](https://pub.dartlang.org/packages/path_provider)
 
 ## devDependency
 
 - [build_runner](https://pub.dartlang.org/packages/build_runner)
-- [json_serializable](https://pub.dartlang.org/packages/json_serializable)
+- [built_value_generator](https://pub.dartlang.org/packages/built_value_generator)
 
 ## Document Reference
 
@@ -25,3 +25,5 @@ This project is a starting point for a Flutter application.
 - [flutter中使用redux之基础](https://segmentfault.com/a/1190000015579633)
 - [基於 Redux + Redux Persist 進行狀態管理的 Flutter 應用示例](https://www.jishuwen.com/d/2Cgp/zh-tw)
 - [Flutter完整开发实战详解(四、 Redux、主题、国际化) | 掘金技术征文](https://juejin.im/post/5b79767ff265da435450a873)
+- [Dart’s built_value for Serialization](https://medium.com/dartlang/darts-built-value-for-serialization-f5db9d0f4159)
+- [译 在 Flutter 中解析复杂的 JSON](https://juejin.im/post/5b5d782ae51d45191c7e7fb3#heading-5)
