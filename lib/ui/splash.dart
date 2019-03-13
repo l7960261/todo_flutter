@@ -1,21 +1,21 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:todo_flutter/containers/splash.dart';
+import 'package:todo_flutter/ui/splash_vm.dart';
 import 'package:todo_flutter/routes.dart';
 
-class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key key, @required this.viewModel}) : super(key: key);
+class Splash extends StatefulWidget {
+  const Splash({Key key, @required this.viewModel}) : super(key: key);
 
   final SplashVM viewModel;
 
   @override
-  _SplashScreenState createState() => _SplashScreenState();
+  _SplashState createState() => _SplashState();
 }
 
-class _SplashScreenState extends State<SplashScreen> {
+class _SplashState extends State<Splash> {
   Timer _mTimer;
 
-  _SplashScreenState();
+  _SplashState();
 
   _handleAfterInit(bool isLogin) {
     print('isLogin: $isLogin');

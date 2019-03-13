@@ -3,7 +3,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:todo_flutter/containers/home.dart';
 import 'package:todo_flutter/containers/login.dart';
-import 'package:todo_flutter/containers/splash.dart';
+import 'package:todo_flutter/ui/splash_vm.dart';
 import 'package:todo_flutter/middleware/middleware.dart';
 import 'package:todo_flutter/models/app_state.dart';
 import 'package:todo_flutter/reducers/app_state_reducer.dart';
@@ -35,7 +35,7 @@ class ReduxApp extends StatelessWidget {
                 switch (settings.name) {
                   case AppRoutes.splash:
                     return NoTransitionRoute(
-                        builder: (_) => Splash(), settings: settings);
+                        builder: (_) => SplashScreen(), settings: settings);
                   case AppRoutes.home:
                     return NoTransitionRoute(
                         builder: (_) => Home(), settings: settings);

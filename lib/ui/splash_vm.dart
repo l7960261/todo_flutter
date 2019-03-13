@@ -4,17 +4,17 @@ import 'package:todo_flutter/actions/actions.dart';
 import 'package:todo_flutter/models/app_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:todo_flutter/presentation/splash_screen.dart';
+import 'package:todo_flutter/ui/splash.dart';
 
-class Splash extends StatelessWidget {
-  const Splash({Key key}) : super(key: key);
+class SplashScreen extends StatelessWidget {
+  const SplashScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return StoreConnector<AppState, SplashVM>(
         converter: SplashVM.fromStore,
         builder: (context, viewModel) {
-          return SplashScreen(viewModel: viewModel);
+          return Splash(viewModel: viewModel);
         });
   }
 }
