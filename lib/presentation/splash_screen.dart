@@ -37,11 +37,20 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Material(
-        child: Center(
-            child: Text(
-      'Splash Screen',
-      style: TextStyle(fontSize: 26.0),
-    )));
+      color: Colors.white,
+      child: Column(
+        children: <Widget>[
+          Expanded(
+            child: Center(
+                child: Text('Splash Screen', style: TextStyle(fontSize: 26.0))),
+          ),
+          SizedBox(
+            height: 4.0,
+            child: LinearProgressIndicator(),
+          )
+        ],
+      ),
+    );
   }
 
   @override
