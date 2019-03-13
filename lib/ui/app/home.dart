@@ -3,6 +3,7 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:todo_flutter/actions/actions.dart';
 import 'package:todo_flutter/models/app_state.dart';
+import 'package:todo_flutter/redux/auth/auth_actions.dart';
 import 'package:todo_flutter/routes.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -27,8 +28,7 @@ class Home extends StatelessWidget {
   final int counter;
   final String account;
 
-  Home({Key key, this.title, this.counter, this.account})
-      : super(key: key);
+  Home({Key key, this.title, this.counter, this.account}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
