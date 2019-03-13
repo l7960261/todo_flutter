@@ -5,12 +5,29 @@ import 'package:todo_flutter/actions/actions.dart';
 import 'package:todo_flutter/models/app_state.dart';
 import 'package:todo_flutter/routes.dart';
 
-class LoginScreen extends StatelessWidget {
+class HomeScreen extends StatelessWidget {
+  HomeScreen({Key key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return StoreConnector<AppState, AppState>(
+        builder: (BuildContext context, AppState state) {
+      return Home(
+          title: 'Home',
+          counter: state.homeState.counter,
+          account: state.authState.account);
+    }, converter: (Store<AppState> store) {
+      return store.state;
+    });
+  }
+}
+
+class Home extends StatelessWidget {
   final String title;
   final int counter;
   final String account;
 
-  LoginScreen({Key key, this.title, this.counter, this.account})
+  Home({Key key, this.title, this.counter, this.account})
       : super(key: key);
 
   @override
@@ -28,17 +45,17 @@ class LoginScreen extends StatelessWidget {
                 '$counter',
                 style: Theme.of(context).textTheme.display1,
               ),
-              StoreConnector<AppState, VoidCallback>(
-                  builder: (BuildContext context, VoidCallback login) {
+              StoreConnector(
+                  builder: (BuildContext context, VoidCallback logout) {
                 return RaisedButton(
-                  color: Colors.lightGreen,
-                  onPressed: login,
-                  child: Text("登录"),
+                  color: Colors.redAccent,
+                  onPressed: logout,
+                  child: Text("您好: $account, 点击退出"),
                 );
               }, converter: (Store<AppState> store) {
                 return () {
-                  store.dispatch(LoginSuccessAction(account: 'Tester'));
-                  Navigator.pushReplacementNamed(context, AppRoutes.home);
+                  store.dispatch(LogoutSuccessAction());
+                  Navigator.pushReplacementNamed(context, AppRoutes.login);
                 };
               })
             ],

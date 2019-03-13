@@ -14,7 +14,7 @@ class SplashScreen extends StatelessWidget {
     return StoreConnector<AppState, SplashVM>(
         converter: SplashVM.fromStore,
         builder: (context, viewModel) {
-          return Splash(viewModel: viewModel);
+          return SplashView(viewModel: viewModel);
         });
   }
 }

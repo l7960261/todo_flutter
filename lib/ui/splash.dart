@@ -3,19 +3,19 @@ import 'package:flutter/material.dart';
 import 'package:todo_flutter/ui/splash_vm.dart';
 import 'package:todo_flutter/routes.dart';
 
-class Splash extends StatefulWidget {
-  const Splash({Key key, @required this.viewModel}) : super(key: key);
+class SplashView extends StatefulWidget {
+  const SplashView({Key key, @required this.viewModel}) : super(key: key);
 
   final SplashVM viewModel;
 
   @override
-  _SplashState createState() => _SplashState();
+  _SplashViewState createState() => _SplashViewState();
 }
 
-class _SplashState extends State<Splash> {
+class _SplashViewState extends State<SplashView> {
   Timer _mTimer;
 
-  _SplashState();
+  _SplashViewState();
 
   _handleAfterInit(bool isLogin) {
     print('isLogin: $isLogin');
