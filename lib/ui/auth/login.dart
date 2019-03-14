@@ -56,11 +56,6 @@ class _LoginViewState extends State<LoginView> {
                           }
 
                           loginForm.save();
-                          print('userName: ' +
-                              userName +
-                              ' password: ' +
-                              password);
-
                           widget.viewModel.onLoginPressed(context, userName, password);
                         },
                         child: Text('登入', style: TextStyle(fontSize: 18.0)),
