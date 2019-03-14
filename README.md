@@ -11,6 +11,7 @@ This project is a starting point for a Flutter application.
 - [built_value](https://pub.dartlang.org/packages/built_value)
 - [built_collection](https://pub.dartlang.org/packages/built_collection)
 - [flutter_redux](https://pub.dartlang.org/packages/flutter_redux)
+- [redux_logging](https://pub.dartlang.org/packages/redux_logging)
 - [path_provider](https://pub.dartlang.org/packages/path_provider)
 
 ## devDependency
