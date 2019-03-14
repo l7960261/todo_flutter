@@ -5,12 +5,12 @@ part 'auth_state.g.dart';
 
 abstract class AuthState implements Built<AuthState, AuthStateBuilder> {
   factory AuthState() {
-    return _$AuthState._(account: '', isLogin: false);
+    return _$AuthState._(account: '', isAuthenticated: false);
   }
   AuthState._();
 
   String get account;
-  bool get isLogin;
+  bool get isAuthenticated;
 
   @nullable
   String get error;

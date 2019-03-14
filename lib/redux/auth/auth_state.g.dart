@@ -21,8 +21,8 @@ class _$AuthStateSerializer implements StructuredSerializer<AuthState> {
       'account',
       serializers.serialize(object.account,
           specifiedType: const FullType(String)),
-      'isLogin',
-      serializers.serialize(object.isLogin,
+      'isAuthenticated',
+      serializers.serialize(object.isAuthenticated,
           specifiedType: const FullType(bool)),
     ];
     if (object.error != null) {
@@ -50,8 +50,8 @@ class _$AuthStateSerializer implements StructuredSerializer<AuthState> {
           result.account = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'isLogin':
-          result.isLogin = serializers.deserialize(value,
+        case 'isAuthenticated':
+          result.isAuthenticated = serializers.deserialize(value,
               specifiedType: const FullType(bool)) as bool;
           break;
         case 'error':
@@ -69,19 +69,19 @@ class _$AuthState extends AuthState {
   @override
   final String account;
   @override
-  final bool isLogin;
+  final bool isAuthenticated;
   @override
   final String error;
 
   factory _$AuthState([void updates(AuthStateBuilder b)]) =>
       (new AuthStateBuilder()..update(updates)).build();
 
-  _$AuthState._({this.account, this.isLogin, this.error}) : super._() {
+  _$AuthState._({this.account, this.isAuthenticated, this.error}) : super._() {
     if (account == null) {
       throw new BuiltValueNullFieldError('AuthState', 'account');
     }
-    if (isLogin == null) {
-      throw new BuiltValueNullFieldError('AuthState', 'isLogin');
+    if (isAuthenticated == null) {
+      throw new BuiltValueNullFieldError('AuthState', 'isAuthenticated');
     }
   }
 
@@ -97,21 +97,21 @@ class _$AuthState extends AuthState {
     if (identical(other, this)) return true;
     return other is AuthState &&
         account == other.account &&
-        isLogin == other.isLogin &&
+        isAuthenticated == other.isAuthenticated &&
         error == other.error;
   }
 
   @override
   int get hashCode {
-    return $jf(
-        $jc($jc($jc(0, account.hashCode), isLogin.hashCode), error.hashCode));
+    return $jf($jc($jc($jc(0, account.hashCode), isAuthenticated.hashCode),
+        error.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('AuthState')
           ..add('account', account)
-          ..add('isLogin', isLogin)
+          ..add('isAuthenticated', isAuthenticated)
           ..add('error', error))
         .toString();
   }
@@ -124,9 +124,10 @@ class AuthStateBuilder implements Builder<AuthState, AuthStateBuilder> {
   String get account => _$this._account;
   set account(String account) => _$this._account = account;
 
-  bool _isLogin;
-  bool get isLogin => _$this._isLogin;
-  set isLogin(bool isLogin) => _$this._isLogin = isLogin;
+  bool _isAuthenticated;
+  bool get isAuthenticated => _$this._isAuthenticated;
+  set isAuthenticated(bool isAuthenticated) =>
+      _$this._isAuthenticated = isAuthenticated;
 
   String _error;
   String get error => _$this._error;
@@ -137,7 +138,7 @@ class AuthStateBuilder implements Builder<AuthState, AuthStateBuilder> {
   AuthStateBuilder get _$this {
     if (_$v != null) {
       _account = _$v.account;
-      _isLogin = _$v.isLogin;
+      _isAuthenticated = _$v.isAuthenticated;
       _error = _$v.error;
       _$v = null;
     }
@@ -160,7 +161,8 @@ class AuthStateBuilder implements Builder<AuthState, AuthStateBuilder> {
   @override
   _$AuthState build() {
     final _$result = _$v ??
-        new _$AuthState._(account: account, isLogin: isLogin, error: error);
+        new _$AuthState._(
+            account: account, isAuthenticated: isAuthenticated, error: error);
     replace(_$result);
     return _$result;
   }

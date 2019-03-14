@@ -17,10 +17,9 @@ class _SplashViewState extends State<SplashView> {
 
   _SplashViewState();
 
-  _handleAfterInit(bool isLogin) {
-    print('isLogin: $isLogin');
+  _handleAfterInit(bool isAuthenticated) {
     _mTimer = Timer(Duration(milliseconds: 3000), () {
-      if (isLogin) {
+      if (isAuthenticated) {
         Navigator.of(context).pushReplacementNamed(AppRoutes.home);
       } else {
         Navigator.of(context).pushReplacementNamed(AppRoutes.login);

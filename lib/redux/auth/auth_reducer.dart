@@ -11,16 +11,16 @@ final Reducer<AuthState> authStateReducer = combineReducers<AuthState>([
 AuthState userLogoutReducer(AuthState authState, UserLogout action) =>
     authState.rebuild((b) => b
       ..account = ''
-      ..isLogin = false);
+      ..isAuthenticated = false);
 
 AuthState userLoginRequestReducer(
         AuthState authState, UserLoginRequest action) =>
     authState.rebuild((b) => b
       ..account = action.account
-      ..isLogin = false);
+      ..isAuthenticated = false);
 
 AuthState userLoginSuccessReducer(
         AuthState authState, UserLoginSuccess action) =>
     authState.rebuild((b) => b
       ..account = action.account
-      ..isLogin = true);
+      ..isAuthenticated = true);

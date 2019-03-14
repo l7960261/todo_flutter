@@ -22,13 +22,13 @@ class SplashScreen extends StatelessWidget {
 class SplashVM {
   SplashVM({@required this.onInit});
 
-  final Function(Function(bool isLogin) callback) onInit;
+  final Function(Function(bool isAuthenticated) callback) onInit;
 
   static SplashVM fromStore(Store<AppState> store) {
-    return SplashVM(onInit: (Function(bool isLogin) callback) {
+    return SplashVM(onInit: (Function(bool isAuthenticated) callback) {
       final Completer<Null> completer = Completer<Null>();
       store.dispatch(LoadStateRequest(completer));
-      completer.future.then((_) => callback(store.state.authState.isLogin));
+      completer.future.then((_) => callback(store.state.authState.isAuthenticated));
     });
   }
 }
