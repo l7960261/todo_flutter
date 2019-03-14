@@ -1,24 +1,23 @@
 import 'package:redux/redux.dart';
+import 'package:todo_flutter/redux/app/app_actions.dart';
 import 'package:todo_flutter/redux/app/app_state.dart';
 import 'package:todo_flutter/redux/auth/auth_actions.dart';
 
 List<Middleware<AppState>> createStoreAuthMiddleware() {
-  final log = _logMiddleware();
+  final loginRequest = _createLoginRequest();
 
   return [
-    TypedMiddleware<AppState, UserLoginSuccess>(log),
-    TypedMiddleware<AppState, UserLogout>(log),
+    TypedMiddleware<AppState, UserLoginRequest>(loginRequest),
   ];
 }
 
-Middleware<AppState> _logMiddleware() {
+Middleware<AppState> _createLoginRequest() {
   return (Store<AppState> store, action, NextDispatcher next) {
-    print('_logMiddleware 開始');
-    print('AppState: ${store.state}');
+    print('驗證帳密登入 username: ${action.account} password: ${action.password}');
+    print('通過驗證進行載入會員資訊');
+    store.dispatch(
+        LoadDataSuccess(completer: action.completer, data: action.account));
 
     next(action);
-
-    print('_logMiddleware 結束');
-    print('AppState: ${store.state}');
   };
 }

@@ -1,6 +1,7 @@
 import 'package:path_provider/path_provider.dart';
 import 'package:redux/redux.dart';
 import 'package:todo_flutter/data/repositories/persistence_repository.dart';
+import 'package:todo_flutter/redux/app/app_actions.dart';
 import 'package:todo_flutter/redux/app/app_state.dart';
 import 'package:todo_flutter/redux/auth/auth_actions.dart';
 import 'package:todo_flutter/redux/auth/auth_state.dart';
@@ -13,11 +14,13 @@ List<Middleware<AppState>> createStorePersistenceMiddleware(
   final loadState = _createLoadState(authRepository);
   final userLoggedIn = _createUserLoggedIn(authRepository);
   final deleteState = _createDeleteState(authRepository);
+  final dataLoaded = _createDataLoaded();
 
   return [
     TypedMiddleware<AppState, LoadStateRequest>(loadState),
+    TypedMiddleware<AppState, UserLogout>(deleteState),
     TypedMiddleware<AppState, UserLoginSuccess>(userLoggedIn),
-    TypedMiddleware<AppState, UserLogout>(deleteState)
+    TypedMiddleware<AppState, LoadDataSuccess>(dataLoaded)
   ];
 }
 
@@ -55,6 +58,17 @@ Middleware<AppState> _createDeleteState(PersistenceRepository authRepository) {
   return (Store<AppState> store, action, NextDispatcher next) async {
     authRepository.delete();
 
+    next(action);
+  };
+}
+
+Middleware<AppState> _createDataLoaded() {
+  return (Store<AppState> store, action, NextDispatcher next) async {
+    print('載入會員資訊完畢');
+    final account = action.data;
+    store.dispatch(UserLoginSuccess(account));
+
+    action.completer.complete(null);
     next(action);
   };
 }

@@ -18,3 +18,11 @@ class UserLoginSuccess {
 }
 
 class UserLogout {}
+
+class UserLoginRequest {
+  final Completer completer;
+  final String account;
+  final String password;
+
+  UserLoginRequest({this.completer, this.account, this.password});
+}

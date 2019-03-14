@@ -1,78 +1,76 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_redux/flutter_redux.dart';
-import 'package:redux/redux.dart';
-import 'package:todo_flutter/redux/app/app_actions.dart';
-import 'package:todo_flutter/redux/app/app_state.dart';
-import 'package:todo_flutter/redux/auth/auth_actions.dart';
-import 'package:todo_flutter/routes.dart';
+import 'package:todo_flutter/ui/auth/login_vm.dart';
 
-class LoginScreen extends StatelessWidget {
-  LoginScreen({Key key}) : super(key: key);
+class LoginView extends StatefulWidget {
+  final LoginVM viewModel;
+
+  LoginView({Key key, @required this.viewModel}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return StoreConnector<AppState, AppState>(
-        builder: (BuildContext context, AppState state) {
-      return LoginView(
-          title: 'Login',
-          counter: state.homeState.counter,
-          account: state.authState.account);
-    }, converter: (Store<AppState> store) {
-      return store.state;
-    });
-  }
+  _LoginViewState createState() => _LoginViewState();
 }
 
-class LoginView extends StatelessWidget {
-  final String title;
-  final int counter;
-  final String account;
+class _LoginViewState extends State<LoginView> {
+  GlobalKey<FormState> _loginKey = GlobalKey<FormState>();
 
-  LoginView({Key key, this.title, this.counter, this.account})
-      : super(key: key);
+  String userName;
+  String password;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text(title)),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'You have pushed the button this many times:',
-              ),
-              Text(
-                '$counter',
-                style: Theme.of(context).textTheme.display1,
-              ),
-              StoreConnector<AppState, VoidCallback>(
-                  builder: (BuildContext context, VoidCallback login) {
-                return RaisedButton(
-                  color: Colors.lightGreen,
-                  onPressed: login,
-                  child: Text("登录"),
-                );
-              }, converter: (Store<AppState> store) {
-                return () {
-                  store.dispatch(UserLoginSuccess('Tester'));
-                  Navigator.pushReplacementNamed(context, AppRoutes.home);
-                };
-              })
-            ],
-          ),
-        ),
-        floatingActionButton: StoreConnector<AppState, VoidCallback>(
-          builder: (BuildContext context, VoidCallback callback) {
-            return FloatingActionButton(
-              onPressed: callback,
-              tooltip: 'Increment',
-              child: Icon(Icons.add),
-            );
-          },
-          converter: (Store<AppState> store) {
-            return () => store.dispatch(IncreaseAction());
-          },
-        ));
+      appBar: AppBar(title: Text('Login')),
+      body: Column(
+        children: <Widget>[
+          Container(
+            padding: const EdgeInsets.all(16.0),
+            child: Form(
+                key: _loginKey,
+                child: Column(
+                  children: <Widget>[
+                    TextFormField(
+                      decoration: InputDecoration(labelText: '請輸入用戶名'),
+                      onSaved: (value) {
+                        userName = value;
+                      },
+                      onFieldSubmitted: (value) {},
+                    ),
+                    TextFormField(
+                      decoration: InputDecoration(labelText: '請輸入密碼'),
+                      obscureText: true,
+                      validator: (value) {
+                        return value.length < 6 ? '密碼長度不夠 6 位數' : null;
+                      },
+                      onSaved: (value) {
+                        password = value;
+                      },
+                    ),
+                    SizedBox(
+                      width: double.infinity,
+                      child: RaisedButton(
+                        onPressed: () {
+                          var loginForm = _loginKey.currentState;
+
+                          if (!loginForm.validate()) {
+                            return;
+                          }
+
+                          loginForm.save();
+                          print('userName: ' +
+                              userName +
+                              ' password: ' +
+                              password);
+
+                          widget.viewModel.onLoginPressed(context, userName, password);
+                        },
+                        child: Text('登入', style: TextStyle(fontSize: 18.0)),
+                      ),
+                    )
+                  ],
+                )),
+          )
+        ],
+      ),
+    );
   }
 }
