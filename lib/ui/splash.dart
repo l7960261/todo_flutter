@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:todo_flutter/localization.dart';
 import 'package:todo_flutter/ui/splash_vm.dart';
 import 'package:todo_flutter/routes.dart';
 
@@ -41,7 +42,8 @@ class _SplashViewState extends State<SplashView> {
         children: <Widget>[
           Expanded(
             child: Center(
-                child: Text('Splash Screen', style: TextStyle(fontSize: 26.0))),
+                child: Text(AppLocalization.of(context).splashTitle,
+                    style: TextStyle(fontSize: 26.0))),
           ),
           SizedBox(
             height: 4.0,

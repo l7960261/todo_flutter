@@ -15,9 +15,7 @@ AuthState userLogoutReducer(AuthState authState, UserLogout action) =>
 
 AuthState userLoginRequestReducer(
         AuthState authState, UserLoginRequest action) =>
-    authState.rebuild((b) => b
-      ..account = action.account
-      ..isAuthenticated = false);
+    authState.rebuild((b) => b..account = action.account);
 
 AuthState userLoginSuccessReducer(
         AuthState authState, UserLoginSuccess action) =>

@@ -13,11 +13,13 @@ This project is a starting point for a Flutter application.
 - [flutter_redux](https://pub.dartlang.org/packages/flutter_redux)
 - [redux_logging](https://pub.dartlang.org/packages/redux_logging)
 - [path_provider](https://pub.dartlang.org/packages/path_provider)
+- [intl](https://pub.dartlang.org/packages/intl)
 
 ## devDependency
 
 - [build_runner](https://pub.dartlang.org/packages/build_runner)
 - [built_value_generator](https://pub.dartlang.org/packages/built_value_generator)
+- [intl_translation](https://pub.dartlang.org/packages/intl_translation)
 
 ## Document Reference
 
@@ -28,3 +30,4 @@ This project is a starting point for a Flutter application.
 - [Flutter完整开发实战详解(四、 Redux、主题、国际化) | 掘金技术征文](https://juejin.im/post/5b79767ff265da435450a873)
 - [Dart’s built_value for Serialization](https://medium.com/dartlang/darts-built-value-for-serialization-f5db9d0f4159)
 - [译 在 Flutter 中解析复杂的 JSON](https://juejin.im/post/5b5d782ae51d45191c7e7fb3#heading-5)
+- [Internation­alizing Flutter apps](https://flutter.dev/docs/development/accessibility-and-localization/internationalization)

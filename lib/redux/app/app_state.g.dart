@@ -24,6 +24,9 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
       'homeState',
       serializers.serialize(object.homeState,
           specifiedType: const FullType(HomeState)),
+      'systemState',
+      serializers.serialize(object.systemState,
+          specifiedType: const FullType(SystemState)),
     ];
 
     return result;
@@ -48,6 +51,10 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
           result.homeState.replace(serializers.deserialize(value,
               specifiedType: const FullType(HomeState)) as HomeState);
           break;
+        case 'systemState':
+          result.systemState.replace(serializers.deserialize(value,
+              specifiedType: const FullType(SystemState)) as SystemState);
+          break;
       }
     }
 
@@ -60,16 +67,21 @@ class _$AppState extends AppState {
   final AuthState authState;
   @override
   final HomeState homeState;
+  @override
+  final SystemState systemState;
 
   factory _$AppState([void updates(AppStateBuilder b)]) =>
       (new AppStateBuilder()..update(updates)).build();
 
-  _$AppState._({this.authState, this.homeState}) : super._() {
+  _$AppState._({this.authState, this.homeState, this.systemState}) : super._() {
     if (authState == null) {
       throw new BuiltValueNullFieldError('AppState', 'authState');
     }
     if (homeState == null) {
       throw new BuiltValueNullFieldError('AppState', 'homeState');
+    }
+    if (systemState == null) {
+      throw new BuiltValueNullFieldError('AppState', 'systemState');
     }
   }
 
@@ -85,19 +97,22 @@ class _$AppState extends AppState {
     if (identical(other, this)) return true;
     return other is AppState &&
         authState == other.authState &&
-        homeState == other.homeState;
+        homeState == other.homeState &&
+        systemState == other.systemState;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc(0, authState.hashCode), homeState.hashCode));
+    return $jf($jc($jc($jc(0, authState.hashCode), homeState.hashCode),
+        systemState.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('AppState')
           ..add('authState', authState)
-          ..add('homeState', homeState))
+          ..add('homeState', homeState)
+          ..add('systemState', systemState))
         .toString();
   }
 }
@@ -115,12 +130,19 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _$this._homeState ??= new HomeStateBuilder();
   set homeState(HomeStateBuilder homeState) => _$this._homeState = homeState;
 
+  SystemStateBuilder _systemState;
+  SystemStateBuilder get systemState =>
+      _$this._systemState ??= new SystemStateBuilder();
+  set systemState(SystemStateBuilder systemState) =>
+      _$this._systemState = systemState;
+
   AppStateBuilder();
 
   AppStateBuilder get _$this {
     if (_$v != null) {
       _authState = _$v.authState?.toBuilder();
       _homeState = _$v.homeState?.toBuilder();
+      _systemState = _$v.systemState?.toBuilder();
       _$v = null;
     }
     return this;
@@ -145,7 +167,9 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
     try {
       _$result = _$v ??
           new _$AppState._(
-              authState: authState.build(), homeState: homeState.build());
+              authState: authState.build(),
+              homeState: homeState.build(),
+              systemState: systemState.build());
     } catch (_) {
       String _$failedField;
       try {
@@ -153,6 +177,8 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
         authState.build();
         _$failedField = 'homeState';
         homeState.build();
+        _$failedField = 'systemState';
+        systemState.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'AppState', _$failedField, e.toString());

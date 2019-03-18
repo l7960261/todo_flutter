@@ -1,0 +1,21 @@
+{
+  "@@last_modified": "2019-03-18T14:34:43.848633",
+  "splashTitle": "TODO Application",
+  "@splashTitle": {
+    "description": "The title of application",
+    "type": "text",
+    "placeholders": {}
+  },
+  "loginTitle": "Login",
+  "@loginTitle": {
+    "description": "The title of Login",
+    "type": "text",
+    "placeholders": {}
+  },
+  "homeTitle": "Home",
+  "@homeTitle": {
+    "description": "The title of Home",
+    "type": "text",
+    "placeholders": {}
+  }
+}

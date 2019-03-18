@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_flutter/localization.dart';
 import 'package:todo_flutter/ui/auth/login_vm.dart';
 
 class LoginView extends StatefulWidget {
@@ -19,7 +20,7 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Login')),
+      appBar: AppBar(title: Text(AppLocalization.of(context).loginTitle)),
       body: Column(
         children: <Widget>[
           Container(
@@ -56,7 +57,8 @@ class _LoginViewState extends State<LoginView> {
                           }
 
                           loginForm.save();
-                          widget.viewModel.onLoginPressed(context, userName, password);
+                          widget.viewModel
+                              .onLoginPressed(context, userName, password);
                         },
                         child: Text('登入', style: TextStyle(fontSize: 18.0)),
                       ),

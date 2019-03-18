@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
+import 'package:todo_flutter/localization.dart';
 import 'package:todo_flutter/redux/app/app_actions.dart';
 import 'package:todo_flutter/redux/app/app_state.dart';
 import 'package:todo_flutter/redux/auth/auth_actions.dart';
+import 'package:todo_flutter/redux/system/system_actions.dart';
 import 'package:todo_flutter/routes.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -14,7 +16,7 @@ class HomeScreen extends StatelessWidget {
     return StoreConnector<AppState, AppState>(
         builder: (BuildContext context, AppState state) {
       return Home(
-          title: 'Home',
+          title: AppLocalization.of(context).homeTitle,
           counter: state.homeState.counter,
           account: state.authState.account);
     }, converter: (Store<AppState> store) {
@@ -70,7 +72,10 @@ class Home extends StatelessWidget {
             );
           },
           converter: (Store<AppState> store) {
-            return () => store.dispatch(IncreaseAction());
+            return () {
+              store.dispatch(IncreaseAction());
+              store.dispatch(ChangeLanguage('es'));
+            };
           },
         ));
   }
