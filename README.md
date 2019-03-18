@@ -31,3 +31,21 @@ This project is a starting point for a Flutter application.
 - [Dart’s built_value for Serialization](https://medium.com/dartlang/darts-built-value-for-serialization-f5db9d0f4159)
 - [译 在 Flutter 中解析复杂的 JSON](https://juejin.im/post/5b5d782ae51d45191c7e7fb3#heading-5)
 - [Internation­alizing Flutter apps](https://flutter.dev/docs/development/accessibility-and-localization/internationalization)
+
+## Command
+
+- build_runner
+
+```
+flutter packages pub run build_runner build
+```
+
+- Rebuild I10n/messages_all.dart
+
+```
+flutter packages pub run intl_translation:extract_to_arb --output-dir=lib/I10n lib/localization.dart
+```
+
+```
+flutter packages pub run intl_translation:generate_from_arb --output-dir=lib/I10n --no-use-defered-loading lib/I10n/intl_*.arb lib/localization.dart
+```
