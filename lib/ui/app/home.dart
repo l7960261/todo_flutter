@@ -8,6 +8,7 @@ import 'package:todo_flutter/redux/auth/auth_actions.dart';
 import 'package:todo_flutter/redux/system/system_actions.dart';
 import 'package:todo_flutter/routes.dart';
 import 'package:todo_flutter/styles.dart';
+import 'package:todo_flutter/ui/app/app_drawer.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -37,6 +38,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text(title)),
+        drawer: AppDrawer(),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,

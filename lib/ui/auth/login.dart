@@ -21,7 +21,9 @@ class _LoginViewState extends State<LoginView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(AppLocalization.of(context).loginTitle)),
+      appBar: AppBar(
+          title: Text(AppLocalization.of(context).splashTitle),
+          centerTitle: true),
       body: Column(
         children: <Widget>[
           Container(
@@ -61,7 +63,7 @@ class _LoginViewState extends State<LoginView> {
                           widget.viewModel
                               .onLoginPressed(context, userName, password);
                         },
-                        child: Text('登入',
+                        child: Text(AppLocalization.of(context).loginTitle,
                             style: TextStyle(fontSize: AppFontSizes.larger)),
                       ),
                     )
