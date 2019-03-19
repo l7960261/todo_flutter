@@ -1,20 +1,50 @@
 {
-  "@@last_modified": "2019-03-18T14:34:43.848633",
+  "@@last_modified": "2019-03-19T15:17:53.696152",
   "splashTitle": "TODO Application",
   "@splashTitle": {
     "description": "The title of application",
     "type": "text",
     "placeholders": {}
   },
-  "loginTitle": "Login",
-  "@loginTitle": {
-    "description": "The title of Login",
-    "type": "text",
-    "placeholders": {}
-  },
   "homeTitle": "Home",
   "@homeTitle": {
     "description": "The title of Home",
+    "type": "text",
+    "placeholders": {}
+  },
+  "peferences": "Preferences",
+  "@peferences": {
+    "description": "Peferences",
+    "type": "text",
+    "placeholders": {}
+  },
+  "language": "Language",
+  "@language": {
+    "description": "Language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "theme": "Theme",
+  "@theme": {
+    "description": "Theme",
+    "type": "text",
+    "placeholders": {}
+  },
+  "manage": "Manage",
+  "@manage": {
+    "description": "Manage",
+    "type": "text",
+    "placeholders": {}
+  },
+  "login": "Login",
+  "@login": {
+    "description": "Login",
+    "type": "text",
+    "placeholders": {}
+  },
+  "logout": "Logout",
+  "@logout": {
+    "description": "Logout",
     "type": "text",
     "placeholders": {}
   }

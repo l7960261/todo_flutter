@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:todo_flutter/localization.dart';
+import 'package:todo_flutter/styles.dart';
 
 class AppDrawer extends StatelessWidget {
   @override
@@ -18,8 +20,24 @@ class AppDrawer extends StatelessWidget {
                         'https://is5-ssl.mzstatic.com/image/thumb/Purple117/v4/1a/2f/3e/1a2f3e59-4ad1-13f0-8d82-5753eb25cba3/mzl.wofpkenf.jpg/246x0w.jpg'))
               ]),
           ListTile(
-            leading: CircleAvatar(child: Icon(Icons.translate)),
-            title: Text('Translate'),
+            leading: Text(AppLocalization.of(context).peferences,
+                style: TextStyle(fontSize: AppFontSizes.small)),
+          ),
+          ListTile(
+            leading: CircleAvatar(child: Icon(Icons.language)),
+            title: Text(AppLocalization.of(context).language),
+          ),
+          ListTile(
+            leading: CircleAvatar(child: Icon(Icons.format_paint)),
+            title: Text(AppLocalization.of(context).theme),
+          ),
+          ListTile(
+            leading: Text(AppLocalization.of(context).manage,
+                style: TextStyle(fontSize: AppFontSizes.small)),
+          ),
+          ListTile(
+            leading: CircleAvatar(child: Icon(Icons.exit_to_app)),
+            title: Text(AppLocalization.of(context).logout),
           )
         ],
       ),

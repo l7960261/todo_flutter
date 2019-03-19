@@ -77,7 +77,7 @@ class Home extends StatelessWidget {
           converter: (Store<AppState> store) {
             return () {
               store.dispatch(IncreaseAction());
-              store.dispatch(ChangeLanguage('es'));
+              store.dispatch(ChangeLanguage('zh-Hans'));
             };
           },
         ));

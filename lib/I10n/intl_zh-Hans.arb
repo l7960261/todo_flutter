@@ -1,48 +1,48 @@
 {
   "@@last_modified": "2019-03-19T15:17:53.696152",
-  "splashTitle": "TODO Application",
+  "splashTitle": "待办事项",
   "@splashTitle": {
     "description": "The title of application",
     "type": "text",
     "placeholders": {}
   },
-  "homeTitle": "Home",
+  "homeTitle": "首页",
   "@homeTitle": {
     "description": "The title of Home",
     "type": "text",
     "placeholders": {}
   },
-  "peferences": "Preferences",
+  "peferences": "偏好设定",
   "@peferences": {
     "description": "Peferences",
     "type": "text",
     "placeholders": {}
   },
-  "language": "Language",
+  "language": "语言",
   "@language": {
     "description": "Language",
     "type": "text",
     "placeholders": {}
   },
-  "theme": "Theme",
+  "theme": "主题",
   "@theme": {
     "description": "Theme",
     "type": "text",
     "placeholders": {}
   },
-  "manage": "Manage",
+  "manage": "管理",
   "@manage": {
     "description": "Manage",
     "type": "text",
     "placeholders": {}
   },
-  "login": "Login",
+  "login": "登入",
   "@login": {
     "description": "Login",
     "type": "text",
     "placeholders": {}
   },
-  "logout": "Logout",
+  "logout": "登出",
   "@logout": {
     "description": "Logout",
     "type": "text",

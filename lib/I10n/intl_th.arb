@@ -1,48 +1,48 @@
 {
   "@@last_modified": "2019-03-19T15:17:53.696152",
-  "splashTitle": "TODO Application",
+  "splashTitle": "แอพลิเคชันที่ต้องทำ",
   "@splashTitle": {
     "description": "The title of application",
     "type": "text",
     "placeholders": {}
   },
-  "homeTitle": "Home",
+  "homeTitle": "บ้าน",
   "@homeTitle": {
     "description": "The title of Home",
     "type": "text",
     "placeholders": {}
   },
-  "peferences": "Preferences",
+  "peferences": "การตั้งค่า",
   "@peferences": {
     "description": "Peferences",
     "type": "text",
     "placeholders": {}
   },
-  "language": "Language",
+  "language": "ภาษา",
   "@language": {
     "description": "Language",
     "type": "text",
     "placeholders": {}
   },
-  "theme": "Theme",
+  "theme": "กระทู้",
   "@theme": {
     "description": "Theme",
     "type": "text",
     "placeholders": {}
   },
-  "manage": "Manage",
+  "manage": "จัดการ",
   "@manage": {
     "description": "Manage",
     "type": "text",
     "placeholders": {}
   },
-  "login": "Login",
+  "login": "เข้าสู่ระบบ",
   "@login": {
     "description": "Login",
     "type": "text",
     "placeholders": {}
   },
-  "logout": "Logout",
+  "logout": "ออกจากระบบ",
   "@logout": {
     "description": "Logout",
     "type": "text",

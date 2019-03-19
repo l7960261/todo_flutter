@@ -1,5 +1,5 @@
 // DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
-// This is a library that provides messages for a es locale. All the
+// This is a library that provides messages for a vi locale. All the
 // messages from the main program should be duplicated here with the same
 // function name.
 
@@ -16,12 +16,17 @@ final _keepAnalysisHappy = Intl.defaultLocale;
 typedef MessageIfAbsent(String message_str, List args);
 
 class MessageLookup extends MessageLookupByLibrary {
-  get localeName => 'es';
+  get localeName => 'vi';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
-    "homeTitle" : MessageLookupByLibrary.simpleMessage("Casa"),
-    "loginTitle" : MessageLookupByLibrary.simpleMessage("Iniciar sesión"),
-    "splashTitle" : MessageLookupByLibrary.simpleMessage("TODO Aplicación")
+    "homeTitle" : MessageLookupByLibrary.simpleMessage("Nhà"),
+    "language" : MessageLookupByLibrary.simpleMessage("Ngôn ngữ"),
+    "login" : MessageLookupByLibrary.simpleMessage("Đăng nhập"),
+    "logout" : MessageLookupByLibrary.simpleMessage("Đăng xuất"),
+    "manage" : MessageLookupByLibrary.simpleMessage("Quản lý"),
+    "peferences" : MessageLookupByLibrary.simpleMessage("Sở thích"),
+    "splashTitle" : MessageLookupByLibrary.simpleMessage("Ứng dụng TODO"),
+    "theme" : MessageLookupByLibrary.simpleMessage("Chủ đề")
   };
 }

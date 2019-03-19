@@ -1,48 +1,48 @@
 {
   "@@last_modified": "2019-03-19T15:17:53.696152",
-  "splashTitle": "TODO Application",
+  "splashTitle": "Ứng dụng TODO",
   "@splashTitle": {
     "description": "The title of application",
     "type": "text",
     "placeholders": {}
   },
-  "homeTitle": "Home",
+  "homeTitle": "Nhà",
   "@homeTitle": {
     "description": "The title of Home",
     "type": "text",
     "placeholders": {}
   },
-  "peferences": "Preferences",
+  "peferences": "Sở thích",
   "@peferences": {
     "description": "Peferences",
     "type": "text",
     "placeholders": {}
   },
-  "language": "Language",
+  "language": "Ngôn ngữ",
   "@language": {
     "description": "Language",
     "type": "text",
     "placeholders": {}
   },
-  "theme": "Theme",
+  "theme": "Chủ đề",
   "@theme": {
     "description": "Theme",
     "type": "text",
     "placeholders": {}
   },
-  "manage": "Manage",
+  "manage": "Quản lý",
   "@manage": {
     "description": "Manage",
     "type": "text",
     "placeholders": {}
   },
-  "login": "Login",
+  "login": "Đăng nhập",
   "@login": {
     "description": "Login",
     "type": "text",
     "placeholders": {}
   },
-  "logout": "Logout",
+  "logout": "Đăng xuất",
   "@logout": {
     "description": "Logout",
     "type": "text",

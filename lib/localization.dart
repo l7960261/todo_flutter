@@ -23,14 +23,32 @@ class AppLocalization {
         name: 'splashTitle', desc: 'The title of application');
   }
 
-  String get loginTitle {
-    return Intl.message('Login',
-        name: 'loginTitle', desc: 'The title of Login');
+  String get homeTitle {
+    return Intl.message('Home', name: 'homeTitle', desc: 'The title of Home');
   }
 
-  String get  homeTitle {
-    return Intl.message('Home',
-        name: 'homeTitle', desc: 'The title of Home');
+  String get peferences {
+    return Intl.message('Preferences', name: 'peferences', desc: 'Peferences');
+  }
+
+  String get language {
+    return Intl.message('Language', name: 'language', desc: 'Language');
+  }
+
+  String get theme {
+    return Intl.message('Theme', name: 'theme', desc: 'Theme');
+  }
+
+  String get manage {
+    return Intl.message('Manage', name: 'manage', desc: 'Manage');
+  }
+
+  String get login {
+    return Intl.message('Login', name: 'login', desc: 'Login');
+  }
+
+  String get logout {
+    return Intl.message('Logout', name: 'logout', desc: 'Logout');
   }
 }
 
@@ -40,7 +58,7 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalization> {
 
   @override
   bool isSupported(Locale locale) =>
-      ['en', 'es', 'ja'].contains(locale.languageCode);
+      ['en', 'zh-Hans', 'th', 'vi'].contains(locale.languageCode);
 
   @override
   Future<AppLocalization> load(Locale locale) {

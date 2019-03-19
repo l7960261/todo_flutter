@@ -63,7 +63,7 @@ class _LoginViewState extends State<LoginView> {
                           widget.viewModel
                               .onLoginPressed(context, userName, password);
                         },
-                        child: Text(AppLocalization.of(context).loginTitle,
+                        child: Text(AppLocalization.of(context).login,
                             style: TextStyle(fontSize: AppFontSizes.larger)),
                       ),
                     )

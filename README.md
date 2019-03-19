@@ -47,5 +47,5 @@ flutter packages pub run intl_translation:extract_to_arb --output-dir=lib/I10n l
 ```
 
 ```
-flutter packages pub run intl_translation:generate_from_arb --output-dir=lib/I10n --no-use-defered-loading lib/I10n/intl_*.arb lib/localization.dart
+flutter packages pub run intl_translation:generate_from_arb --output-dir=lib/I10n --no-use-deferred-loading lib/I10n/intl_*.arb lib/localization.dart
 ```
