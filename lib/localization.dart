@@ -18,54 +18,26 @@ class AppLocalization {
     return Localizations.of<AppLocalization>(context, AppLocalization);
   }
 
-  String get splashTitle {
-    return Intl.message('TODO Application',
-        name: 'splashTitle', desc: 'The title of application');
-  }
-
-  String get homeTitle {
-    return Intl.message('Home', name: 'homeTitle', desc: 'The title of Home');
-  }
-
-  String get peferences {
-    return Intl.message('Preferences', name: 'peferences', desc: 'Peferences');
-  }
-
-  String get language {
-    return Intl.message('Language', name: 'language', desc: 'Language');
-  }
-
-  String get theme {
-    return Intl.message('Theme', name: 'theme', desc: 'Theme');
-  }
-
-  String get manage {
-    return Intl.message('Manage', name: 'manage', desc: 'Manage');
-  }
-
-  String get login {
-    return Intl.message('Login', name: 'login', desc: 'Login');
-  }
-
-  String get logout {
-    return Intl.message('Logout', name: 'logout', desc: 'Logout');
-  }
-
-  String get userNamePlaceholder {
-    return Intl.message('Please enter username',
-        name: 'userNamePlaceholder', desc: 'Please enter username');
-  }
-
-  String get passwordPlaceholder {
-    return Intl.message('Please enter password',
-        name: 'passwordPlaceholder', desc: 'Please enter password');
-  }
-
-  String get passwordBelow6Digits {
-    return Intl.message('Password length is not enough 6 digits',
-        name: 'passwordBelow6Digits',
-        desc: 'Password length is not enough 6 digits');
-  }
+  String get splashTitle => Intl.message('TODO Application',
+      name: 'splashTitle', desc: 'The title of application');
+  String get homeTitle =>
+      Intl.message('Home', name: 'homeTitle', desc: 'The title of Home');
+  String get peferences =>
+      Intl.message('Preferences', name: 'peferences', desc: 'Peferences');
+  String get language =>
+      Intl.message('Language', name: 'language', desc: 'Language');
+  String get theme => Intl.message('Theme', name: 'theme', desc: 'Theme');
+  String get manage => Intl.message('Manage', name: 'manage', desc: 'Manage');
+  String get login => Intl.message('Login', name: 'login', desc: 'Login');
+  String get logout => Intl.message('Logout', name: 'logout', desc: 'Logout');
+  String get userNamePlaceholder => Intl.message('Please enter username',
+      name: 'userNamePlaceholder', desc: 'Please enter username');
+  String get passwordPlaceholder => Intl.message('Please enter password',
+      name: 'passwordPlaceholder', desc: 'Please enter password');
+  String get passwordBelow6Digits =>
+      Intl.message('Password length is not enough 6 digits',
+          name: 'passwordBelow6Digits',
+          desc: 'Password length is not enough 6 digits');
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalization> {
