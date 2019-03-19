@@ -4,7 +4,7 @@ import 'package:todo_flutter/redux/app/app_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:todo_flutter/redux/auth/auth_actions.dart';
-import 'package:todo_flutter/ui/splash.dart';
+import 'package:todo_flutter/ui/app/splash.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({Key key}) : super(key: key);
@@ -28,7 +28,8 @@ class SplashVM {
     return SplashVM(onInit: (Function(bool isAuthenticated) callback) {
       final Completer<Null> completer = Completer<Null>();
       store.dispatch(LoadStateRequest(completer));
-      completer.future.then((_) => callback(store.state.authState.isAuthenticated));
+      completer.future
+          .then((_) => callback(store.state.authState.isAuthenticated));
     });
   }
 }

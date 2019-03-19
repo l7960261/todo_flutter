@@ -7,7 +7,7 @@ import 'package:todo_flutter/localization.dart';
 import 'package:todo_flutter/redux/auth/auth_middleware.dart';
 import 'package:todo_flutter/ui/app/home.dart';
 import 'package:todo_flutter/ui/auth/login_vm.dart';
-import 'package:todo_flutter/ui/splash_vm.dart';
+import 'package:todo_flutter/ui/app/splash_vm.dart';
 import 'package:todo_flutter/redux/app/app_middleware.dart';
 import 'package:todo_flutter/redux/app/app_state.dart';
 import 'package:todo_flutter/redux/app/app_reducer.dart';
