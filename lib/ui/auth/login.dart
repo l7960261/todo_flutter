@@ -33,17 +33,23 @@ class _LoginViewState extends State<LoginView> {
                 child: Column(
                   children: <Widget>[
                     TextFormField(
-                      decoration: InputDecoration(labelText: '請輸入用戶名'),
+                      decoration: InputDecoration(
+                          labelText:
+                              AppLocalization.of(context).userNamePlaceholder),
                       onSaved: (value) {
                         userName = value;
                       },
                       onFieldSubmitted: (value) {},
                     ),
                     TextFormField(
-                      decoration: InputDecoration(labelText: '請輸入密碼'),
+                      decoration: InputDecoration(
+                          labelText:
+                              AppLocalization.of(context).passwordPlaceholder),
                       obscureText: true,
                       validator: (value) {
-                        return value.length < 6 ? '密碼長度不夠 6 位數' : null;
+                        return value.length < 6
+                            ? AppLocalization.of(context).passwordBelow6Digits
+                            : null;
                       },
                       onSaved: (value) {
                         password = value;
@@ -64,7 +70,7 @@ class _LoginViewState extends State<LoginView> {
                               .onLoginPressed(context, userName, password);
                         },
                         child: Text(AppLocalization.of(context).login,
-                            style: TextStyle(fontSize: AppFontSizes.larger)),
+                            style: TextStyle(fontSize: AppFontSizes.medium)),
                       ),
                     )
                   ],

@@ -25,8 +25,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "login" : MessageLookupByLibrary.simpleMessage("登入"),
     "logout" : MessageLookupByLibrary.simpleMessage("登出"),
     "manage" : MessageLookupByLibrary.simpleMessage("管理"),
+    "passwordBelow6Digits" : MessageLookupByLibrary.simpleMessage("密码长度不够 6 位数"),
+    "passwordPlaceholder" : MessageLookupByLibrary.simpleMessage("请输入密码"),
     "peferences" : MessageLookupByLibrary.simpleMessage("偏好设定"),
     "splashTitle" : MessageLookupByLibrary.simpleMessage("待办事项"),
-    "theme" : MessageLookupByLibrary.simpleMessage("主题")
+    "theme" : MessageLookupByLibrary.simpleMessage("主题"),
+    "userNamePlaceholder" : MessageLookupByLibrary.simpleMessage("请输入用户名")
   };
 }

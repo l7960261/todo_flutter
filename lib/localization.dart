@@ -50,6 +50,18 @@ class AppLocalization {
   String get logout {
     return Intl.message('Logout', name: 'logout', desc: 'Logout');
   }
+
+  String get userNamePlaceholder {
+    return Intl.message('Please enter username', name: 'userNamePlaceholder', desc: 'Please enter username');
+  }
+
+  String get passwordPlaceholder {
+    return Intl.message('Please enter password', name: 'passwordPlaceholder', desc: 'Please enter password');
+  }
+
+  String get passwordBelow6Digits {
+    return Intl.message('Password length is not enough 6 digits', name: 'passwordBelow6Digits', desc: 'Password length is not enough 6 digits');
+  }
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalization> {

@@ -47,5 +47,23 @@
     "description": "Logout",
     "type": "text",
     "placeholders": {}
+  },
+  "userNamePlaceholder": "กรุณาใส่ชื่อผู้ใช้",
+  "@userNamePlaceholder": {
+    "description": "Please enter username",
+    "type": "text",
+    "placeholders": {}
+  },
+  "passwordPlaceholder": "กรุณาใส่รหัสผ่านของคุณ",
+  "@passwordPlaceholder": {
+    "description": "Please enter password",
+    "type": "text",
+    "placeholders": {}
+  },
+  "passwordBelow6Digits": "ความยาวรหัสผ่านไม่เพียงพอ 6 หลัก",
+  "@passwordBelow6Digits": {
+    "description": "Password length is not enough 6 digits",
+    "type": "text",
+    "placeholders": {}
   }
 }

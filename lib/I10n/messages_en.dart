@@ -25,8 +25,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "login" : MessageLookupByLibrary.simpleMessage("Login"),
     "logout" : MessageLookupByLibrary.simpleMessage("Logout"),
     "manage" : MessageLookupByLibrary.simpleMessage("Manage"),
+    "passwordBelow6Digits" : MessageLookupByLibrary.simpleMessage("Password length is not enough 6 digits"),
+    "passwordPlaceholder" : MessageLookupByLibrary.simpleMessage("Please enter password"),
     "peferences" : MessageLookupByLibrary.simpleMessage("Preferences"),
     "splashTitle" : MessageLookupByLibrary.simpleMessage("TODO Application"),
-    "theme" : MessageLookupByLibrary.simpleMessage("Theme")
+    "theme" : MessageLookupByLibrary.simpleMessage("Theme"),
+    "userNamePlaceholder" : MessageLookupByLibrary.simpleMessage("Please enter username")
   };
 }

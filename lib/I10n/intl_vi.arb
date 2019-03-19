@@ -47,5 +47,23 @@
     "description": "Logout",
     "type": "text",
     "placeholders": {}
+  },
+  "userNamePlaceholder": "Vui lòng nhập tên người dùng",
+  "@userNamePlaceholder": {
+    "description": "Please enter username",
+    "type": "text",
+    "placeholders": {}
+  },
+  "passwordPlaceholder": "Vui lòng nhập mật khẩu của bạn",
+  "@passwordPlaceholder": {
+    "description": "Please enter password",
+    "type": "text",
+    "placeholders": {}
+  },
+  "passwordBelow6Digits": "Độ dài mật khẩu không đủ 6 chữ số",
+  "@passwordBelow6Digits": {
+    "description": "Password length is not enough 6 digits",
+    "type": "text",
+    "placeholders": {}
   }
 }

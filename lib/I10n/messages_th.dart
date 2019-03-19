@@ -25,8 +25,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "login" : MessageLookupByLibrary.simpleMessage("เข้าสู่ระบบ"),
     "logout" : MessageLookupByLibrary.simpleMessage("ออกจากระบบ"),
     "manage" : MessageLookupByLibrary.simpleMessage("จัดการ"),
+    "passwordBelow6Digits" : MessageLookupByLibrary.simpleMessage("ความยาวรหัสผ่านไม่เพียงพอ 6 หลัก"),
+    "passwordPlaceholder" : MessageLookupByLibrary.simpleMessage("กรุณาใส่รหัสผ่านของคุณ"),
     "peferences" : MessageLookupByLibrary.simpleMessage("การตั้งค่า"),
     "splashTitle" : MessageLookupByLibrary.simpleMessage("แอพลิเคชันที่ต้องทำ"),
-    "theme" : MessageLookupByLibrary.simpleMessage("กระทู้")
+    "theme" : MessageLookupByLibrary.simpleMessage("กระทู้"),
+    "userNamePlaceholder" : MessageLookupByLibrary.simpleMessage("กรุณาใส่ชื่อผู้ใช้")
   };
 }

@@ -25,8 +25,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "login" : MessageLookupByLibrary.simpleMessage("Đăng nhập"),
     "logout" : MessageLookupByLibrary.simpleMessage("Đăng xuất"),
     "manage" : MessageLookupByLibrary.simpleMessage("Quản lý"),
+    "passwordBelow6Digits" : MessageLookupByLibrary.simpleMessage("Độ dài mật khẩu không đủ 6 chữ số"),
+    "passwordPlaceholder" : MessageLookupByLibrary.simpleMessage("Vui lòng nhập mật khẩu của bạn"),
     "peferences" : MessageLookupByLibrary.simpleMessage("Sở thích"),
     "splashTitle" : MessageLookupByLibrary.simpleMessage("Ứng dụng TODO"),
-    "theme" : MessageLookupByLibrary.simpleMessage("Chủ đề")
+    "theme" : MessageLookupByLibrary.simpleMessage("Chủ đề"),
+    "userNamePlaceholder" : MessageLookupByLibrary.simpleMessage("Vui lòng nhập tên người dùng")
   };
 }

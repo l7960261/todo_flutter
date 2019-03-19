@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2019-03-19T15:17:53.696152",
+  "@@last_modified": "2019-03-19T16:49:28.029720",
   "splashTitle": "TODO Application",
   "@splashTitle": {
     "description": "The title of application",
@@ -45,6 +45,24 @@
   "logout": "Logout",
   "@logout": {
     "description": "Logout",
+    "type": "text",
+    "placeholders": {}
+  },
+  "userNamePlaceholder": "Please enter username",
+  "@userNamePlaceholder": {
+    "description": "Please enter username",
+    "type": "text",
+    "placeholders": {}
+  },
+  "passwordPlaceholder": "Please enter password",
+  "@passwordPlaceholder": {
+    "description": "Please enter password",
+    "type": "text",
+    "placeholders": {}
+  },
+  "passwordBelow6Digits": "Password length is not enough 6 digits",
+  "@passwordBelow6Digits": {
+    "description": "Password length is not enough 6 digits",
     "type": "text",
     "placeholders": {}
   }

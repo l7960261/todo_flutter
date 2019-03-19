@@ -47,5 +47,23 @@
     "description": "Logout",
     "type": "text",
     "placeholders": {}
+  },
+  "userNamePlaceholder": "请输入用户名",
+  "@userNamePlaceholder": {
+    "description": "Please enter username",
+    "type": "text",
+    "placeholders": {}
+  },
+  "passwordPlaceholder": "请输入密码",
+  "@passwordPlaceholder": {
+    "description": "Please enter password",
+    "type": "text",
+    "placeholders": {}
+  },
+  "passwordBelow6Digits": "密码长度不够 6 位数",
+  "@passwordBelow6Digits": {
+    "description": "Password length is not enough 6 digits",
+    "type": "text",
+    "placeholders": {}
   }
 }
