@@ -52,15 +52,19 @@ class AppLocalization {
   }
 
   String get userNamePlaceholder {
-    return Intl.message('Please enter username', name: 'userNamePlaceholder', desc: 'Please enter username');
+    return Intl.message('Please enter username',
+        name: 'userNamePlaceholder', desc: 'Please enter username');
   }
 
   String get passwordPlaceholder {
-    return Intl.message('Please enter password', name: 'passwordPlaceholder', desc: 'Please enter password');
+    return Intl.message('Please enter password',
+        name: 'passwordPlaceholder', desc: 'Please enter password');
   }
 
   String get passwordBelow6Digits {
-    return Intl.message('Password length is not enough 6 digits', name: 'passwordBelow6Digits', desc: 'Password length is not enough 6 digits');
+    return Intl.message('Password length is not enough 6 digits',
+        name: 'passwordBelow6Digits',
+        desc: 'Password length is not enough 6 digits');
   }
 }
 
@@ -70,7 +74,7 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalization> {
 
   @override
   bool isSupported(Locale locale) =>
-      ['en', 'zh-Hans', 'th', 'vi'].contains(locale.languageCode);
+      LanguageSetting.availableLanguage.contains(locale.languageCode);
 
   @override
   Future<AppLocalization> load(Locale locale) {
@@ -81,4 +85,18 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalization> {
   bool shouldReload(LocalizationsDelegate<AppLocalization> old) {
     return true;
   }
+}
+
+class LanguageSetting {
+  LanguageSetting._();
+
+  static List<String> availableLanguage =
+      supportedLocales.map((locale) => locale.languageCode).toList();
+
+  static List<Locale> supportedLocales = const [
+    const Locale('en', 'US'),
+    const Locale('zh-Hans', ''),
+    const Locale('th', 'TH'),
+    const Locale('vi', ''),
+  ];
 }
