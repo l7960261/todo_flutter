@@ -7,6 +7,7 @@ import 'package:todo_flutter/redux/app/app_state.dart';
 import 'package:todo_flutter/redux/auth/auth_actions.dart';
 import 'package:todo_flutter/redux/system/system_actions.dart';
 import 'package:todo_flutter/routes.dart';
+import 'package:todo_flutter/styles.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({Key key}) : super(key: key);
@@ -45,7 +46,7 @@ class Home extends StatelessWidget {
               ),
               Text(
                 '$counter',
-                style: Theme.of(context).textTheme.display1,
+                style: TextStyle(fontSize: AppFontSizes.medium),
               ),
               StoreConnector(
                   builder: (BuildContext context, VoidCallback logout) {

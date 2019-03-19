@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo_flutter/localization.dart';
+import 'package:todo_flutter/styles.dart';
 import 'package:todo_flutter/ui/auth/login_vm.dart';
 
 class LoginView extends StatefulWidget {
@@ -60,7 +61,8 @@ class _LoginViewState extends State<LoginView> {
                           widget.viewModel
                               .onLoginPressed(context, userName, password);
                         },
-                        child: Text('登入', style: TextStyle(fontSize: 18.0)),
+                        child: Text('登入',
+                            style: TextStyle(fontSize: AppFontSizes.larger)),
                       ),
                     )
                   ],
