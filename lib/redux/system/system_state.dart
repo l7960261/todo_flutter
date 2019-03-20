@@ -26,15 +26,17 @@ abstract class SystemState implements Built<SystemState, SystemStateBuilder> {
             ..languageCode = 'vi'
             ..countryCode = ''
             ..displayName = 'Tiếng Việt (vi)')
-        ]));
+        ]),
+        curThemeIndex: 0);
   }
 
   SystemState._();
 
   String get curLanguage;
+  int get curThemeIndex;
   BuiltList<LanguageEntity> get languageMap;
 
-  List<String> availableLanguage () {
+  List<String> availableLanguage() {
     return languageMap.map((entity) => entity.languageCode).toList();
   }
 

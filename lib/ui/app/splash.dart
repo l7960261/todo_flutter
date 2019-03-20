@@ -38,7 +38,6 @@ class _SplashViewState extends State<SplashView> {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Colors.white,
       child: Column(
         children: <Widget>[
           Expanded(

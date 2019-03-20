@@ -8,6 +8,7 @@ import 'package:todo_flutter/redux/auth/auth_actions.dart';
 import 'package:todo_flutter/redux/system/system_actions.dart';
 import 'package:todo_flutter/routes.dart';
 import 'package:todo_flutter/styles.dart';
+import 'package:todo_flutter/themes.dart';
 
 class AppDrawer extends StatelessWidget {
   @override
@@ -16,8 +17,11 @@ class AppDrawer extends StatelessWidget {
     final accountName = store.state.authState.account;
     final accountEmail = '$accountName@xxx.com';
     final langMap = store.state.systemState.languageMap.toList();
-    final callback = (String languageCode) {
+    final languageSelectedCallback = (String languageCode) {
       store.dispatch(ChangeLanguage(languageCode));
+    };
+    final themeSelectedCallback = (int themeIndex) {
+      store.dispatch(ChangeThemeIndex(themeIndex));
     };
 
     return Drawer(
@@ -35,14 +39,12 @@ class AppDrawer extends StatelessWidget {
                         'https://is5-ssl.mzstatic.com/image/thumb/Purple117/v4/1a/2f/3e/1a2f3e59-4ad1-13f0-8d82-5753eb25cba3/mzl.wofpkenf.jpg/246x0w.jpg'))
               ]),
           ListTile(
-            leading: Text(AppLocalization.of(context).peferences,
-                style: TextStyle(fontSize: AppFontSizes.small)),
-          ),
-          LanguageTile(langMap: langMap, callback: callback),
-          ListTile(
-            leading: CircleAvatar(child: Icon(Icons.format_paint)),
-            title: Text(AppLocalization.of(context).theme),
-          ),
+              leading: Text(
+            AppLocalization.of(context).peferences,
+            style: TextStyle(fontSize: AppFontSizes.small),
+          )),
+          LanguageTile(langMap: langMap, callback: languageSelectedCallback),
+          ThemeTile(callback: themeSelectedCallback),
           ListTile(
             leading: Text(AppLocalization.of(context).manage,
                 style: TextStyle(fontSize: AppFontSizes.small)),
@@ -83,11 +85,10 @@ class _LanguageTileState extends State<LanguageTile> {
   Future openSimpleDialog() async {
     final List<SimpleDialogOption> languageOptions = widget.langMap
         .map((lang) => SimpleDialogOption(
-              child: Text(lang.displayName),
-              onPressed: () {
-                Navigator.pop(context, lang.languageCode);
-              },
-            ))
+            child: Text(lang.displayName),
+            onPressed: () {
+              Navigator.pop(context, lang.languageCode);
+            }))
         .toList();
 
     final selection = await showDialog(
@@ -96,6 +97,50 @@ class _LanguageTileState extends State<LanguageTile> {
           return SimpleDialog(
             title: Text('Choose a language'),
             children: languageOptions,
+          );
+        });
+
+    if (selection != null) {
+      widget.callback(selection);
+    } else {
+      print(selection);
+    }
+  }
+}
+
+class ThemeTile extends StatefulWidget {
+  final void Function(int themeIndex) callback;
+  ThemeTile({Key key, this.callback}) : super(key: key);
+  @override
+  _ThemeTileState createState() => _ThemeTileState();
+}
+
+class _ThemeTileState extends State<ThemeTile> {
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: CircleAvatar(child: Icon(Icons.format_paint)),
+      title: Text(AppLocalization.of(context).theme),
+      onTap: openSimpleDialog,
+    );
+  }
+
+  Future openSimpleDialog() async {
+    final List<SimpleDialogOption> themeOptions =
+        List.generate(AppThemes.getThemesList().length, (int idx) {
+      return SimpleDialogOption(
+          child: Text(AppThemes.getThemesList()[idx]),
+          onPressed: () {
+            Navigator.pop(context, idx);
+          });
+    });
+
+    final selection = await showDialog(
+        context: context,
+        builder: (context) {
+          return SimpleDialog(
+            title: Text('Choose a theme'),
+            children: themeOptions,
           );
         });
 
