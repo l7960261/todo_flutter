@@ -38,6 +38,10 @@ class AppLocalization {
       Intl.message('Password length is not enough 6 digits',
           name: 'passwordBelow6Digits',
           desc: 'Password length is not enough 6 digits');
+  String get chooseALanguage => Intl.message('Choose a language',
+      name: 'chooseALanguage', desc: 'Choose a language');
+  String get chooseATheme => Intl.message('Choose a theme',
+      name: 'chooseATheme', desc: 'Choose a theme');
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalization> {

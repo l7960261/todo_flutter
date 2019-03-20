@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2019-03-19T16:49:28.029720",
+  "@@last_modified": "2019-03-20T11:40:20.407604",
   "splashTitle": "TODO Application",
   "@splashTitle": {
     "description": "The title of application",
@@ -63,6 +63,18 @@
   "passwordBelow6Digits": "Password length is not enough 6 digits",
   "@passwordBelow6Digits": {
     "description": "Password length is not enough 6 digits",
+    "type": "text",
+    "placeholders": {}
+  },
+  "chooseALanguage": "Choose a language",
+  "@chooseALanguage": {
+    "description": "Choose a language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "chooseATheme": "Choose a theme",
+  "@chooseATheme": {
+    "description": "Choose a theme",
     "type": "text",
     "placeholders": {}
   }

@@ -95,7 +95,7 @@ class _LanguageTileState extends State<LanguageTile> {
         context: context,
         builder: (context) {
           return SimpleDialog(
-            title: Text('Choose a language'),
+            title: Text(AppLocalization.of(context).chooseALanguage),
             children: languageOptions,
           );
         });
@@ -139,7 +139,7 @@ class _ThemeTileState extends State<ThemeTile> {
         context: context,
         builder: (context) {
           return SimpleDialog(
-            title: Text('Choose a theme'),
+            title: Text(AppLocalization.of(context).chooseATheme),
             children: themeOptions,
           );
         });

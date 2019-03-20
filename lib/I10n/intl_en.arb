@@ -65,5 +65,17 @@
     "description": "Password length is not enough 6 digits",
     "type": "text",
     "placeholders": {}
+  },
+  "chooseALanguage": "Choose a language",
+  "@chooseALanguage": {
+    "description": "Choose a language",
+    "type": "text",
+    "placeholders": {}
+  },
+  "chooseATheme": "Choose a theme",
+  "@chooseATheme": {
+    "description": "Choose a theme",
+    "type": "text",
+    "placeholders": {}
   }
 }

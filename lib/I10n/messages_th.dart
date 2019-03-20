@@ -20,6 +20,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "chooseALanguage" : MessageLookupByLibrary.simpleMessage("เลือกภาษา"),
+    "chooseATheme" : MessageLookupByLibrary.simpleMessage("เลือกชุดรูปแบบ"),
     "homeTitle" : MessageLookupByLibrary.simpleMessage("บ้าน"),
     "language" : MessageLookupByLibrary.simpleMessage("ภาษา"),
     "login" : MessageLookupByLibrary.simpleMessage("เข้าสู่ระบบ"),
