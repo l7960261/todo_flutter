@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class AppThemes {
-  static final List<ThemeData> _themeList = [ninga, ninjaDark];
+  static final Map<String, ThemeData> _themeList = {
+    'ninga': ninga,
+    'ningaDark': ninjaDark
+  };
 
   static final ninga = ThemeData(
       primaryColor: const Color(0xFF117cc1),
@@ -16,10 +19,10 @@ class AppThemes {
       brightness: Brightness.dark, accentColor: Colors.lightBlueAccent);
 
   static List<String> getThemesList() {
-    return ['ninga', 'ningaDark'];
+    return _themeList.keys.toList();
   }
 
-  static ThemeData getThemeData([int index = 0]) {
-    return _themeList[index];
+  static ThemeData getThemeData([String key = 'ninga']) {
+    return _themeList[key];
   }
 }

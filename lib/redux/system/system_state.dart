@@ -27,13 +27,13 @@ abstract class SystemState implements Built<SystemState, SystemStateBuilder> {
             ..countryCode = ''
             ..displayName = 'Tiếng Việt (vi)')
         ]),
-        curThemeIndex: 0);
+        curThemeKey: 'ninga');
   }
 
   SystemState._();
 
   String get curLanguage;
-  int get curThemeIndex;
+  String get curThemeKey;
   BuiltList<LanguageEntity> get languageMap;
 
   List<String> availableLanguage() {

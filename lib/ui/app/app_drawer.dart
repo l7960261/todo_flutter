@@ -20,8 +20,8 @@ class AppDrawer extends StatelessWidget {
     final languageSelectedCallback = (String languageCode) {
       store.dispatch(ChangeLanguage(languageCode));
     };
-    final themeSelectedCallback = (int themeIndex) {
-      store.dispatch(ChangeThemeIndex(themeIndex));
+    final themeSelectedCallback = (String themeKey) {
+      store.dispatch(ChangeThemeIndex(themeKey));
     };
 
     return Drawer(
@@ -109,7 +109,7 @@ class _LanguageTileState extends State<LanguageTile> {
 }
 
 class ThemeTile extends StatefulWidget {
-  final void Function(int themeIndex) callback;
+  final void Function(String themeKey) callback;
   ThemeTile({Key key, this.callback}) : super(key: key);
   @override
   _ThemeTileState createState() => _ThemeTileState();
@@ -126,14 +126,13 @@ class _ThemeTileState extends State<ThemeTile> {
   }
 
   Future openSimpleDialog() async {
-    final List<SimpleDialogOption> themeOptions =
-        List.generate(AppThemes.getThemesList().length, (int idx) {
-      return SimpleDialogOption(
-          child: Text(AppThemes.getThemesList()[idx]),
-          onPressed: () {
-            Navigator.pop(context, idx);
-          });
-    });
+    final List<SimpleDialogOption> themeOptions = AppThemes.getThemesList()
+        .map((theme) => SimpleDialogOption(
+            child: Text(theme),
+            onPressed: () {
+              Navigator.pop(context, theme);
+            }))
+        .toList();
 
     final selection = await showDialog(
         context: context,

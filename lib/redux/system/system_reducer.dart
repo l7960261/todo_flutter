@@ -13,4 +13,4 @@ SystemState changeLanguageReducer(
 
 SystemState changeThemeIndexReducer(
         SystemState systemState, ChangeThemeIndex action) =>
-    systemState.rebuild((b) => b..curThemeIndex = action.themeIndex);
+    systemState.rebuild((b) => b..curThemeKey = action.themeKey);

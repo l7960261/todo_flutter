@@ -4,6 +4,6 @@ class ChangeLanguage {
 }
 
 class ChangeThemeIndex {
-  final int themeIndex;
-  ChangeThemeIndex(this.themeIndex);
+  final String themeKey;
+  ChangeThemeIndex(this.themeKey);
 }
