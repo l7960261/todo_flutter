@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
@@ -82,7 +83,7 @@ class _LanguageTileState extends State<LanguageTile> {
     );
   }
 
-  Future openSimpleDialog() async {
+  Future<Null> openSimpleDialog() async {
     final List<SimpleDialogOption> languageOptions = widget.langMap
         .map((lang) => SimpleDialogOption(
             child: Text(lang.displayName),
@@ -102,8 +103,6 @@ class _LanguageTileState extends State<LanguageTile> {
 
     if (selection != null) {
       widget.callback(selection);
-    } else {
-      print(selection);
     }
   }
 }
@@ -125,7 +124,7 @@ class _ThemeTileState extends State<ThemeTile> {
     );
   }
 
-  Future openSimpleDialog() async {
+  Future<Null> openSimpleDialog() async {
     final List<SimpleDialogOption> themeOptions = AppThemes.getThemesList()
         .map((theme) => SimpleDialogOption(
             child: Text(theme),
@@ -145,8 +144,6 @@ class _ThemeTileState extends State<ThemeTile> {
 
     if (selection != null) {
       widget.callback(selection);
-    } else {
-      print(selection);
     }
   }
 }
