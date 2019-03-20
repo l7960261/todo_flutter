@@ -8,7 +8,7 @@ part 'system_state.g.dart';
 abstract class SystemState implements Built<SystemState, SystemStateBuilder> {
   factory SystemState() {
     return _$SystemState._(
-        languageCode: 'en',
+        curLanguage: 'en',
         languageMap: BuiltList<LanguageEntity>([
           LanguageEntity((b) => b
             ..languageCode = 'en'
@@ -31,7 +31,7 @@ abstract class SystemState implements Built<SystemState, SystemStateBuilder> {
 
   SystemState._();
 
-  String get languageCode;
+  String get curLanguage;
   BuiltList<LanguageEntity> get languageMap;
 
   List<String> availableLanguage () {

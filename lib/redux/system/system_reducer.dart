@@ -7,4 +7,4 @@ final Reducer<SystemState> systemStateReducer = combineReducers<SystemState>(
 
 SystemState changeLanguageReducer(
         SystemState systemState, ChangeLanguage action) =>
-    systemState.rebuild((b) => b..languageCode = action.languageCode);
+    systemState.rebuild((b) => b..curLanguage = action.languageCode);

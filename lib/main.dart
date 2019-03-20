@@ -41,7 +41,7 @@ class ReduxApp extends StatelessWidget {
                 theme: ThemeData(primarySwatch: Colors.blue),
                 localizationsDelegates: [
                   AppLocalizationsDelegate(
-                      newLocale: Locale(systemState.languageCode),
+                      newLocale: Locale(systemState.curLanguage),
                       availableLanguage: systemState.availableLanguage()),
                   GlobalMaterialLocalizations.delegate,
                   GlobalWidgetsLocalizations.delegate
