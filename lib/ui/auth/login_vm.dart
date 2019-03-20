@@ -22,7 +22,7 @@ class LoginScreen extends StatelessWidget {
 }
 
 class LoginVM {
-  final Function(BuildContext, String, String) onLoginPressed;
+  final void Function(BuildContext, String, String) onLoginPressed;
 
   LoginVM({@required this.onLoginPressed});
 

@@ -42,11 +42,12 @@ class AppLocalization {
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalization> {
   final Locale newLocale;
-  const AppLocalizationsDelegate({this.newLocale});
+  final List<String> availableLanguage;
+  const AppLocalizationsDelegate({this.newLocale, this.availableLanguage});
 
   @override
   bool isSupported(Locale locale) =>
-      LanguageSetting.availableLanguage.contains(locale.languageCode);
+      availableLanguage.contains(locale.languageCode);
 
   @override
   Future<AppLocalization> load(Locale locale) {
@@ -57,18 +58,4 @@ class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalization> {
   bool shouldReload(LocalizationsDelegate<AppLocalization> old) {
     return true;
   }
-}
-
-class LanguageSetting {
-  LanguageSetting._();
-
-  static List<String> availableLanguage =
-      supportedLocales.map((locale) => locale.languageCode).toList();
-
-  static List<Locale> supportedLocales = const [
-    const Locale('en', 'US'),
-    const Locale('zh-Hans', ''),
-    const Locale('th', 'TH'),
-    const Locale('vi', ''),
-  ];
 }

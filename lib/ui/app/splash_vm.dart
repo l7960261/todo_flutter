@@ -22,7 +22,7 @@ class SplashScreen extends StatelessWidget {
 class SplashVM {
   SplashVM({@required this.onInit});
 
-  final Function(Function(bool isAuthenticated) callback) onInit;
+  final void Function(void Function(bool isAuthenticated) callback) onInit;
 
   static SplashVM fromStore(Store<AppState> store) {
     return SplashVM(onInit: (Function(bool isAuthenticated) callback) {
