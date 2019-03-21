@@ -8,8 +8,8 @@ import 'package:todo_flutter/redux/app/app_state.dart';
 import 'package:todo_flutter/redux/auth/auth_actions.dart';
 import 'package:todo_flutter/redux/system/system_actions.dart';
 import 'package:todo_flutter/routes.dart';
-import 'package:todo_flutter/styles.dart';
-import 'package:todo_flutter/themes.dart';
+import 'package:todo_flutter/utils/styles.dart';
+import 'package:todo_flutter/utils/themes.dart';
 
 class AppDrawer extends StatelessWidget {
   @override

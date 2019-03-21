@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:todo_flutter/localization.dart';
-import 'package:todo_flutter/styles.dart';
+import 'package:todo_flutter/utils/styles.dart';
 import 'package:todo_flutter/ui/app/splash_vm.dart';
 import 'package:todo_flutter/routes.dart';
 

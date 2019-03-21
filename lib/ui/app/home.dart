@@ -4,7 +4,7 @@ import 'package:redux/redux.dart';
 import 'package:todo_flutter/localization.dart';
 import 'package:todo_flutter/redux/app/app_actions.dart';
 import 'package:todo_flutter/redux/app/app_state.dart';
-import 'package:todo_flutter/styles.dart';
+import 'package:todo_flutter/utils/styles.dart';
 import 'package:todo_flutter/ui/app/app_drawer.dart';
 
 class HomeScreen extends StatelessWidget {

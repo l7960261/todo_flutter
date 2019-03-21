@@ -6,7 +6,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:todo_flutter/localization.dart';
 import 'package:todo_flutter/redux/auth/auth_middleware.dart';
 import 'package:todo_flutter/redux/system/system_state.dart';
-import 'package:todo_flutter/themes.dart';
+import 'package:todo_flutter/utils/themes.dart';
 import 'package:todo_flutter/ui/app/home.dart';
 import 'package:todo_flutter/ui/auth/login_vm.dart';
 import 'package:todo_flutter/ui/app/splash_vm.dart';
