@@ -14,6 +14,7 @@ This project is a starting point for a Flutter application.
 - [redux_logging](https://pub.dartlang.org/packages/redux_logging)
 - [path_provider](https://pub.dartlang.org/packages/path_provider)
 - [intl](https://pub.dartlang.org/packages/intl)
+- [shared_preferences](https://pub.dartlang.org/packages/shared_preferences)
 
 ## devDependency
 

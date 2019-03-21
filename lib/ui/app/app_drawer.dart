@@ -22,7 +22,7 @@ class AppDrawer extends StatelessWidget {
       store.dispatch(ChangeLanguage(languageCode));
     };
     final themeSelectedCallback = (String themeKey) {
-      store.dispatch(ChangeThemeIndex(themeKey));
+      store.dispatch(ChangeTheme(themeKey));
     };
 
     return Drawer(

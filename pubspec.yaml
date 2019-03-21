@@ -22,12 +22,24 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
 
+  # Shared pref
+  shared_preferences: ^0.5.1+2
+
+  # Redux
+  flutter_redux: ^0.5.3
+
+  # Redux logger
+  redux_logging: ^0.3.0
+
+  # Localization
+  intl: ^0.15.6
+  
+  # Android/iOS path provider
+  path_provider: ^0.5.0+1
+
+  # Built json serializable
   built_value: ^6.3.1
   built_collection: ^4.1.0
-  flutter_redux: ^0.5.3
-  redux_logging: ^0.3.0
-  path_provider: ^0.5.0+1
-  intl: ^0.15.6
 
 dev_dependencies:
   flutter_test:

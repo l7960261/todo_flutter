@@ -3,7 +3,7 @@ class ChangeLanguage {
   ChangeLanguage(this.languageCode);
 }
 
-class ChangeThemeIndex {
-  final String themeKey;
-  ChangeThemeIndex(this.themeKey);
+class ChangeTheme {
+  final String theme;
+  ChangeTheme(this.theme);
 }

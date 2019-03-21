@@ -5,7 +5,9 @@ import 'package:redux_logging/redux_logging.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:todo_flutter/localization.dart';
 import 'package:todo_flutter/redux/auth/auth_middleware.dart';
+import 'package:todo_flutter/redux/system/system_middleward.dart';
 import 'package:todo_flutter/redux/system/system_state.dart';
+import 'package:todo_flutter/utils/constants.dart';
 import 'package:todo_flutter/utils/themes.dart';
 import 'package:todo_flutter/ui/app/home.dart';
 import 'package:todo_flutter/ui/auth/login_vm.dart';
@@ -21,6 +23,7 @@ void main() async {
       middleware: []
         ..addAll(createStorePersistenceMiddleware())
         ..addAll(createStoreAuthMiddleware())
+        ..addAll(createStoreSystemMiddleware())
         ..addAll([LoggingMiddleware.printer()]));
 
   runApp(ReduxApp(store: store));
@@ -40,17 +43,15 @@ class ReduxApp extends StatelessWidget {
             return MaterialApp(
                 debugShowCheckedModeBanner: false,
                 title: 'Flutter Demo',
-                theme: AppThemes.getThemeData(systemState.curThemeKey),
+                theme: AppThemes.getThemeData(systemState.curTheme),
                 localizationsDelegates: [
                   AppLocalizationsDelegate(
-                      newLocale: Locale(systemState.curLanguage),
-                      availableLanguage: systemState.availableLanguage()),
+                      newLocale: Locale(systemState.curLanguage)),
                   GlobalMaterialLocalizations.delegate,
                   GlobalWidgetsLocalizations.delegate
                 ],
-                supportedLocales: systemState.languageMap
-                    .map((item) => Locale(item.languageCode, item.countryCode))
-                    .toList(),
+                supportedLocales:
+                    kLanguages.map((String locale) => Locale(locale)).toList(),
                 initialRoute: AppRoutes.splash,
                 onGenerateRoute: (RouteSettings settings) {
                   switch (settings.name) {

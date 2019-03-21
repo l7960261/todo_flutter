@@ -2,6 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:todo_flutter/I10n/messages_all.dart';
+import 'package:todo_flutter/data/models/language_model.dart';
+import 'package:todo_flutter/utils/constants.dart';
 
 class AppLocalization {
   static Future<AppLocalization> load(Locale locale) {
@@ -43,16 +45,41 @@ class AppLocalization {
       name: 'chooseALanguage', desc: 'Choose a language');
   String get chooseATheme => Intl.message('Choose a theme',
       name: 'chooseATheme', desc: 'Choose a theme');
+  
+  static Iterable<LanguageEntity> languageMap() {
+    return kLanguages.map((String locale) {
+      switch (locale) {
+        case 'en':
+          return LanguageEntity((b) => b
+            ..languageCode = locale
+            ..countryCode = 'US'
+            ..displayName = 'English (en)');
+        case 'zh-Hans':
+          return LanguageEntity((b) => b
+            ..languageCode = locale
+            ..countryCode = ''
+            ..displayName = '简体字 (zh-Hans)');
+        case 'th':
+          return LanguageEntity((b) => b
+            ..languageCode = locale
+            ..countryCode = 'TH'
+            ..displayName = 'ไทย (th)');
+        case 'vi':
+          return LanguageEntity((b) => b
+            ..languageCode = locale
+            ..countryCode = ''
+            ..displayName = 'Tiếng Việt (vi)');
+      }
+    });
+  }
 }
 
 class AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalization> {
   final Locale newLocale;
-  final List<String> availableLanguage;
-  const AppLocalizationsDelegate({this.newLocale, this.availableLanguage});
+  const AppLocalizationsDelegate({this.newLocale});
 
   @override
-  bool isSupported(Locale locale) =>
-      availableLanguage.contains(locale.languageCode);
+  bool isSupported(Locale locale) => kLanguages.contains(locale.languageCode);
 
   @override
   Future<AppLocalization> load(Locale locale) {

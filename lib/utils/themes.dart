@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AppThemes {
+  static const defaultTheme = 'ninga';
   static final Map<String, ThemeData> _themeList = {
     'ninga': ninga,
     'ningaDark': ninjaDark
@@ -22,7 +23,7 @@ class AppThemes {
     return _themeList.keys.toList();
   }
 
-  static ThemeData getThemeData([String key = 'ninga']) {
+  static ThemeData getThemeData([String key = defaultTheme]) {
     return _themeList[key];
   }
 }

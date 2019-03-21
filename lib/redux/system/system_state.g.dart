@@ -18,17 +18,23 @@ class _$SystemStateSerializer implements StructuredSerializer<SystemState> {
   Iterable serialize(Serializers serializers, SystemState object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
-      'curLanguage',
-      serializers.serialize(object.curLanguage,
-          specifiedType: const FullType(String)),
-      'curThemeKey',
-      serializers.serialize(object.curThemeKey,
-          specifiedType: const FullType(String)),
       'languageMap',
       serializers.serialize(object.languageMap,
           specifiedType: const FullType(
               BuiltList, const [const FullType(LanguageEntity)])),
     ];
+    if (object.curLanguage != null) {
+      result
+        ..add('curLanguage')
+        ..add(serializers.serialize(object.curLanguage,
+            specifiedType: const FullType(String)));
+    }
+    if (object.curTheme != null) {
+      result
+        ..add('curTheme')
+        ..add(serializers.serialize(object.curTheme,
+            specifiedType: const FullType(String)));
+    }
 
     return result;
   }
@@ -48,8 +54,8 @@ class _$SystemStateSerializer implements StructuredSerializer<SystemState> {
           result.curLanguage = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
-        case 'curThemeKey':
-          result.curThemeKey = serializers.deserialize(value,
+        case 'curTheme':
+          result.curTheme = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
         case 'languageMap':
@@ -69,21 +75,15 @@ class _$SystemState extends SystemState {
   @override
   final String curLanguage;
   @override
-  final String curThemeKey;
+  final String curTheme;
   @override
   final BuiltList<LanguageEntity> languageMap;
 
   factory _$SystemState([void updates(SystemStateBuilder b)]) =>
       (new SystemStateBuilder()..update(updates)).build();
 
-  _$SystemState._({this.curLanguage, this.curThemeKey, this.languageMap})
+  _$SystemState._({this.curLanguage, this.curTheme, this.languageMap})
       : super._() {
-    if (curLanguage == null) {
-      throw new BuiltValueNullFieldError('SystemState', 'curLanguage');
-    }
-    if (curThemeKey == null) {
-      throw new BuiltValueNullFieldError('SystemState', 'curThemeKey');
-    }
     if (languageMap == null) {
       throw new BuiltValueNullFieldError('SystemState', 'languageMap');
     }
@@ -101,13 +101,13 @@ class _$SystemState extends SystemState {
     if (identical(other, this)) return true;
     return other is SystemState &&
         curLanguage == other.curLanguage &&
-        curThemeKey == other.curThemeKey &&
+        curTheme == other.curTheme &&
         languageMap == other.languageMap;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, curLanguage.hashCode), curThemeKey.hashCode),
+    return $jf($jc($jc($jc(0, curLanguage.hashCode), curTheme.hashCode),
         languageMap.hashCode));
   }
 
@@ -115,7 +115,7 @@ class _$SystemState extends SystemState {
   String toString() {
     return (newBuiltValueToStringHelper('SystemState')
           ..add('curLanguage', curLanguage)
-          ..add('curThemeKey', curThemeKey)
+          ..add('curTheme', curTheme)
           ..add('languageMap', languageMap))
         .toString();
   }
@@ -128,9 +128,9 @@ class SystemStateBuilder implements Builder<SystemState, SystemStateBuilder> {
   String get curLanguage => _$this._curLanguage;
   set curLanguage(String curLanguage) => _$this._curLanguage = curLanguage;
 
-  String _curThemeKey;
-  String get curThemeKey => _$this._curThemeKey;
-  set curThemeKey(String curThemeKey) => _$this._curThemeKey = curThemeKey;
+  String _curTheme;
+  String get curTheme => _$this._curTheme;
+  set curTheme(String curTheme) => _$this._curTheme = curTheme;
 
   ListBuilder<LanguageEntity> _languageMap;
   ListBuilder<LanguageEntity> get languageMap =>
@@ -143,7 +143,7 @@ class SystemStateBuilder implements Builder<SystemState, SystemStateBuilder> {
   SystemStateBuilder get _$this {
     if (_$v != null) {
       _curLanguage = _$v.curLanguage;
-      _curThemeKey = _$v.curThemeKey;
+      _curTheme = _$v.curTheme;
       _languageMap = _$v.languageMap?.toBuilder();
       _$v = null;
     }
@@ -170,7 +170,7 @@ class SystemStateBuilder implements Builder<SystemState, SystemStateBuilder> {
       _$result = _$v ??
           new _$SystemState._(
               curLanguage: curLanguage,
-              curThemeKey: curThemeKey,
+              curTheme: curTheme,
               languageMap: languageMap.build());
     } catch (_) {
       String _$failedField;
