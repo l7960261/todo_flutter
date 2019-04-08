@@ -43,7 +43,7 @@ class ReduxApp extends StatelessWidget {
             return MaterialApp(
                 debugShowCheckedModeBanner: false,
                 title: 'Flutter Demo',
-                theme: AppThemes.getThemeData(systemState.curTheme),
+                theme: AppThemes.getStyle(systemState.curTheme),
                 localizationsDelegates: [
                   AppLocalizationsDelegate(
                       newLocale: Locale(systemState.curLanguage)),

@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2019-03-20T11:40:20.407604",
+  "@@last_modified": "2019-04-09T00:20:44.770649",
   "splashTitle": "TODO Application",
   "@splashTitle": {
     "description": "The title of application",
@@ -75,6 +75,18 @@
   "chooseATheme": "Choose a theme",
   "@chooseATheme": {
     "description": "Choose a theme",
+    "type": "text",
+    "placeholders": {}
+  },
+  "themeNinja": "Ninja",
+  "@themeNinja": {
+    "description": "Ninja",
+    "type": "text",
+    "placeholders": {}
+  },
+  "themeNinjaDark": "Ninja Dark",
+  "@themeNinjaDark": {
+    "description": "Ninja Dark",
     "type": "text",
     "placeholders": {}
   }

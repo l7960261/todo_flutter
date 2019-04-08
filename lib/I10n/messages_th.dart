@@ -32,6 +32,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "peferences" : MessageLookupByLibrary.simpleMessage("การตั้งค่า"),
     "splashTitle" : MessageLookupByLibrary.simpleMessage("แอพลิเคชันที่ต้องทำ"),
     "theme" : MessageLookupByLibrary.simpleMessage("กระทู้"),
+    "themeNinja" : MessageLookupByLibrary.simpleMessage("ตั้งล่วงหน้า"),
+    "themeNinjaDark" : MessageLookupByLibrary.simpleMessage("เขียวเข้ม"),
     "userNamePlaceholder" : MessageLookupByLibrary.simpleMessage("กรุณาใส่ชื่อผู้ใช้")
   };
 }

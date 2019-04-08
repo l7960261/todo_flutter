@@ -125,11 +125,11 @@ class _ThemeTileState extends State<ThemeTile> {
   }
 
   Future<Null> openSimpleDialog() async {
-    final List<SimpleDialogOption> themeOptions = AppThemes.getThemesList()
+    final List<SimpleDialogOption> themeOptions = AppThemes.getList(context)
         .map((theme) => SimpleDialogOption(
-            child: Text(theme),
+            child: Text(theme.text),
             onPressed: () {
-              Navigator.pop(context, theme);
+              Navigator.pop(context, theme.key);
             }))
         .toList();
 

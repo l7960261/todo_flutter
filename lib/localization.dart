@@ -45,7 +45,11 @@ class AppLocalization {
       name: 'chooseALanguage', desc: 'Choose a language');
   String get chooseATheme => Intl.message('Choose a theme',
       name: 'chooseATheme', desc: 'Choose a theme');
-  
+  String get themeNinja =>
+      Intl.message('Ninja', name: 'themeNinja', desc: 'Ninja');
+  String get themeNinjaDark =>
+      Intl.message('Ninja Dark', name: 'themeNinjaDark', desc: 'Ninja Dark');
+
   static Iterable<LanguageEntity> languageMap() {
     return kLanguages.map((String locale) {
       switch (locale) {

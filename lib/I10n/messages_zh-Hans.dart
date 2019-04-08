@@ -32,6 +32,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "peferences" : MessageLookupByLibrary.simpleMessage("偏好设定"),
     "splashTitle" : MessageLookupByLibrary.simpleMessage("待办事项"),
     "theme" : MessageLookupByLibrary.simpleMessage("主题"),
+    "themeNinja" : MessageLookupByLibrary.simpleMessage("预设"),
+    "themeNinjaDark" : MessageLookupByLibrary.simpleMessage("墨绿"),
     "userNamePlaceholder" : MessageLookupByLibrary.simpleMessage("请输入用户名")
   };
 }
