@@ -18,7 +18,7 @@ class AppThemes {
       buttonColor: const Color(0xFF0D5D91));
 
   static final ninjaDark = ThemeData(
-      brightness: Brightness.dark, accentColor: Colors.lightBlueAccent);
+      brightness: Brightness.dark, accentColor: Colors.teal);
 
   static List<ThemeSetting> getList(BuildContext context) {
     return _themeList.keys.map((key) {

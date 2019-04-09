@@ -33,7 +33,7 @@ class AppDrawer extends StatelessWidget {
               accountEmail: Text(accountEmail),
               currentAccountPicture: CircleAvatar(
                   backgroundImage: NetworkImage(
-                      'https://images.pexels.com/photos/874158/pexels-photo-874158.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260')),
+                      'https://slack-files2.s3-us-west-2.amazonaws.com/avatars/2017-12-19/288981919427_f45f04edd92902a96859_512.png')),
               otherAccountsPictures: <Widget>[
                 Container(
                     child: Image.network(
