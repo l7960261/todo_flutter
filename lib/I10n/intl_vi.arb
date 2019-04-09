@@ -78,15 +78,15 @@
     "type": "text",
     "placeholders": {}
   },
-  "themeNinja": "Đặt trước",
-  "@themeNinja": {
-    "description": "Ninja",
+  "themeDefault": "Đặt trước",
+  "@themeDefault": {
+    "description": "Default theme",
     "type": "text",
     "placeholders": {}
   },
-  "themeNinjaDark": "Màu xanh đậm",
-  "@themeNinjaDark": {
-    "description": "Ninja Dark",
+  "themeDarkGreen": "Màu xanh đậm",
+  "@themeDarkGreen": {
+    "description": "Dark green",
     "type": "text",
     "placeholders": {}
   }

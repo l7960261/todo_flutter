@@ -78,15 +78,15 @@
     "type": "text",
     "placeholders": {}
   },
-  "themeNinja": "Ninja",
-  "@themeNinja": {
-    "description": "Ninja",
+  "themeDefault": "Default",
+  "@themeDefault": {
+    "description": "Default Theme",
     "type": "text",
     "placeholders": {}
   },
-  "themeNinjaDark": "Ninja Dark",
-  "@themeNinjaDark": {
-    "description": "Ninja Dark",
+  "themeDarkGreen": "Dark green",
+  "@themeDarkGreen": {
+    "description": "Dark green",
     "type": "text",
     "placeholders": {}
   }

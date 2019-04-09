@@ -78,15 +78,15 @@
     "type": "text",
     "placeholders": {}
   },
-  "themeNinja": "ตั้งล่วงหน้า",
-  "@themeNinja": {
-    "description": "Ninja",
+  "themeDefault": "ตั้งล่วงหน้า",
+  "@themeDefault": {
+    "description": "Default theme",
     "type": "text",
     "placeholders": {}
   },
-  "themeNinjaDark": "เขียวเข้ม",
-  "@themeNinjaDark": {
-    "description": "Ninja Dark",
+  "themeDarkGreen": "เขียวเข้ม",
+  "@themeDarkGreen": {
+    "description": "Dark green",
     "type": "text",
     "placeholders": {}
   }

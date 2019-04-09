@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2019-04-09T00:20:44.770649",
+  "@@last_modified": "2019-04-09T08:36:23.503745",
   "splashTitle": "TODO Application",
   "@splashTitle": {
     "description": "The title of application",
@@ -78,15 +78,15 @@
     "type": "text",
     "placeholders": {}
   },
-  "themeNinja": "Ninja",
-  "@themeNinja": {
-    "description": "Ninja",
+  "themeDefault": "Default",
+  "@themeDefault": {
+    "description": "Default theme",
     "type": "text",
     "placeholders": {}
   },
-  "themeNinjaDark": "Ninja Dark",
-  "@themeNinjaDark": {
-    "description": "Ninja Dark",
+  "themeDarkGreen": "Dark green",
+  "@themeDarkGreen": {
+    "description": "Dark green",
     "type": "text",
     "placeholders": {}
   }

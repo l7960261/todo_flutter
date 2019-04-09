@@ -24,9 +24,9 @@ class AppThemes {
     return _themeList.keys.map((key) {
       switch (key) {
         case defaultTheme:
-          return ThemeSetting(key, AppLocalization.of(context).themeNinja);
+          return ThemeSetting(key, AppLocalization.of(context).themeDefault);
         case 'ninjaDark':
-          return ThemeSetting(key, AppLocalization.of(context).themeNinjaDark);
+          return ThemeSetting(key, AppLocalization.of(context).themeDarkGreen);
       }
     }).toList();
   }

@@ -32,8 +32,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "peferences" : MessageLookupByLibrary.simpleMessage("Sở thích"),
     "splashTitle" : MessageLookupByLibrary.simpleMessage("Ứng dụng TODO"),
     "theme" : MessageLookupByLibrary.simpleMessage("Chủ đề"),
-    "themeNinja" : MessageLookupByLibrary.simpleMessage("Đặt trước"),
-    "themeNinjaDark" : MessageLookupByLibrary.simpleMessage("Màu xanh đậm"),
+    "themeDarkGreen" : MessageLookupByLibrary.simpleMessage("Màu xanh đậm"),
+    "themeDefault" : MessageLookupByLibrary.simpleMessage("Đặt trước"),
     "userNamePlaceholder" : MessageLookupByLibrary.simpleMessage("Vui lòng nhập tên người dùng")
   };
 }

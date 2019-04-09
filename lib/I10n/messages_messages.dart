@@ -32,8 +32,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "peferences" : MessageLookupByLibrary.simpleMessage("Preferences"),
     "splashTitle" : MessageLookupByLibrary.simpleMessage("TODO Application"),
     "theme" : MessageLookupByLibrary.simpleMessage("Theme"),
-    "themeNinja" : MessageLookupByLibrary.simpleMessage("Ninja"),
-    "themeNinjaDark" : MessageLookupByLibrary.simpleMessage("Ninja Dark"),
+    "themeDarkGreen" : MessageLookupByLibrary.simpleMessage("Dark green"),
+    "themeDefault" : MessageLookupByLibrary.simpleMessage("Default"),
     "userNamePlaceholder" : MessageLookupByLibrary.simpleMessage("Please enter username")
   };
 }

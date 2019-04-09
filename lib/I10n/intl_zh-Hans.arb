@@ -78,15 +78,15 @@
     "type": "text",
     "placeholders": {}
   },
-  "themeNinja": "预设",
-  "@themeNinja": {
-    "description": "Ninja",
+  "themeDefault": "预设",
+  "@themeDefault": {
+    "description": "Default theme",
     "type": "text",
     "placeholders": {}
   },
-  "themeNinjaDark": "墨绿",
-  "@themeNinjaDark": {
-    "description": "Ninja Dark",
+  "themeDarkGreen": "墨绿",
+  "@themeDarkGreen": {
+    "description": "Dark green",
     "type": "text",
     "placeholders": {}
   }
