@@ -34,35 +34,98 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text(title)),
         drawer: AppDrawer(),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Text(
-                'You have pushed the button this many times:',
-              ),
-              Text(
-                '$counter',
-                style: TextStyle(fontSize: AppFontSizes.medium),
-              )
-            ],
-          ),
-        ),
-        floatingActionButton: StoreConnector<AppState, VoidCallback>(
-          builder: (BuildContext context, VoidCallback callback) {
-            return FloatingActionButton(
-              onPressed: callback,
-              tooltip: 'Increment',
-              child: Icon(Icons.add),
-            );
-          },
-          converter: (Store<AppState> store) {
-            return () {
-              store.dispatch(IncreaseAction());
-            };
-          },
+        body: CustomScrollView(
+          slivers: <Widget>[
+            SliverAppBar(
+              expandedHeight: MediaQuery.of(context).size.height / 5,
+              floating: false,
+              actions: <Widget>[],
+              flexibleSpace: FlexibleSpaceBar(
+                  title: Text('Flexible Space Bar'),
+                  background: Stack(
+                    fit: StackFit.expand,
+                    children: <Widget>[
+                      DecoratedBox(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: <Color>[
+                              Theme.of(context).primaryColorLight,
+                              Theme.of(context).primaryColor,
+                              Theme.of(context).primaryColorDark
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  )),
+            ),
+            SliverList(
+              delegate: SliverChildListDelegate(<Widget>[
+                SizedBox(
+                    height: 50.0,
+                    child: Container(
+                        padding: EdgeInsets.all(16.0),
+                        child: Text(
+                          'G Coins',
+                          style: TextStyle(fontSize: AppFontSizes.medium),
+                        ))),
+                Container(
+                    height: MediaQuery.of(context).size.height / 10,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: <Widget>[
+                        Expanded(
+                            child: Container(
+                          height: MediaQuery.of(context).size.height / 10,
+                          margin: EdgeInsets.all(8),
+                          child: Card(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                Text('\$'),
+                                Text(
+                                  '$counter',
+                                  style: TextStyle(
+                                      fontSize: AppFontSizes.largestc),
+                                )
+                              ],
+                            ),
+                          ),
+                        )),
+                        Expanded(
+                            child: Container(
+                          height: MediaQuery.of(context).size.height / 10,
+                          margin: EdgeInsets.all(8),
+                          child: Card(
+                              child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              StoreConnector<AppState, VoidCallback>(builder:
+                                  (BuildContext context,
+                                      VoidCallback callback) {
+                                return FloatingActionButton(
+                                    mini: true,
+                                    onPressed: callback,
+                                    child: Icon(Icons.add));
+                              }, converter: (Store<AppState> store) {
+                                return () {
+                                  store.dispatch(IncreaseAction());
+                                };
+                              })
+                            ],
+                          )),
+                        ))
+                      ],
+                    )),
+                SizedBox(height: 200, child: Center(child: Text('Sized box'))),
+                SizedBox(height: 200, child: Center(child: Text('Sized box'))),
+                SizedBox(height: 200, child: Center(child: Text('Sized box'))),
+              ]),
+            )
+          ],
         ));
   }
 }
