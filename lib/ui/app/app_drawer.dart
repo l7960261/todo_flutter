@@ -27,17 +27,19 @@ class AppDrawer extends StatelessWidget {
 
     return Drawer(
       child: ListView(
+        padding: EdgeInsets.zero,
         children: <Widget>[
           UserAccountsDrawerHeader(
               accountName: Text(accountName),
               accountEmail: Text(accountEmail),
               currentAccountPicture: CircleAvatar(
                   backgroundImage: NetworkImage(
-                      'https://slack-files2.s3-us-west-2.amazonaws.com/avatars/2017-12-19/288981919427_f45f04edd92902a96859_512.png')),
+                      'https://cdn0.iconfinder.com/data/icons/free-social-media-set/24/github-256.png')),
               otherAccountsPictures: <Widget>[
                 Container(
                     child: Image.network(
-                        'https://is5-ssl.mzstatic.com/image/thumb/Purple117/v4/1a/2f/3e/1a2f3e59-4ad1-13f0-8d82-5753eb25cba3/mzl.wofpkenf.jpg/246x0w.jpg'))
+                        'https://cdn2.iconfinder.com/data/icons/font-awesome/1792/qrcode-256.png',
+                        color: Colors.white,))
               ]),
           ListTile(
               leading: Text(

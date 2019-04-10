@@ -18,7 +18,7 @@ List<Middleware<AppState>> createStorePersistenceMiddleware(
   final loadState = _createLoadState(authRepository, systemRepository);
   final userLoggedIn = _createUserLoggedIn(authRepository);
   final deleteState = _createDeleteState(authRepository);
-  final dataLoaded = _createDataLoaded();
+  final dataLoaded = _createDataLoaded(systemRepository);
 
   return [
     TypedMiddleware<AppState, LoadStateRequest>(loadState),
@@ -69,7 +69,7 @@ Middleware<AppState> _createDeleteState(PersistenceRepository authRepository) {
   };
 }
 
-Middleware<AppState> _createDataLoaded() {
+Middleware<AppState> _createDataLoaded(PersistenceRepository systemRepository) {
   return (Store<AppState> store, action, NextDispatcher next) async {
     print('載入會員資訊完畢');
     final account = action.data;
@@ -77,5 +77,7 @@ Middleware<AppState> _createDataLoaded() {
 
     action.completer.complete(null);
     next(action);
+
+    systemRepository.saveSystemState(store.state.systemState);
   };
 }
