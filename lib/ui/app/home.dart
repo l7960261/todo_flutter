@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:todo_flutter/localization.dart';
-import 'package:todo_flutter/redux/app/app_actions.dart';
 import 'package:todo_flutter/redux/app/app_state.dart';
 import 'package:todo_flutter/utils/styles.dart';
 import 'package:todo_flutter/ui/app/app_drawer.dart';
