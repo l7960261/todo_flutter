@@ -40,7 +40,7 @@ class AppDrawer extends StatelessWidget {
                 Container(
                     child: Image.network(
                         'https://cdn2.iconfinder.com/data/icons/font-awesome/1792/qrcode-256.png',
-                        color: Colors.white,))
+                        color: Colors.white))
               ]),
           ListTile(
               leading: Text(
