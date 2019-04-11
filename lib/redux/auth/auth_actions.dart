@@ -13,8 +13,11 @@ class LoadStateSuccess {
 }
 
 class UserLoginSuccess {
-  final String account;
-  UserLoginSuccess(this.account);
+  final String name;
+  final String email;
+  final String picture;
+  final String qrCode;
+  UserLoginSuccess({this.name, this.email, this.picture, this.qrCode});
 }
 
 class UserLogout {}

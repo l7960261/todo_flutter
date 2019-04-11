@@ -71,9 +71,12 @@ Middleware<AppState> _createDeleteState(PersistenceRepository authRepository) {
 
 Middleware<AppState> _createDataLoaded(PersistenceRepository systemRepository) {
   return (Store<AppState> store, action, NextDispatcher next) async {
-    print('載入會員資訊完畢');
-    final account = action.data;
-    store.dispatch(UserLoginSuccess(account));
+    final dynamic data = action.data;
+    store.dispatch(UserLoginSuccess(
+        name: data.name,
+        email: data.email,
+        picture: data.picture,
+        qrCode: data.qr));
 
     action.completer.complete(null);
     next(action);

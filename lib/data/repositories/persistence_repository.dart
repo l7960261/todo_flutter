@@ -17,7 +17,9 @@ class PersistenceRepository {
   const PersistenceRepository({@required this.fileStorage});
 
   Future<File> saveAuthState(AuthState state) async {
-    final data = serializers.serializeWith(AuthState.serializer, state);
+    final stateWithoutSecret = state.rebuild((b) => b..secret = '');
+    final data =
+        serializers.serializeWith(AuthState.serializer, stateWithoutSecret);
     return await fileStorage.save(json.encode(data));
   }
 

@@ -15,8 +15,7 @@ class HomeScreen extends StatelessWidget {
         builder: (BuildContext context, AppState state) {
       return Home(
           title: AppLocalization.of(context).homeTitle,
-          counter: state.homeState.counter,
-          account: state.authState.account);
+          counter: state.homeState.counter);
     }, converter: (Store<AppState> store) {
       return store.state;
     });
@@ -26,9 +25,8 @@ class HomeScreen extends StatelessWidget {
 class Home extends StatelessWidget {
   final String title;
   final int counter;
-  final String account;
 
-  Home({Key key, this.title, this.counter, this.account}) : super(key: key);
+  Home({Key key, this.title, this.counter}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

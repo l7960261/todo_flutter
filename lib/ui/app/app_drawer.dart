@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
-import 'package:todo_flutter/data/models/language_model.dart';
+import 'package:todo_flutter/data/models/models.dart';
 import 'package:todo_flutter/localization.dart';
 import 'package:todo_flutter/redux/app/app_state.dart';
 import 'package:todo_flutter/redux/auth/auth_actions.dart';
@@ -15,8 +15,11 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Store<AppState> store = StoreProvider.of<AppState>(context);
-    final accountName = store.state.authState.account;
-    final accountEmail = '$accountName@xxx.com';
+    final authState = store.state.authState;
+    final accountName = authState.name;
+    final accountEmail = authState.email;
+    final picture = authState.picture;
+    final qrCode = authState.qrCode;
     final langMap = store.state.systemState.languageMap.toList();
     final languageSelectedCallback = (String languageCode) {
       store.dispatch(ChangeLanguage(languageCode));
@@ -33,14 +36,10 @@ class AppDrawer extends StatelessWidget {
           UserAccountsDrawerHeader(
               accountName: Text(accountName),
               accountEmail: Text(accountEmail),
-              currentAccountPicture: CircleAvatar(
-                  backgroundImage: NetworkImage(
-                      'https://cdn0.iconfinder.com/data/icons/free-social-media-set/24/github-256.png')),
+              currentAccountPicture:
+                  CircleAvatar(backgroundImage: NetworkImage(picture)),
               otherAccountsPictures: <Widget>[
-                Container(
-                    child: Image.network(
-                        'https://cdn2.iconfinder.com/data/icons/font-awesome/1792/qrcode-256.png',
-                        color: Colors.white))
+                Container(child: Image.network(qrCode, color: Colors.white))
               ]),
           ListTile(
               leading: Text(

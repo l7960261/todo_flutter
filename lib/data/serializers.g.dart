@@ -11,6 +11,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(AuthState.serializer)
       ..add(HomeState.serializer)
       ..add(LanguageEntity.serializer)
+      ..add(LoginResponseData.serializer)
       ..add(SystemState.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(LanguageEntity)]),

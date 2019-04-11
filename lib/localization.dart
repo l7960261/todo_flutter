@@ -2,7 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:todo_flutter/I10n/messages_all.dart';
-import 'package:todo_flutter/data/models/language_model.dart';
+import 'package:todo_flutter/data/models/models.dart';
 import 'package:todo_flutter/utils/constants.dart';
 
 class AppLocalization {

@@ -15,6 +15,7 @@ This project is a starting point for a Flutter application.
 - [path_provider](https://pub.dartlang.org/packages/path_provider)
 - [intl](https://pub.dartlang.org/packages/intl)
 - [shared_preferences](https://pub.dartlang.org/packages/shared_preferences)
+- [dio](https://pub.dartlang.org/packages/dio)
 
 ## devDependency
 
@@ -32,6 +33,7 @@ This project is a starting point for a Flutter application.
 - [Dart’s built_value for Serialization](https://medium.com/dartlang/darts-built-value-for-serialization-f5db9d0f4159)
 - [译 在 Flutter 中解析复杂的 JSON](https://juejin.im/post/5b5d782ae51d45191c7e7fb3#heading-5)
 - [Internation­alizing Flutter apps](https://flutter.dev/docs/development/accessibility-and-localization/internationalization)
+- [Flutter数据存储之shared_preferences](https://juejin.im/post/5bab0e06f265da0a972e2417)
 
 ## Command
 

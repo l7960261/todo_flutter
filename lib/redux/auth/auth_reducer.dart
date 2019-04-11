@@ -10,15 +10,22 @@ final Reducer<AuthState> authStateReducer = combineReducers<AuthState>([
 
 AuthState userLogoutReducer(AuthState authState, UserLogout action) =>
     authState.rebuild((b) => b
-      ..account = ''
+      ..name = ''
+      ..email = ''
+      ..secret = ''
+      ..picture = ''
+      ..qrCode = ''
       ..isAuthenticated = false);
 
 AuthState userLoginRequestReducer(
         AuthState authState, UserLoginRequest action) =>
-    authState.rebuild((b) => b..account = action.account);
+    authState.rebuild((b) => b..name = action.account);
 
 AuthState userLoginSuccessReducer(
         AuthState authState, UserLoginSuccess action) =>
     authState.rebuild((b) => b
-      ..account = action.account
+      ..name = action.name
+      ..email = action.email
+      ..picture = action.picture
+      ..qrCode = action.qrCode
       ..isAuthenticated = true);
