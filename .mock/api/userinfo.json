@@ -2,5 +2,6 @@
   "email": "tester@flutter.com",
   "name": "tester",
   "picture": "https://raw.githubusercontent.com/l7960261/todo_flutter/master/.mock/res/user_pic.png",
-  "qr": "https://raw.githubusercontent.com/l7960261/todo_flutter/master/.mock/res/user_qr.png"
+  "qr": "https://raw.githubusercontent.com/l7960261/todo_flutter/master/.mock/res/user_qr.png",
+  "secret": "sdjfghfdjklguerljkbjoe"
 }
