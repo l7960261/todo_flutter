@@ -13,8 +13,6 @@ class AuthRepository {
     final dynamic response = await webClient.get(
         'https://raw.githubusercontent.com/l7960261/todo_flutter/master/.mock/api/userinfo.json');
 
-    print('login response: $response');
-
     final LoginResponseData loginResponse =
         serializers.deserializeWith(LoginResponseData.serializer, response);
 
