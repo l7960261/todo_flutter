@@ -2,6 +2,13 @@
 
 A new Flutter project.
 
+## Run with devlopment/production environment
+
+```
+flutter run -t lib/main_dev.dart
+flutter run -t lib/main_prod.dart
+```
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
@@ -16,6 +23,7 @@ This project is a starting point for a Flutter application.
 - [intl](https://pub.dartlang.org/packages/intl)
 - [shared_preferences](https://pub.dartlang.org/packages/shared_preferences)
 - [dio](https://pub.dartlang.org/packages/dio)
+- [flutter_dotenv](https://pub.dartlang.org/packages/flutter_dotenv)
 
 ## devDependency
 
@@ -34,6 +42,7 @@ This project is a starting point for a Flutter application.
 - [译 在 Flutter 中解析复杂的 JSON](https://juejin.im/post/5b5d782ae51d45191c7e7fb3#heading-5)
 - [Internation­alizing Flutter apps](https://flutter.dev/docs/development/accessibility-and-localization/internationalization)
 - [Flutter数据存储之shared_preferences](https://juejin.im/post/5bab0e06f265da0a972e2417)
+- [Separating build environments in Flutter apps](https://iirokrankka.com/2018/03/02/separating-build-environments/)
 
 ## Command
 
@@ -43,12 +52,9 @@ This project is a starting point for a Flutter application.
 flutter packages pub run build_runner build
 ```
 
-- Rebuild I10n/messages_all.dart
+- Update translations:
 
 ```
 flutter packages pub run intl_translation:extract_to_arb --output-dir=lib/I10n lib/localization.dart
-```
-
-```
 flutter packages pub run intl_translation:generate_from_arb --output-dir=lib/I10n --no-use-deferred-loading lib/I10n/intl_*.arb lib/localization.dart
 ```

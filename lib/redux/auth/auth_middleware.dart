@@ -22,7 +22,7 @@ void _saveAuthLocal(dynamic data) async {
 
 Middleware<AppState> _createLoginRequest(AuthRepository repository) {
   return (Store<AppState> store, action, NextDispatcher next) {
-    repository.login(action.account, action.password).then((data) {
+    repository.login(action.account, action.password, action.url).then((data) {
       _saveAuthLocal(data);
       store.dispatch(LoadDataSuccess(completer: action.completer, data: data));
     });

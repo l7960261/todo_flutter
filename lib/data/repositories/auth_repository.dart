@@ -9,9 +9,9 @@ class AuthRepository {
 
   const AuthRepository({this.webClient = const WebClient()});
 
-  Future<LoginResponseData> login(String account, String password) async {
-    final dynamic response = await webClient.get(
-        'https://raw.githubusercontent.com/l7960261/todo_flutter/master/.mock/api/userinfo.json');
+  Future<LoginResponseData> login(
+      String account, String password, String url) async {
+    final dynamic response = await webClient.get(url);
 
     final LoginResponseData loginResponse =
         serializers.deserializeWith(LoginResponseData.serializer, response);

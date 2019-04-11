@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:redux_logging/redux_logging.dart';
@@ -18,7 +19,13 @@ import 'package:todo_flutter/redux/app/app_reducer.dart';
 import 'package:todo_flutter/routes.dart';
 
 void main() async {
-  final store = Store<AppState>(appReducer,
+  await DotEnv().load('assets/.dev.env');
+
+  runApp(ReduxApp());
+}
+
+class ReduxApp extends StatelessWidget {
+  final Store<AppState> store = Store<AppState>(appReducer,
       initialState: AppState(),
       middleware: []
         ..addAll(createStorePersistenceMiddleware())
@@ -26,13 +33,7 @@ void main() async {
         ..addAll(createStoreSystemMiddleware())
         ..addAll([LoggingMiddleware.printer()]));
 
-  runApp(ReduxApp(store: store));
-}
-
-class ReduxApp extends StatelessWidget {
-  final Store<AppState> store;
-
-  ReduxApp({this.store});
+  ReduxApp();
 
   @override
   Widget build(BuildContext context) {

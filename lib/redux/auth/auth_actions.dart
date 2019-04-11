@@ -6,8 +6,9 @@ class UserLoginRequest {
   final Completer completer;
   final String account;
   final String password;
+  final String url;
 
-  UserLoginRequest({this.completer, this.account, this.password});
+  UserLoginRequest({this.completer, this.account, this.password, this.url});
 }
 
 class UserLoginSuccess {

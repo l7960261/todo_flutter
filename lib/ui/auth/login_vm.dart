@@ -1,12 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 import 'package:todo_flutter/redux/app/app_state.dart';
 import 'package:todo_flutter/redux/auth/auth_actions.dart';
 import 'package:todo_flutter/routes.dart';
 import 'package:todo_flutter/ui/auth/login.dart';
+import 'package:todo_flutter/utils/constants.dart';
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key key}) : super(key: key);
@@ -30,10 +32,12 @@ class LoginVM {
     return LoginVM(onLoginPressed:
         (BuildContext context, String userName, String password) {
       final Completer<Null> completer = Completer<Null>();
+      final loginUrl = DotEnv().env['API_HOST'] + APIPath.login;
       store.dispatch(UserLoginRequest(
           completer: completer,
           account: userName.trim(),
-          password: password.trim()));
+          password: password.trim(),
+          url: loginUrl));
 
       completer.future.then((_) {
         Navigator.of(context).pushReplacementNamed(AppRoutes.home);
