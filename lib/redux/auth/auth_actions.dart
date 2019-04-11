@@ -17,7 +17,9 @@ class UserLoginSuccess {
   final String email;
   final String picture;
   final String qrCode;
-  UserLoginSuccess({this.name, this.email, this.picture, this.qrCode});
+  final String secret;
+  UserLoginSuccess(
+      {this.name, this.email, this.picture, this.qrCode, this.secret});
 }
 
 class UserLogout {}

@@ -76,7 +76,8 @@ Middleware<AppState> _createDataLoaded(PersistenceRepository systemRepository) {
         name: data.name,
         email: data.email,
         picture: data.picture,
-        qrCode: data.qr));
+        qrCode: data.qr,
+        secret: data.secret));
 
     action.completer.complete(null);
     next(action);

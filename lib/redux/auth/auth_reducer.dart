@@ -28,4 +28,5 @@ AuthState userLoginSuccessReducer(
       ..email = action.email
       ..picture = action.picture
       ..qrCode = action.qrCode
+      ..secret = action.secret
       ..isAuthenticated = true);

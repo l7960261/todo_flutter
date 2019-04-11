@@ -30,6 +30,9 @@ class _$LoginResponseDataSerializer
           specifiedType: const FullType(String)),
       'qr',
       serializers.serialize(object.qr, specifiedType: const FullType(String)),
+      'secret',
+      serializers.serialize(object.secret,
+          specifiedType: const FullType(String)),
     ];
 
     return result;
@@ -62,6 +65,10 @@ class _$LoginResponseDataSerializer
           result.qr = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
+        case 'secret':
+          result.secret = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
       }
     }
 
@@ -78,11 +85,14 @@ class _$LoginResponseData extends LoginResponseData {
   final String picture;
   @override
   final String qr;
+  @override
+  final String secret;
 
   factory _$LoginResponseData([void updates(LoginResponseDataBuilder b)]) =>
       (new LoginResponseDataBuilder()..update(updates)).build();
 
-  _$LoginResponseData._({this.email, this.name, this.picture, this.qr})
+  _$LoginResponseData._(
+      {this.email, this.name, this.picture, this.qr, this.secret})
       : super._() {
     if (email == null) {
       throw new BuiltValueNullFieldError('LoginResponseData', 'email');
@@ -95,6 +105,9 @@ class _$LoginResponseData extends LoginResponseData {
     }
     if (qr == null) {
       throw new BuiltValueNullFieldError('LoginResponseData', 'qr');
+    }
+    if (secret == null) {
+      throw new BuiltValueNullFieldError('LoginResponseData', 'secret');
     }
   }
 
@@ -113,14 +126,16 @@ class _$LoginResponseData extends LoginResponseData {
         email == other.email &&
         name == other.name &&
         picture == other.picture &&
-        qr == other.qr;
+        qr == other.qr &&
+        secret == other.secret;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, email.hashCode), name.hashCode), picture.hashCode),
-        qr.hashCode));
+        $jc($jc($jc($jc(0, email.hashCode), name.hashCode), picture.hashCode),
+            qr.hashCode),
+        secret.hashCode));
   }
 
   @override
@@ -129,7 +144,8 @@ class _$LoginResponseData extends LoginResponseData {
           ..add('email', email)
           ..add('name', name)
           ..add('picture', picture)
-          ..add('qr', qr))
+          ..add('qr', qr)
+          ..add('secret', secret))
         .toString();
   }
 }
@@ -154,6 +170,10 @@ class LoginResponseDataBuilder
   String get qr => _$this._qr;
   set qr(String qr) => _$this._qr = qr;
 
+  String _secret;
+  String get secret => _$this._secret;
+  set secret(String secret) => _$this._secret = secret;
+
   LoginResponseDataBuilder();
 
   LoginResponseDataBuilder get _$this {
@@ -162,6 +182,7 @@ class LoginResponseDataBuilder
       _name = _$v.name;
       _picture = _$v.picture;
       _qr = _$v.qr;
+      _secret = _$v.secret;
       _$v = null;
     }
     return this;
@@ -184,7 +205,7 @@ class LoginResponseDataBuilder
   _$LoginResponseData build() {
     final _$result = _$v ??
         new _$LoginResponseData._(
-            email: email, name: name, picture: picture, qr: qr);
+            email: email, name: name, picture: picture, qr: qr, secret: secret);
     replace(_$result);
     return _$result;
   }

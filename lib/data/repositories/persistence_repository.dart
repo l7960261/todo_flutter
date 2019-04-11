@@ -25,8 +25,11 @@ class PersistenceRepository {
 
   Future<AuthState> loadAuthState() async {
     final data = await fileStorage.load();
-    return await serializers.deserializeWith(
-        AuthState.serializer, json.decode(data));
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    final String secret = prefs.getString(kKeychainSecret) ?? '';
+    final authState =
+        serializers.deserializeWith(AuthState.serializer, json.decode(data));
+    return authState.rebuild((b) => b..secret = secret);
   }
 
   Future<File> saveSystemState(SystemState state) async {

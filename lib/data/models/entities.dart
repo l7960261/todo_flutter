@@ -13,6 +13,7 @@ abstract class LoginResponseData
   String get name;
   String get picture;
   String get qr;
+  String get secret;
 
   static Serializer<LoginResponseData> get serializer =>
       _$loginResponseDataSerializer;
