@@ -2,7 +2,6 @@ import 'package:redux/redux.dart';
 import 'package:todo_flutter/redux/app/app_actions.dart';
 import 'package:todo_flutter/redux/app/app_state.dart';
 import 'package:todo_flutter/redux/app/home_state.dart';
-import 'package:todo_flutter/redux/auth/auth_actions.dart';
 import 'package:todo_flutter/redux/auth/auth_reducer.dart';
 import 'package:todo_flutter/redux/system/system_reducer.dart';
 

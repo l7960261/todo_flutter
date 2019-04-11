@@ -13,8 +13,6 @@ AuthState userLogoutReducer(AuthState authState, UserLogout action) =>
       ..name = ''
       ..email = ''
       ..secret = ''
-      ..picture = ''
-      ..qrCode = ''
       ..isAuthenticated = false);
 
 AuthState userLoginRequestReducer(
