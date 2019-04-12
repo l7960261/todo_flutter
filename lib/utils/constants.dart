@@ -7,6 +7,7 @@ const List<String> kLanguages = ['en', 'zh-Hans', 'th', 'vi'];
 
 const String kKeychainSecret = 'secret';
 
-class APIPath {
-  static const String login = '/l7960261/todo_flutter/master/.mock/api/userinfo.json';
+class APIPoints {
+  static const String login =
+      '/l7960261/todo_flutter/master/.mock/api/userinfo.json';
 }

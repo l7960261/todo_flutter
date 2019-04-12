@@ -32,7 +32,7 @@ class LoginVM {
     return LoginVM(onLoginPressed:
         (BuildContext context, String userName, String password) {
       final Completer<Null> completer = Completer<Null>();
-      final loginUrl = DotEnv().env['API_HOST'] + APIPath.login;
+      final loginUrl = DotEnv().env['API_HOST'] + APIPoints.login;
       store.dispatch(UserLoginRequest(
           completer: completer,
           account: userName.trim(),
