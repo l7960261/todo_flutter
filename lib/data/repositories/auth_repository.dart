@@ -11,7 +11,8 @@ class AuthRepository {
 
   Future<LoginResponseData> login(
       String account, String password, String url) async {
-    final dynamic response = await webClient.get(url);
+    final dynamic response =
+        await webClient.post(url, {account: account, password: password});
 
     final LoginResponseData loginResponse =
         serializers.deserializeWith(LoginResponseData.serializer, response);
