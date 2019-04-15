@@ -7,6 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:todo_flutter/data/serializers.dart';
 import 'package:todo_flutter/redux/auth/auth_state.dart';
 import 'package:todo_flutter/redux/system/system_state.dart';
+import 'package:todo_flutter/redux/ui/ui_state.dart';
 import 'package:todo_flutter/utils/constants.dart';
 import 'package:todo_flutter/utils/file_storage.dart';
 import 'package:todo_flutter/utils/themes.dart';
@@ -54,6 +55,16 @@ class PersistenceRepository {
     return systemState.rebuild((b) => b
       ..curLanguage = curLanguage
       ..curTheme = curTheme);
+  }
+
+  Future<File> saveUIState(UIState state) async {
+    final data = serializers.serializeWith(UIState.serializer, state);
+    return await fileStorage.save(json.encode(data));
+  }
+
+  Future<UIState> loadUIState() async {
+    final String data = await fileStorage.load();
+    return serializers.deserializeWith(UIState.serializer, json.decode(data));
   }
 
   Future<FileSystemEntity> delete() async {

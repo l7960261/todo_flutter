@@ -21,12 +21,12 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
       'authState',
       serializers.serialize(object.authState,
           specifiedType: const FullType(AuthState)),
-      'homeState',
-      serializers.serialize(object.homeState,
-          specifiedType: const FullType(HomeState)),
       'systemState',
       serializers.serialize(object.systemState,
           specifiedType: const FullType(SystemState)),
+      'dashboradState',
+      serializers.serialize(object.dashboradState,
+          specifiedType: const FullType(DashboardState)),
     ];
 
     return result;
@@ -47,13 +47,13 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
           result.authState.replace(serializers.deserialize(value,
               specifiedType: const FullType(AuthState)) as AuthState);
           break;
-        case 'homeState':
-          result.homeState.replace(serializers.deserialize(value,
-              specifiedType: const FullType(HomeState)) as HomeState);
-          break;
         case 'systemState':
           result.systemState.replace(serializers.deserialize(value,
               specifiedType: const FullType(SystemState)) as SystemState);
+          break;
+        case 'dashboradState':
+          result.dashboradState.replace(serializers.deserialize(value,
+              specifiedType: const FullType(DashboardState)) as DashboardState);
           break;
       }
     }
@@ -66,22 +66,23 @@ class _$AppState extends AppState {
   @override
   final AuthState authState;
   @override
-  final HomeState homeState;
-  @override
   final SystemState systemState;
+  @override
+  final DashboardState dashboradState;
 
   factory _$AppState([void updates(AppStateBuilder b)]) =>
       (new AppStateBuilder()..update(updates)).build();
 
-  _$AppState._({this.authState, this.homeState, this.systemState}) : super._() {
+  _$AppState._({this.authState, this.systemState, this.dashboradState})
+      : super._() {
     if (authState == null) {
       throw new BuiltValueNullFieldError('AppState', 'authState');
     }
-    if (homeState == null) {
-      throw new BuiltValueNullFieldError('AppState', 'homeState');
-    }
     if (systemState == null) {
       throw new BuiltValueNullFieldError('AppState', 'systemState');
+    }
+    if (dashboradState == null) {
+      throw new BuiltValueNullFieldError('AppState', 'dashboradState');
     }
   }
 
@@ -97,22 +98,22 @@ class _$AppState extends AppState {
     if (identical(other, this)) return true;
     return other is AppState &&
         authState == other.authState &&
-        homeState == other.homeState &&
-        systemState == other.systemState;
+        systemState == other.systemState &&
+        dashboradState == other.dashboradState;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, authState.hashCode), homeState.hashCode),
-        systemState.hashCode));
+    return $jf($jc($jc($jc(0, authState.hashCode), systemState.hashCode),
+        dashboradState.hashCode));
   }
 
   @override
   String toString() {
     return (newBuiltValueToStringHelper('AppState')
           ..add('authState', authState)
-          ..add('homeState', homeState)
-          ..add('systemState', systemState))
+          ..add('systemState', systemState)
+          ..add('dashboradState', dashboradState))
         .toString();
   }
 }
@@ -125,24 +126,25 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _$this._authState ??= new AuthStateBuilder();
   set authState(AuthStateBuilder authState) => _$this._authState = authState;
 
-  HomeStateBuilder _homeState;
-  HomeStateBuilder get homeState =>
-      _$this._homeState ??= new HomeStateBuilder();
-  set homeState(HomeStateBuilder homeState) => _$this._homeState = homeState;
-
   SystemStateBuilder _systemState;
   SystemStateBuilder get systemState =>
       _$this._systemState ??= new SystemStateBuilder();
   set systemState(SystemStateBuilder systemState) =>
       _$this._systemState = systemState;
 
+  DashboardStateBuilder _dashboradState;
+  DashboardStateBuilder get dashboradState =>
+      _$this._dashboradState ??= new DashboardStateBuilder();
+  set dashboradState(DashboardStateBuilder dashboradState) =>
+      _$this._dashboradState = dashboradState;
+
   AppStateBuilder();
 
   AppStateBuilder get _$this {
     if (_$v != null) {
       _authState = _$v.authState?.toBuilder();
-      _homeState = _$v.homeState?.toBuilder();
       _systemState = _$v.systemState?.toBuilder();
+      _dashboradState = _$v.dashboradState?.toBuilder();
       _$v = null;
     }
     return this;
@@ -168,17 +170,17 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _$result = _$v ??
           new _$AppState._(
               authState: authState.build(),
-              homeState: homeState.build(),
-              systemState: systemState.build());
+              systemState: systemState.build(),
+              dashboradState: dashboradState.build());
     } catch (_) {
       String _$failedField;
       try {
         _$failedField = 'authState';
         authState.build();
-        _$failedField = 'homeState';
-        homeState.build();
         _$failedField = 'systemState';
         systemState.build();
+        _$failedField = 'dashboradState';
+        dashboradState.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'AppState', _$failedField, e.toString());

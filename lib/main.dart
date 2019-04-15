@@ -6,6 +6,8 @@ import 'package:redux_logging/redux_logging.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:todo_flutter/localization.dart';
 import 'package:todo_flutter/redux/auth/auth_middleware.dart';
+import 'package:todo_flutter/redux/dashboard/dashboard_actions.dart';
+import 'package:todo_flutter/redux/dashboard/dashboard_middleware.dart';
 import 'package:todo_flutter/redux/system/system_middleward.dart';
 import 'package:todo_flutter/redux/system/system_state.dart';
 import 'package:todo_flutter/utils/constants.dart';
@@ -31,6 +33,7 @@ class ReduxApp extends StatelessWidget {
         ..addAll(createStorePersistenceMiddleware())
         ..addAll(createStoreAuthMiddleware())
         ..addAll(createStoreSystemMiddleware())
+        ..addAll(createStoreDashboardMiddleware())
         ..addAll([LoggingMiddleware.printer()]));
 
   ReduxApp();
@@ -60,6 +63,7 @@ class ReduxApp extends StatelessWidget {
                       return NoTransitionRoute(
                           builder: (_) => SplashScreen(), settings: settings);
                     case AppRoutes.home:
+                      store.dispatch(LoadDashboard());
                       return NoTransitionRoute(
                           builder: (_) => HomeScreen(), settings: settings);
                     case AppRoutes.login:

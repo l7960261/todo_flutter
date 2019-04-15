@@ -18,3 +18,21 @@ abstract class LoginResponseData
   static Serializer<LoginResponseData> get serializer =>
       _$loginResponseDataSerializer;
 }
+
+abstract class OrderResponseData
+    implements Built<OrderResponseData, OrderResponseDataBuilder> {
+  factory OrderResponseData([void updates(OrderResponseDataBuilder b)]) =
+      _$OrderResponseData;
+
+  OrderResponseData._();
+
+  @BuiltValueField(wireName: '_id')
+  String get id;
+  String get company;
+  String get img;
+  String get revenue;
+  String get date;
+
+  static Serializer<OrderResponseData> get serializer =>
+      _$orderResponseDataSerializer;
+}

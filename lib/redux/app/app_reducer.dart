@@ -1,8 +1,7 @@
-import 'package:redux/redux.dart';
 import 'package:todo_flutter/redux/app/app_actions.dart';
 import 'package:todo_flutter/redux/app/app_state.dart';
-import 'package:todo_flutter/redux/app/home_state.dart';
 import 'package:todo_flutter/redux/auth/auth_reducer.dart';
+import 'package:todo_flutter/redux/dashboard/dashboard_reducer.dart';
 import 'package:todo_flutter/redux/system/system_reducer.dart';
 
 AppState appReducer(AppState state, dynamic action) {
@@ -12,12 +11,6 @@ AppState appReducer(AppState state, dynamic action) {
 
   return state.rebuild((b) => b
     ..authState.replace(authStateReducer(state.authState, action))
-    ..homeState.replace(homeStateReducer(state.homeState, action))
-    ..systemState.replace(systemStateReducer(state.systemState, action)));
+    ..systemState.replace(systemStateReducer(state.systemState, action))
+    ..dashboradState.replace(dashboardReducer(state.dashboradState, action)));
 }
-
-final Reducer<HomeState> homeStateReducer = combineReducers<HomeState>(
-    [TypedReducer<HomeState, IncreaseAction>(_increase)]);
-
-HomeState _increase(HomeState homeState, IncreaseAction action) =>
-    homeState.rebuild((b) => b..counter = b.counter + 1);

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
+import 'package:todo_flutter/data/models/models.dart';
 import 'package:todo_flutter/localization.dart';
 import 'package:todo_flutter/redux/app/app_state.dart';
+import 'package:todo_flutter/redux/dashboard/dashboard_state.dart';
 import 'package:todo_flutter/utils/styles.dart';
 import 'package:todo_flutter/ui/app/app_drawer.dart';
 
@@ -11,22 +13,23 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<AppState, AppState>(
-        builder: (BuildContext context, AppState state) {
+    return StoreConnector<AppState, DashboardState>(
+        builder: (BuildContext context, DashboardState state) {
       return Home(
-          title: AppLocalization.of(context).homeTitle,
-          counter: state.homeState.counter);
+        title: AppLocalization.of(context).homeTitle,
+        data: state.data?.toList(),
+      );
     }, converter: (Store<AppState> store) {
-      return store.state;
+      return store.state.dashboradState;
     });
   }
 }
 
 class Home extends StatelessWidget {
   final String title;
-  final int counter;
+  final List<OrderResponseData> data;
 
-  Home({Key key, this.title, this.counter}) : super(key: key);
+  Home({Key key, this.title, this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -106,128 +109,56 @@ class Home extends StatelessWidget {
                   )
                 ],
               )),
-              Container(
-                decoration:
-                    BoxDecoration(color: Theme.of(context).backgroundColor),
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 4,
-                padding: EdgeInsets.all(8),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Expanded(child: Text('Angry Bird'), flex: 1),
-                    Expanded(
-                        child: Card(
-                          elevation: 1,
-                          color: Theme.of(context).cardColor,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Container(
-                              padding: EdgeInsets.all(8),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  CircleAvatar(
-                                      radius:
-                                          MediaQuery.of(context).size.width /
-                                              12,
-                                      child: Image.network(
-                                          'https://cdn0.iconfinder.com/data/icons/roundettes-for-os-x-vol-v/512/Angry_Birds-256.png')),
-                                  Text('+5,209',
-                                      style: TextStyle(
-                                          color: Theme.of(context).accentColor,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: AppFontSizes.medium)),
-                                ],
-                              )),
-                        ),
-                        flex: 5)
-                  ],
-                ),
-              ),
-              Container(
-                decoration:
-                    BoxDecoration(color: Theme.of(context).backgroundColor),
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height / 4,
-                padding: EdgeInsets.all(8),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Expanded(child: Text('Pokemon Go'), flex: 1),
-                    Expanded(
-                        child: Card(
-                          elevation: 1,
-                          color: Theme.of(context).cardColor,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                          child: Container(
-                              padding: EdgeInsets.all(8),
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                children: <Widget>[
-                                  CircleAvatar(
-                                      radius:
-                                          MediaQuery.of(context).size.width /
-                                              12,
-                                      child: Image.network(
-                                          'https://cdn0.iconfinder.com/data/icons/pokemon-go-vol-1/135/_charmander-256.png')),
-                                  Text('+9,398',
-                                      style: TextStyle(
-                                          color: Theme.of(context).accentColor,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: AppFontSizes.medium)),
-                                ],
-                              )),
-                        ),
-                        flex: 5)
-                  ],
-                ),
-              ),
-              Container(
-                  decoration:
-                      BoxDecoration(color: Theme.of(context).backgroundColor),
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height / 4,
-                  padding: EdgeInsets.all(8),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Expanded(child: Text('Poke'), flex: 1),
-                      Expanded(
-                          child: Card(
-                            elevation: 1,
-                            color: Theme.of(context).cardColor,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10)),
-                            child: Container(
-                                padding: EdgeInsets.all(8),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
-                                  children: <Widget>[
-                                    CircleAvatar(
-                                        radius:
-                                            MediaQuery.of(context).size.width /
-                                                12,
-                                        child: Image.network(
-                                          'https://cdn1.iconfinder.com/data/icons/CrystalClear/64x64/apps/package_games_card.png',
-                                        )),
-                                    Text('-2,123',
-                                        style: TextStyle(
-                                            color: Theme.of(context).errorColor,
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: AppFontSizes.medium)),
-                                  ],
-                                )),
-                          ),
-                          flex: 5)
-                    ],
-                  ))
-            ],
+            ]..addAll(generatePointCards(context, data)),
           ),
         ));
+  }
+
+  List<Widget> generatePointCards(
+      BuildContext context, List<OrderResponseData> orders) {
+    if (orders == null) {
+      return [];
+    }
+
+    return orders.map((order) {
+      return Container(
+          decoration: BoxDecoration(color: Theme.of(context).backgroundColor),
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height / 4,
+          padding: EdgeInsets.all(8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Expanded(child: Text(order.company), flex: 1),
+              Expanded(
+                  child: Card(
+                    elevation: 1,
+                    color: Theme.of(context).cardColor,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10)),
+                    child: Container(
+                        padding: EdgeInsets.all(8),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: <Widget>[
+                            CircleAvatar(
+                                radius: MediaQuery.of(context).size.width / 12,
+                                child: Image.network(
+                                  order.img,
+                                )),
+                            Text(order.revenue,
+                                style: TextStyle(
+                                    color: order.revenue.startsWith('+')
+                                        ? Theme.of(context).accentColor
+                                        : Theme.of(context).errorColor,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: AppFontSizes.medium)),
+                          ],
+                        )),
+                  ),
+                  flex: 5)
+            ],
+          ));
+    }).toList();
   }
 }

@@ -10,4 +10,6 @@ const String kKeychainSecret = 'secret';
 class APIPoints {
   static const String login =
       '/api/json/get/EyaZLGYKI';
+  static const String order = 
+      '/api/json/get/4k_d4rYKI?delay=1000';
 }

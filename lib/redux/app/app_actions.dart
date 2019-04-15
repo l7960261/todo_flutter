@@ -1,8 +1,6 @@
 import 'dart:async';
 import 'package:todo_flutter/redux/app/app_state.dart';
 
-class IncreaseAction {}
-
 class LoadStateRequest {
   final Completer completer;
   LoadStateRequest(this.completer);

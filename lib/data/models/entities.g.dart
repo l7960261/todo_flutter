@@ -8,6 +8,8 @@ part of 'entities.dart';
 
 Serializer<LoginResponseData> _$loginResponseDataSerializer =
     new _$LoginResponseDataSerializer();
+Serializer<OrderResponseData> _$orderResponseDataSerializer =
+    new _$OrderResponseDataSerializer();
 
 class _$LoginResponseDataSerializer
     implements StructuredSerializer<LoginResponseData> {
@@ -67,6 +69,72 @@ class _$LoginResponseDataSerializer
           break;
         case 'secret':
           result.secret = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$OrderResponseDataSerializer
+    implements StructuredSerializer<OrderResponseData> {
+  @override
+  final Iterable<Type> types = const [OrderResponseData, _$OrderResponseData];
+  @override
+  final String wireName = 'OrderResponseData';
+
+  @override
+  Iterable serialize(Serializers serializers, OrderResponseData object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object>[
+      '_id',
+      serializers.serialize(object.id, specifiedType: const FullType(String)),
+      'company',
+      serializers.serialize(object.company,
+          specifiedType: const FullType(String)),
+      'img',
+      serializers.serialize(object.img, specifiedType: const FullType(String)),
+      'revenue',
+      serializers.serialize(object.revenue,
+          specifiedType: const FullType(String)),
+      'date',
+      serializers.serialize(object.date, specifiedType: const FullType(String)),
+    ];
+
+    return result;
+  }
+
+  @override
+  OrderResponseData deserialize(Serializers serializers, Iterable serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new OrderResponseDataBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case '_id':
+          result.id = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'company':
+          result.company = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'img':
+          result.img = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'revenue':
+          result.revenue = serializers.deserialize(value,
+              specifiedType: const FullType(String)) as String;
+          break;
+        case 'date':
+          result.date = serializers.deserialize(value,
               specifiedType: const FullType(String)) as String;
           break;
       }
@@ -206,6 +274,141 @@ class LoginResponseDataBuilder
     final _$result = _$v ??
         new _$LoginResponseData._(
             email: email, name: name, picture: picture, qr: qr, secret: secret);
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$OrderResponseData extends OrderResponseData {
+  @override
+  final String id;
+  @override
+  final String company;
+  @override
+  final String img;
+  @override
+  final String revenue;
+  @override
+  final String date;
+
+  factory _$OrderResponseData([void updates(OrderResponseDataBuilder b)]) =>
+      (new OrderResponseDataBuilder()..update(updates)).build();
+
+  _$OrderResponseData._(
+      {this.id, this.company, this.img, this.revenue, this.date})
+      : super._() {
+    if (id == null) {
+      throw new BuiltValueNullFieldError('OrderResponseData', 'id');
+    }
+    if (company == null) {
+      throw new BuiltValueNullFieldError('OrderResponseData', 'company');
+    }
+    if (img == null) {
+      throw new BuiltValueNullFieldError('OrderResponseData', 'img');
+    }
+    if (revenue == null) {
+      throw new BuiltValueNullFieldError('OrderResponseData', 'revenue');
+    }
+    if (date == null) {
+      throw new BuiltValueNullFieldError('OrderResponseData', 'date');
+    }
+  }
+
+  @override
+  OrderResponseData rebuild(void updates(OrderResponseDataBuilder b)) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  OrderResponseDataBuilder toBuilder() =>
+      new OrderResponseDataBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is OrderResponseData &&
+        id == other.id &&
+        company == other.company &&
+        img == other.img &&
+        revenue == other.revenue &&
+        date == other.date;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc(
+        $jc($jc($jc($jc(0, id.hashCode), company.hashCode), img.hashCode),
+            revenue.hashCode),
+        date.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('OrderResponseData')
+          ..add('id', id)
+          ..add('company', company)
+          ..add('img', img)
+          ..add('revenue', revenue)
+          ..add('date', date))
+        .toString();
+  }
+}
+
+class OrderResponseDataBuilder
+    implements Builder<OrderResponseData, OrderResponseDataBuilder> {
+  _$OrderResponseData _$v;
+
+  String _id;
+  String get id => _$this._id;
+  set id(String id) => _$this._id = id;
+
+  String _company;
+  String get company => _$this._company;
+  set company(String company) => _$this._company = company;
+
+  String _img;
+  String get img => _$this._img;
+  set img(String img) => _$this._img = img;
+
+  String _revenue;
+  String get revenue => _$this._revenue;
+  set revenue(String revenue) => _$this._revenue = revenue;
+
+  String _date;
+  String get date => _$this._date;
+  set date(String date) => _$this._date = date;
+
+  OrderResponseDataBuilder();
+
+  OrderResponseDataBuilder get _$this {
+    if (_$v != null) {
+      _id = _$v.id;
+      _company = _$v.company;
+      _img = _$v.img;
+      _revenue = _$v.revenue;
+      _date = _$v.date;
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(OrderResponseData other) {
+    if (other == null) {
+      throw new ArgumentError.notNull('other');
+    }
+    _$v = other as _$OrderResponseData;
+  }
+
+  @override
+  void update(void updates(OrderResponseDataBuilder b)) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$OrderResponseData build() {
+    final _$result = _$v ??
+        new _$OrderResponseData._(
+            id: id, company: company, img: img, revenue: revenue, date: date);
     replace(_$result);
     return _$result;
   }

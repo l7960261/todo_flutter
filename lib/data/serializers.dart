@@ -4,7 +4,7 @@ import 'package:built_value/standard_json_plugin.dart';
 import 'package:todo_flutter/data/models/models.dart';
 import 'package:todo_flutter/redux/app/app_state.dart';
 import 'package:todo_flutter/redux/auth/auth_state.dart';
-import 'package:todo_flutter/redux/app/home_state.dart';
+import 'package:todo_flutter/redux/dashboard/dashboard_state.dart';
 import 'package:todo_flutter/redux/system/system_state.dart';
 
 part 'serializers.g.dart';

@@ -40,6 +40,7 @@ Middleware<AppState> _createLoadState(PersistenceRepository authRepository,
 
       final AppState appState = AppState().rebuild((b) =>
           b..authState.replace(authState)..systemState.replace(systemState));
+
       store.dispatch(LoadStateSuccess(appState));
     } catch (error) {
       print(error);
