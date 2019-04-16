@@ -10,13 +10,11 @@ class DashboardRepository {
   final WebClient webClient;
   const DashboardRepository({this.webClient = const WebClient()});
 
-  Future<List<OrderResponseData>> loadItem() async {
-    final List<dynamic> response =
-        await webClient.get(DotEnv().env['API_HOST'] + APIPoints.order);
-    print(response);
-    return response
-        .map<OrderResponseData>((dynamic item) =>
-            serializers.deserializeWith(OrderResponseData.serializer, item))
-        .toList();
+  Future<DashboardEntity> loadItem() async {
+    final dynamic response =
+        await webClient.get(DotEnv().env['API_HOST'] + APIPoints.dashboard);
+    final DashboardResponse dashboardResponse =
+        serializers.deserializeWith(DashboardResponse.serializer, response);
+    return dashboardResponse.data;
   }
 }

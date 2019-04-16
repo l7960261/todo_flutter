@@ -8,8 +8,11 @@ part of 'entities.dart';
 
 Serializer<LoginResponseData> _$loginResponseDataSerializer =
     new _$LoginResponseDataSerializer();
-Serializer<OrderResponseData> _$orderResponseDataSerializer =
-    new _$OrderResponseDataSerializer();
+Serializer<DashboardResponse> _$dashboardResponseSerializer =
+    new _$DashboardResponseSerializer();
+Serializer<DashboardEntity> _$dashboardEntitySerializer =
+    new _$DashboardEntitySerializer();
+Serializer<OrderEntity> _$orderEntitySerializer = new _$OrderEntitySerializer();
 
 class _$LoginResponseDataSerializer
     implements StructuredSerializer<LoginResponseData> {
@@ -78,15 +81,106 @@ class _$LoginResponseDataSerializer
   }
 }
 
-class _$OrderResponseDataSerializer
-    implements StructuredSerializer<OrderResponseData> {
+class _$DashboardResponseSerializer
+    implements StructuredSerializer<DashboardResponse> {
   @override
-  final Iterable<Type> types = const [OrderResponseData, _$OrderResponseData];
+  final Iterable<Type> types = const [DashboardResponse, _$DashboardResponse];
   @override
-  final String wireName = 'OrderResponseData';
+  final String wireName = 'DashboardResponse';
 
   @override
-  Iterable serialize(Serializers serializers, OrderResponseData object,
+  Iterable serialize(Serializers serializers, DashboardResponse object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object>[
+      'data',
+      serializers.serialize(object.data,
+          specifiedType: const FullType(DashboardEntity)),
+    ];
+
+    return result;
+  }
+
+  @override
+  DashboardResponse deserialize(Serializers serializers, Iterable serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new DashboardResponseBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case 'data':
+          result.data.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(DashboardEntity))
+              as DashboardEntity);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$DashboardEntitySerializer
+    implements StructuredSerializer<DashboardEntity> {
+  @override
+  final Iterable<Type> types = const [DashboardEntity, _$DashboardEntity];
+  @override
+  final String wireName = 'DashboardEntity';
+
+  @override
+  Iterable serialize(Serializers serializers, DashboardEntity object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object>[
+      'balance',
+      serializers.serialize(object.balance, specifiedType: const FullType(int)),
+      'orders',
+      serializers.serialize(object.orders,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(OrderEntity)])),
+    ];
+
+    return result;
+  }
+
+  @override
+  DashboardEntity deserialize(Serializers serializers, Iterable serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new DashboardEntityBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case 'balance':
+          result.balance = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+        case 'orders':
+          result.orders.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(
+                      BuiltList, const [const FullType(OrderEntity)]))
+              as BuiltList);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
+
+class _$OrderEntitySerializer implements StructuredSerializer<OrderEntity> {
+  @override
+  final Iterable<Type> types = const [OrderEntity, _$OrderEntity];
+  @override
+  final String wireName = 'OrderEntity';
+
+  @override
+  Iterable serialize(Serializers serializers, OrderEntity object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       '_id',
@@ -107,9 +201,9 @@ class _$OrderResponseDataSerializer
   }
 
   @override
-  OrderResponseData deserialize(Serializers serializers, Iterable serialized,
+  OrderEntity deserialize(Serializers serializers, Iterable serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new OrderResponseDataBuilder();
+    final result = new OrderEntityBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -279,7 +373,206 @@ class LoginResponseDataBuilder
   }
 }
 
-class _$OrderResponseData extends OrderResponseData {
+class _$DashboardResponse extends DashboardResponse {
+  @override
+  final DashboardEntity data;
+
+  factory _$DashboardResponse([void updates(DashboardResponseBuilder b)]) =>
+      (new DashboardResponseBuilder()..update(updates)).build();
+
+  _$DashboardResponse._({this.data}) : super._() {
+    if (data == null) {
+      throw new BuiltValueNullFieldError('DashboardResponse', 'data');
+    }
+  }
+
+  @override
+  DashboardResponse rebuild(void updates(DashboardResponseBuilder b)) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  DashboardResponseBuilder toBuilder() =>
+      new DashboardResponseBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is DashboardResponse && data == other.data;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc(0, data.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('DashboardResponse')..add('data', data))
+        .toString();
+  }
+}
+
+class DashboardResponseBuilder
+    implements Builder<DashboardResponse, DashboardResponseBuilder> {
+  _$DashboardResponse _$v;
+
+  DashboardEntityBuilder _data;
+  DashboardEntityBuilder get data =>
+      _$this._data ??= new DashboardEntityBuilder();
+  set data(DashboardEntityBuilder data) => _$this._data = data;
+
+  DashboardResponseBuilder();
+
+  DashboardResponseBuilder get _$this {
+    if (_$v != null) {
+      _data = _$v.data?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(DashboardResponse other) {
+    if (other == null) {
+      throw new ArgumentError.notNull('other');
+    }
+    _$v = other as _$DashboardResponse;
+  }
+
+  @override
+  void update(void updates(DashboardResponseBuilder b)) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$DashboardResponse build() {
+    _$DashboardResponse _$result;
+    try {
+      _$result = _$v ?? new _$DashboardResponse._(data: data.build());
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'data';
+        data.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'DashboardResponse', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$DashboardEntity extends DashboardEntity {
+  @override
+  final int balance;
+  @override
+  final BuiltList<OrderEntity> orders;
+
+  factory _$DashboardEntity([void updates(DashboardEntityBuilder b)]) =>
+      (new DashboardEntityBuilder()..update(updates)).build();
+
+  _$DashboardEntity._({this.balance, this.orders}) : super._() {
+    if (balance == null) {
+      throw new BuiltValueNullFieldError('DashboardEntity', 'balance');
+    }
+    if (orders == null) {
+      throw new BuiltValueNullFieldError('DashboardEntity', 'orders');
+    }
+  }
+
+  @override
+  DashboardEntity rebuild(void updates(DashboardEntityBuilder b)) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  DashboardEntityBuilder toBuilder() =>
+      new DashboardEntityBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is DashboardEntity &&
+        balance == other.balance &&
+        orders == other.orders;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc($jc(0, balance.hashCode), orders.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('DashboardEntity')
+          ..add('balance', balance)
+          ..add('orders', orders))
+        .toString();
+  }
+}
+
+class DashboardEntityBuilder
+    implements Builder<DashboardEntity, DashboardEntityBuilder> {
+  _$DashboardEntity _$v;
+
+  int _balance;
+  int get balance => _$this._balance;
+  set balance(int balance) => _$this._balance = balance;
+
+  ListBuilder<OrderEntity> _orders;
+  ListBuilder<OrderEntity> get orders =>
+      _$this._orders ??= new ListBuilder<OrderEntity>();
+  set orders(ListBuilder<OrderEntity> orders) => _$this._orders = orders;
+
+  DashboardEntityBuilder();
+
+  DashboardEntityBuilder get _$this {
+    if (_$v != null) {
+      _balance = _$v.balance;
+      _orders = _$v.orders?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(DashboardEntity other) {
+    if (other == null) {
+      throw new ArgumentError.notNull('other');
+    }
+    _$v = other as _$DashboardEntity;
+  }
+
+  @override
+  void update(void updates(DashboardEntityBuilder b)) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$DashboardEntity build() {
+    _$DashboardEntity _$result;
+    try {
+      _$result = _$v ??
+          new _$DashboardEntity._(balance: balance, orders: orders.build());
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'orders';
+        orders.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'DashboardEntity', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
+  }
+}
+
+class _$OrderEntity extends OrderEntity {
   @override
   final String id;
   @override
@@ -291,41 +584,39 @@ class _$OrderResponseData extends OrderResponseData {
   @override
   final String date;
 
-  factory _$OrderResponseData([void updates(OrderResponseDataBuilder b)]) =>
-      (new OrderResponseDataBuilder()..update(updates)).build();
+  factory _$OrderEntity([void updates(OrderEntityBuilder b)]) =>
+      (new OrderEntityBuilder()..update(updates)).build();
 
-  _$OrderResponseData._(
-      {this.id, this.company, this.img, this.revenue, this.date})
+  _$OrderEntity._({this.id, this.company, this.img, this.revenue, this.date})
       : super._() {
     if (id == null) {
-      throw new BuiltValueNullFieldError('OrderResponseData', 'id');
+      throw new BuiltValueNullFieldError('OrderEntity', 'id');
     }
     if (company == null) {
-      throw new BuiltValueNullFieldError('OrderResponseData', 'company');
+      throw new BuiltValueNullFieldError('OrderEntity', 'company');
     }
     if (img == null) {
-      throw new BuiltValueNullFieldError('OrderResponseData', 'img');
+      throw new BuiltValueNullFieldError('OrderEntity', 'img');
     }
     if (revenue == null) {
-      throw new BuiltValueNullFieldError('OrderResponseData', 'revenue');
+      throw new BuiltValueNullFieldError('OrderEntity', 'revenue');
     }
     if (date == null) {
-      throw new BuiltValueNullFieldError('OrderResponseData', 'date');
+      throw new BuiltValueNullFieldError('OrderEntity', 'date');
     }
   }
 
   @override
-  OrderResponseData rebuild(void updates(OrderResponseDataBuilder b)) =>
+  OrderEntity rebuild(void updates(OrderEntityBuilder b)) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  OrderResponseDataBuilder toBuilder() =>
-      new OrderResponseDataBuilder()..replace(this);
+  OrderEntityBuilder toBuilder() => new OrderEntityBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is OrderResponseData &&
+    return other is OrderEntity &&
         id == other.id &&
         company == other.company &&
         img == other.img &&
@@ -343,7 +634,7 @@ class _$OrderResponseData extends OrderResponseData {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('OrderResponseData')
+    return (newBuiltValueToStringHelper('OrderEntity')
           ..add('id', id)
           ..add('company', company)
           ..add('img', img)
@@ -353,9 +644,8 @@ class _$OrderResponseData extends OrderResponseData {
   }
 }
 
-class OrderResponseDataBuilder
-    implements Builder<OrderResponseData, OrderResponseDataBuilder> {
-  _$OrderResponseData _$v;
+class OrderEntityBuilder implements Builder<OrderEntity, OrderEntityBuilder> {
+  _$OrderEntity _$v;
 
   String _id;
   String get id => _$this._id;
@@ -377,9 +667,9 @@ class OrderResponseDataBuilder
   String get date => _$this._date;
   set date(String date) => _$this._date = date;
 
-  OrderResponseDataBuilder();
+  OrderEntityBuilder();
 
-  OrderResponseDataBuilder get _$this {
+  OrderEntityBuilder get _$this {
     if (_$v != null) {
       _id = _$v.id;
       _company = _$v.company;
@@ -392,22 +682,22 @@ class OrderResponseDataBuilder
   }
 
   @override
-  void replace(OrderResponseData other) {
+  void replace(OrderEntity other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$OrderResponseData;
+    _$v = other as _$OrderEntity;
   }
 
   @override
-  void update(void updates(OrderResponseDataBuilder b)) {
+  void update(void updates(OrderEntityBuilder b)) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$OrderResponseData build() {
+  _$OrderEntity build() {
     final _$result = _$v ??
-        new _$OrderResponseData._(
+        new _$OrderEntity._(
             id: id, company: company, img: img, revenue: revenue, date: date);
     replace(_$result);
     return _$result;

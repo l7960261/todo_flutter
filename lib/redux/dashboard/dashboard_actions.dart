@@ -9,7 +9,7 @@ class LoadDashboard {
 }
 
 class LoadDashboardSuccess {
-  final List<OrderResponseData> data;
+  final DashboardEntity data;
 
   LoadDashboardSuccess(this.data);
 }

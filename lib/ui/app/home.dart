@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
-import 'package:redux/redux.dart';
 import 'package:todo_flutter/data/models/models.dart';
 import 'package:todo_flutter/localization.dart';
 import 'package:todo_flutter/redux/app/app_state.dart';
-import 'package:todo_flutter/redux/dashboard/dashboard_state.dart';
+import 'package:todo_flutter/ui/dashboard/dashboard_vm.dart';
 import 'package:todo_flutter/utils/styles.dart';
 import 'package:todo_flutter/ui/app/app_drawer.dart';
 
@@ -13,23 +12,22 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StoreConnector<AppState, DashboardState>(
-        builder: (BuildContext context, DashboardState state) {
-      return Home(
-        title: AppLocalization.of(context).homeTitle,
-        data: state.data?.toList(),
-      );
-    }, converter: (Store<AppState> store) {
-      return store.state.dashboradState;
-    });
+    return StoreConnector<AppState, DashboardVM>(
+        builder: (BuildContext context, DashboardVM viewModel) {
+          return Home(
+            title: AppLocalization.of(context).homeTitle,
+            viewModel: viewModel,
+          );
+        },
+        converter: DashboardVM.fromStore);
   }
 }
 
 class Home extends StatelessWidget {
   final String title;
-  final List<OrderResponseData> data;
+  final DashboardVM viewModel;
 
-  Home({Key key, this.title, this.data}) : super(key: key);
+  Home({Key key, this.title, this.viewModel}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -109,13 +107,15 @@ class Home extends StatelessWidget {
                   )
                 ],
               )),
-            ]..addAll(generatePointCards(context, data)),
+            ]..addAll(generatePointCards(
+                context, viewModel?.dashboardState?.data?.orders)),
           ),
         ));
   }
 
   List<Widget> generatePointCards(
-      BuildContext context, List<OrderResponseData> orders) {
+      BuildContext context, Iterable<OrderEntity> orders) {
+    print(orders);
     if (orders == null) {
       return [];
     }

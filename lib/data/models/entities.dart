@@ -1,3 +1,4 @@
+import 'package:built_collection/built_collection.dart';
 import 'package:built_value/built_value.dart';
 import 'package:built_value/serializer.dart';
 
@@ -19,12 +20,37 @@ abstract class LoginResponseData
       _$loginResponseDataSerializer;
 }
 
-abstract class OrderResponseData
-    implements Built<OrderResponseData, OrderResponseDataBuilder> {
-  factory OrderResponseData([void updates(OrderResponseDataBuilder b)]) =
-      _$OrderResponseData;
+abstract class DashboardResponse
+    implements Built<DashboardResponse, DashboardResponseBuilder> {
+  factory DashboardResponse([void updates(DashboardResponseBuilder b)]) =
+      _$DashboardResponse;
 
-  OrderResponseData._();
+  DashboardResponse._();
+
+  DashboardEntity get data;
+
+  static Serializer<DashboardResponse> get serializer =>
+      _$dashboardResponseSerializer;
+}
+
+abstract class DashboardEntity
+    implements Built<DashboardEntity, DashboardEntityBuilder> {
+  factory DashboardEntity([void updates(DashboardEntityBuilder b)]) =
+      _$DashboardEntity;
+
+  DashboardEntity._();
+
+  int get balance;
+  BuiltList<OrderEntity> get orders;
+
+  static Serializer<DashboardEntity> get serializer =>
+      _$dashboardEntitySerializer;
+}
+
+abstract class OrderEntity implements Built<OrderEntity, OrderEntityBuilder> {
+  factory OrderEntity([void updates(OrderEntityBuilder b)]) = _$OrderEntity;
+
+  OrderEntity._();
 
   @BuiltValueField(wireName: '_id')
   String get id;
@@ -33,6 +59,5 @@ abstract class OrderResponseData
   String get revenue;
   String get date;
 
-  static Serializer<OrderResponseData> get serializer =>
-      _$orderResponseDataSerializer;
+  static Serializer<OrderEntity> get serializer => _$orderEntitySerializer;
 }

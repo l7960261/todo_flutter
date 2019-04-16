@@ -24,8 +24,7 @@ class _$DashboardStateSerializer
       result
         ..add('data')
         ..add(serializers.serialize(object.data,
-            specifiedType: const FullType(
-                BuiltList, const [const FullType(OrderResponseData)])));
+            specifiedType: const FullType(DashboardEntity)));
     }
 
     return result;
@@ -44,9 +43,8 @@ class _$DashboardStateSerializer
       switch (key) {
         case 'data':
           result.data.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(
-                      BuiltList, const [const FullType(OrderResponseData)]))
-              as BuiltList);
+                  specifiedType: const FullType(DashboardEntity))
+              as DashboardEntity);
           break;
       }
     }
@@ -57,7 +55,7 @@ class _$DashboardStateSerializer
 
 class _$DashboardState extends DashboardState {
   @override
-  final BuiltList<OrderResponseData> data;
+  final DashboardEntity data;
 
   factory _$DashboardState([void updates(DashboardStateBuilder b)]) =>
       (new DashboardStateBuilder()..update(updates)).build();
@@ -94,10 +92,10 @@ class DashboardStateBuilder
     implements Builder<DashboardState, DashboardStateBuilder> {
   _$DashboardState _$v;
 
-  ListBuilder<OrderResponseData> _data;
-  ListBuilder<OrderResponseData> get data =>
-      _$this._data ??= new ListBuilder<OrderResponseData>();
-  set data(ListBuilder<OrderResponseData> data) => _$this._data = data;
+  DashboardEntityBuilder _data;
+  DashboardEntityBuilder get data =>
+      _$this._data ??= new DashboardEntityBuilder();
+  set data(DashboardEntityBuilder data) => _$this._data = data;
 
   DashboardStateBuilder();
 
