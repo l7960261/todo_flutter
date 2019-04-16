@@ -141,7 +141,7 @@ class Home extends StatelessWidget {
                                   radius:
                                       MediaQuery.of(context).size.width / 12,
                                   child: CircularProgressIndicator()),
-                              Text('+0',
+                              Text('loading...',
                                   style: TextStyle(
                                       color: Theme.of(context).accentColor,
                                       fontWeight: FontWeight.bold,
