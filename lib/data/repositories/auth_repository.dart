@@ -14,9 +14,9 @@ class AuthRepository {
     final dynamic response =
         await webClient.post(url, {account: account, password: password});
 
-    final LoginResponseData loginResponse =
-        serializers.deserializeWith(LoginResponseData.serializer, response);
+    final LoginResponse loginResponse =
+        serializers.deserializeWith(LoginResponse.serializer, response);
 
-    return loginResponse;
+    return loginResponse.data;
   }
 }

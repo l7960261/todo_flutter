@@ -6,6 +6,8 @@ part of 'entities.dart';
 // BuiltValueGenerator
 // **************************************************************************
 
+Serializer<LoginResponse> _$loginResponseSerializer =
+    new _$LoginResponseSerializer();
 Serializer<LoginResponseData> _$loginResponseDataSerializer =
     new _$LoginResponseDataSerializer();
 Serializer<DashboardResponse> _$dashboardResponseSerializer =
@@ -13,6 +15,47 @@ Serializer<DashboardResponse> _$dashboardResponseSerializer =
 Serializer<DashboardEntity> _$dashboardEntitySerializer =
     new _$DashboardEntitySerializer();
 Serializer<OrderEntity> _$orderEntitySerializer = new _$OrderEntitySerializer();
+
+class _$LoginResponseSerializer implements StructuredSerializer<LoginResponse> {
+  @override
+  final Iterable<Type> types = const [LoginResponse, _$LoginResponse];
+  @override
+  final String wireName = 'LoginResponse';
+
+  @override
+  Iterable serialize(Serializers serializers, LoginResponse object,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = <Object>[
+      'data',
+      serializers.serialize(object.data,
+          specifiedType: const FullType(LoginResponseData)),
+    ];
+
+    return result;
+  }
+
+  @override
+  LoginResponse deserialize(Serializers serializers, Iterable serialized,
+      {FullType specifiedType = FullType.unspecified}) {
+    final result = new LoginResponseBuilder();
+
+    final iterator = serialized.iterator;
+    while (iterator.moveNext()) {
+      final key = iterator.current as String;
+      iterator.moveNext();
+      final dynamic value = iterator.current;
+      switch (key) {
+        case 'data':
+          result.data.replace(serializers.deserialize(value,
+                  specifiedType: const FullType(LoginResponseData))
+              as LoginResponseData);
+          break;
+      }
+    }
+
+    return result.build();
+  }
+}
 
 class _$LoginResponseDataSerializer
     implements StructuredSerializer<LoginResponseData> {
@@ -235,6 +278,97 @@ class _$OrderEntitySerializer implements StructuredSerializer<OrderEntity> {
     }
 
     return result.build();
+  }
+}
+
+class _$LoginResponse extends LoginResponse {
+  @override
+  final LoginResponseData data;
+
+  factory _$LoginResponse([void updates(LoginResponseBuilder b)]) =>
+      (new LoginResponseBuilder()..update(updates)).build();
+
+  _$LoginResponse._({this.data}) : super._() {
+    if (data == null) {
+      throw new BuiltValueNullFieldError('LoginResponse', 'data');
+    }
+  }
+
+  @override
+  LoginResponse rebuild(void updates(LoginResponseBuilder b)) =>
+      (toBuilder()..update(updates)).build();
+
+  @override
+  LoginResponseBuilder toBuilder() => new LoginResponseBuilder()..replace(this);
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(other, this)) return true;
+    return other is LoginResponse && data == other.data;
+  }
+
+  @override
+  int get hashCode {
+    return $jf($jc(0, data.hashCode));
+  }
+
+  @override
+  String toString() {
+    return (newBuiltValueToStringHelper('LoginResponse')..add('data', data))
+        .toString();
+  }
+}
+
+class LoginResponseBuilder
+    implements Builder<LoginResponse, LoginResponseBuilder> {
+  _$LoginResponse _$v;
+
+  LoginResponseDataBuilder _data;
+  LoginResponseDataBuilder get data =>
+      _$this._data ??= new LoginResponseDataBuilder();
+  set data(LoginResponseDataBuilder data) => _$this._data = data;
+
+  LoginResponseBuilder();
+
+  LoginResponseBuilder get _$this {
+    if (_$v != null) {
+      _data = _$v.data?.toBuilder();
+      _$v = null;
+    }
+    return this;
+  }
+
+  @override
+  void replace(LoginResponse other) {
+    if (other == null) {
+      throw new ArgumentError.notNull('other');
+    }
+    _$v = other as _$LoginResponse;
+  }
+
+  @override
+  void update(void updates(LoginResponseBuilder b)) {
+    if (updates != null) updates(this);
+  }
+
+  @override
+  _$LoginResponse build() {
+    _$LoginResponse _$result;
+    try {
+      _$result = _$v ?? new _$LoginResponse._(data: data.build());
+    } catch (_) {
+      String _$failedField;
+      try {
+        _$failedField = 'data';
+        data.build();
+      } catch (e) {
+        throw new BuiltValueNestedFieldError(
+            'LoginResponse', _$failedField, e.toString());
+      }
+      rethrow;
+    }
+    replace(_$result);
+    return _$result;
   }
 }
 

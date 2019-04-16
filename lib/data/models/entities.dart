@@ -4,6 +4,18 @@ import 'package:built_value/serializer.dart';
 
 part 'entities.g.dart';
 
+abstract class LoginResponse
+    implements Built<LoginResponse, LoginResponseBuilder> {
+  factory LoginResponse([void updates(LoginResponseBuilder b)]) =
+      _$LoginResponse;
+
+  LoginResponse._();
+
+  LoginResponseData get data;
+
+  static Serializer<LoginResponse> get serializer => _$loginResponseSerializer;
+}
+
 abstract class LoginResponseData
     implements Built<LoginResponseData, LoginResponseDataBuilder> {
   factory LoginResponseData([void updates(LoginResponseDataBuilder b)]) =

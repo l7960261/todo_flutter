@@ -115,7 +115,6 @@ class Home extends StatelessWidget {
 
   List<Widget> generatePointCards(
       BuildContext context, Iterable<OrderEntity> orders) {
-    print(orders);
     if (orders == null) {
       return [];
     }

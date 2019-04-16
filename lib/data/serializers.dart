@@ -9,6 +9,6 @@ import 'package:todo_flutter/redux/system/system_state.dart';
 
 part 'serializers.g.dart';
 
-@SerializersFor(const [AppState, LoginResponseData, DashboardResponse])
+@SerializersFor(const [AppState, LoginResponse, DashboardResponse])
 final Serializers serializers =
     (_$serializers.toBuilder()..addPlugin(StandardJsonPlugin())).build();
