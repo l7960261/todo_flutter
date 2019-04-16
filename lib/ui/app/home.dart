@@ -116,7 +116,43 @@ class Home extends StatelessWidget {
   List<Widget> generatePointCards(
       BuildContext context, Iterable<OrderEntity> orders) {
     if (orders == null) {
-      return [];
+      return Iterable.generate(3, (int idx) {
+        return Container(
+            decoration: BoxDecoration(color: Theme.of(context).backgroundColor),
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height / 4,
+            padding: EdgeInsets.all(8),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Expanded(child: Text(''), flex: 1),
+                Expanded(
+                    child: Card(
+                      elevation: 1,
+                      color: Theme.of(context).cardColor,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10)),
+                      child: Container(
+                          padding: EdgeInsets.all(8),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: <Widget>[
+                              CircleAvatar(
+                                  radius:
+                                      MediaQuery.of(context).size.width / 12,
+                                  child: CircularProgressIndicator()),
+                              Text('+0',
+                                  style: TextStyle(
+                                      color: Theme.of(context).accentColor,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: AppFontSizes.medium)),
+                            ],
+                          )),
+                    ),
+                    flex: 5)
+              ],
+            ));
+      }).toList();
     }
 
     return orders.map((order) {
