@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:todo_flutter/data/models/models.dart';
+import 'package:todo_flutter/redux/app/app_actions.dart';
 
 class LoadDashboard {
   final Completer completer;
@@ -8,7 +9,7 @@ class LoadDashboard {
   LoadDashboard([this.completer]);
 }
 
-class LoadDashboardSuccess {
+class LoadDashboardSuccess implements PersistData {
   final DashboardEntity data;
 
   LoadDashboardSuccess(this.data);

@@ -16,3 +16,5 @@ class LoadStateSuccess {
   final AppState state;
   LoadStateSuccess(this.state);
 }
+
+class PersistData {}
