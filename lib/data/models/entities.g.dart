@@ -178,7 +178,8 @@ class _$DashboardEntitySerializer
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'balance',
-      serializers.serialize(object.balance, specifiedType: const FullType(int)),
+      serializers.serialize(object.balance,
+          specifiedType: const FullType(String)),
       'orders',
       serializers.serialize(object.orders,
           specifiedType:
@@ -201,7 +202,7 @@ class _$DashboardEntitySerializer
       switch (key) {
         case 'balance':
           result.balance = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(String)) as String;
           break;
         case 'orders':
           result.orders.replace(serializers.deserialize(value,
@@ -601,7 +602,7 @@ class DashboardResponseBuilder
 
 class _$DashboardEntity extends DashboardEntity {
   @override
-  final int balance;
+  final String balance;
   @override
   final BuiltList<OrderEntity> orders;
 
@@ -651,9 +652,9 @@ class DashboardEntityBuilder
     implements Builder<DashboardEntity, DashboardEntityBuilder> {
   _$DashboardEntity _$v;
 
-  int _balance;
-  int get balance => _$this._balance;
-  set balance(int balance) => _$this._balance = balance;
+  String _balance;
+  String get balance => _$this._balance;
+  set balance(String balance) => _$this._balance = balance;
 
   ListBuilder<OrderEntity> _orders;
   ListBuilder<OrderEntity> get orders =>

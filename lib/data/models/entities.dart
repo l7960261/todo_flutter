@@ -52,7 +52,7 @@ abstract class DashboardEntity
 
   DashboardEntity._();
 
-  int get balance;
+  String get balance;
   BuiltList<OrderEntity> get orders;
 
   static Serializer<DashboardEntity> get serializer =>

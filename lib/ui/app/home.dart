@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:intl/intl.dart';
 import 'package:todo_flutter/data/models/models.dart';
 import 'package:todo_flutter/localization.dart';
 import 'package:todo_flutter/redux/app/app_state.dart';
@@ -31,6 +32,20 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final formatter = NumberFormat("###,###.##", "en_US");
+    double balance = 0.0;
+    double revenue = 0.0;
+
+    if (!viewModel.dashboardState.isLoaded) {
+      balance = double.parse(viewModel.dashboardState.data.balance);
+      revenue = viewModel.dashboardState.data.orders
+          .map((order) => double.parse(order.revenue))
+          .reduce((sum, element) => sum + element);
+    }
+
+    final String balanceStr = formatter.format(balance);
+    final String revenueStr = formatter.format(revenue);
+
     return Scaffold(
         drawer: AppDrawer(),
         body: SingleChildScrollView(
@@ -84,7 +99,7 @@ class Home extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: <Widget>[
-                                  Text('125,093',
+                                  Text(balanceStr,
                                       style: TextStyle(
                                           color: Theme.of(context)
                                               .primaryColorDark,
@@ -95,9 +110,11 @@ class Home extends StatelessWidget {
                                       mini: true,
                                       child: Icon(Icons.description))
                                 ]),
-                            Text('+14,607',
+                            Text(revenueStr,
                                 style: TextStyle(
-                                    color: Theme.of(context).accentColor,
+                                    color: revenue > 0
+                                        ? Theme.of(context).accentColor
+                                        : Theme.of(context).errorColor,
                                     fontWeight: FontWeight.bold,
                                     fontSize: AppFontSizes.medium)),
                           ],
@@ -108,7 +125,7 @@ class Home extends StatelessWidget {
                 ],
               )),
             ]..addAll(generatePointCards(
-                context, viewModel?.dashboardState?.data?.orders)),
+                context, viewModel.dashboardState.data?.orders)),
           ),
         ));
   }
@@ -183,7 +200,7 @@ class Home extends StatelessWidget {
                                 )),
                             Text(order.revenue,
                                 style: TextStyle(
-                                    color: order.revenue.startsWith('+')
+                                    color: double.parse(order.revenue) > 0
                                         ? Theme.of(context).accentColor
                                         : Theme.of(context).errorColor,
                                     fontWeight: FontWeight.bold,

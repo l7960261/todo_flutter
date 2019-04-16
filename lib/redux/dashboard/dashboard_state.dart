@@ -15,6 +15,10 @@ abstract class DashboardState
   @nullable
   DashboardEntity get data;
 
+  bool get isLoaded {
+    return data == null || data.balance == null;
+  }
+
   static Serializer<DashboardState> get serializer =>
       _$dashboardStateSerializer;
 }
