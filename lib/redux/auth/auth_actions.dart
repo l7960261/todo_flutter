@@ -21,3 +21,9 @@ class UserLoginSuccess {
   UserLoginSuccess(
       {this.name, this.email, this.picture, this.qrCode, this.secret});
 }
+
+class UserLoginFailure {
+  final Object error;
+
+  UserLoginFailure(this.error);
+}

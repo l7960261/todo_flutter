@@ -22,6 +22,7 @@ Middleware<AppState> _createLoadDashboard(DashboardRepository repository) {
       print(error);
       if (action.completer != null) {
         action.completer.complete(null);
+        store.dispatch(LoadDashboardFailure(error));
       }
     });
     next(action);

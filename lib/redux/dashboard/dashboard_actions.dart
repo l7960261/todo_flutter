@@ -14,3 +14,14 @@ class LoadDashboardSuccess implements PersistData {
 
   LoadDashboardSuccess(this.data);
 }
+
+class LoadDashboardFailure {
+  final dynamic error;
+
+  LoadDashboardFailure(this.error);
+
+  @override
+  String toString() {
+    return 'LoadDashboardFailure{error: $error}';
+  }
+}

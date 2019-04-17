@@ -5,7 +5,8 @@ import 'package:todo_flutter/redux/auth/auth_state.dart';
 final Reducer<AuthState> authStateReducer = combineReducers<AuthState>([
   TypedReducer<AuthState, UserLogout>(userLogoutReducer),
   TypedReducer<AuthState, UserLoginRequest>(userLoginRequestReducer),
-  TypedReducer<AuthState, UserLoginSuccess>(userLoginSuccessReducer)
+  TypedReducer<AuthState, UserLoginSuccess>(userLoginSuccessReducer),
+  TypedReducer<AuthState, UserLoginFailure>(userLoginFailureReducer)
 ]);
 
 AuthState userLogoutReducer(AuthState authState, UserLogout action) =>
@@ -28,3 +29,7 @@ AuthState userLoginSuccessReducer(
       ..qrCode = action.qrCode
       ..secret = action.secret
       ..isAuthenticated = true);
+
+AuthState userLoginFailureReducer(
+        AuthState authState, UserLoginFailure action) =>
+    authState.rebuild((b) => b..error = action.error);

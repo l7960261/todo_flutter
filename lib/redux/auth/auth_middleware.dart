@@ -25,6 +25,8 @@ Middleware<AppState> _createLoginRequest(AuthRepository repository) {
     repository.login(action.account, action.password, action.url).then((data) {
       _saveAuthLocal(data);
       store.dispatch(LoadDataSuccess(completer: action.completer, data: data));
+    }).catchError((Object error) {
+      store.dispatch(UserLoginFailure(error.toString()));
     });
 
     next(action);

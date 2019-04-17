@@ -22,7 +22,8 @@ List<Middleware<AppState>> createStorePersistenceMiddleware(
   final loadState =
       _createLoadState(authRepository, systemRepository, dashboardRepository);
   final userLoggedIn = _createUserLoggedIn(authRepository, systemRepository);
-  final deleteState = _createDeleteState(authRepository);
+  final deleteState =
+      _createDeleteState(authRepository, systemRepository, dashboardRepository);
   final dataLoaded = _createDataLoaded();
   final persistData = _createPersistData(dashboardRepository);
 
@@ -77,14 +78,6 @@ Middleware<AppState> _createUserLoggedIn(PersistenceRepository authRepository,
   };
 }
 
-Middleware<AppState> _createDeleteState(PersistenceRepository authRepository) {
-  return (Store<AppState> store, action, NextDispatcher next) async {
-    authRepository.delete();
-
-    next(action);
-  };
-}
-
 Middleware<AppState> _createDataLoaded() {
   return (Store<AppState> store, action, NextDispatcher next) async {
     final dynamic data = action.data;
@@ -107,5 +100,18 @@ Middleware<AppState> _createPersistData(
 
     final AppState state = store.state;
     dashboardRepository.saveDashboardState(state.dashboradState);
+  };
+}
+
+Middleware<AppState> _createDeleteState(
+    PersistenceRepository authRepository,
+    PersistenceRepository systemRepository,
+    PersistenceRepository dashboardRepository) {
+  return (Store<AppState> store, action, NextDispatcher next) async {
+    authRepository.delete();
+    systemRepository.delete();
+    dashboardRepository.delete();
+
+    next(action);
   };
 }
