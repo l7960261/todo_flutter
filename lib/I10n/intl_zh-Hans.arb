@@ -89,5 +89,17 @@
     "description": "Dark green",
     "type": "text",
     "placeholders": {}
+  },
+  "newWallet": "新钱包",
+  "@newWallet": {
+    "description": "New Wallet",
+    "type": "text",
+    "placeholders": {}
+  },
+  "importWallet": "汇入钱包",
+  "@importWallet": {
+    "description": "Import Wallet",
+    "type": "text",
+    "placeholders": {}
   }
 }

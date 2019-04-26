@@ -89,5 +89,17 @@
     "description": "Dark green",
     "type": "text",
     "placeholders": {}
+  },
+  "newWallet": "Ví mới",
+  "@newWallet": {
+    "description": "New Wallet",
+    "type": "text",
+    "placeholders": {}
+  },
+  "importWallet": "Ví nhập khẩu",
+  "@importWallet": {
+    "description": "Import Wallet",
+    "type": "text",
+    "placeholders": {}
   }
 }

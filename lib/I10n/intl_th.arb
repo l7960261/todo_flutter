@@ -89,5 +89,17 @@
     "description": "Dark green",
     "type": "text",
     "placeholders": {}
+  },
+  "newWallet": "กระเป๋าใหม่",
+  "@newWallet": {
+    "description": "New Wallet",
+    "type": "text",
+    "placeholders": {}
+  },
+  "importWallet": "นำเข้ากระเป๋าเงิน",
+  "@importWallet": {
+    "description": "Import Wallet",
+    "type": "text",
+    "placeholders": {}
   }
 }

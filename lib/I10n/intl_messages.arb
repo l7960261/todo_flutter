@@ -1,5 +1,5 @@
 {
-  "@@last_modified": "2019-04-09T08:36:23.503745",
+  "@@last_modified": "2019-04-26T13:48:52.857234",
   "splashTitle": "TODO Application",
   "@splashTitle": {
     "description": "The title of application",
@@ -87,6 +87,18 @@
   "themeDarkGreen": "Dark green",
   "@themeDarkGreen": {
     "description": "Dark green",
+    "type": "text",
+    "placeholders": {}
+  },
+  "newWallet": "New Wallet",
+  "@newWallet": {
+    "description": "New Wallet",
+    "type": "text",
+    "placeholders": {}
+  },
+  "importWallet": "Import Wallet",
+  "@importWallet": {
+    "description": "Import Wallet",
     "type": "text",
     "placeholders": {}
   }

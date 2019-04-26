@@ -10,6 +10,7 @@ import 'package:todo_flutter/redux/dashboard/dashboard_actions.dart';
 import 'package:todo_flutter/redux/dashboard/dashboard_middleware.dart';
 import 'package:todo_flutter/redux/system/system_middleward.dart';
 import 'package:todo_flutter/redux/system/system_state.dart';
+import 'package:todo_flutter/ui/intro/intro_welcome.dart';
 import 'package:todo_flutter/utils/constants.dart';
 import 'package:todo_flutter/utils/themes.dart';
 import 'package:todo_flutter/ui/app/home.dart';
@@ -69,6 +70,9 @@ class ReduxApp extends StatelessWidget {
                     case AppRoutes.login:
                       return NoTransitionRoute(
                           builder: (_) => LoginScreen(), settings: settings);
+                    case AppRoutes.introWelcome:
+                      return NoTransitionRoute(
+                          builder: (_) => IntroWelcome(), settings: settings);
                     default:
                       return null;
                   }

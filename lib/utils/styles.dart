@@ -31,3 +31,19 @@ bool smallScreen(BuildContext context) {
   else
     return false;
 }
+
+class AppStyles {
+  static TextStyle textStyleButtonPrimary(BuildContext context) {
+    return TextStyle(
+        fontSize: AppFontSizes.large(context),
+        fontWeight: FontWeight.w700,
+        color: Theme.of(context).backgroundColor);
+  }
+
+  static TextStyle textStyleButtonPrimaryOutline(BuildContext context) {
+    return TextStyle(
+        fontSize: AppFontSizes.large(context),
+        fontWeight: FontWeight.w700,
+        color: Theme.of(context).primaryColor);
+  }
+}

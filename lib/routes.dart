@@ -4,6 +4,7 @@ class AppRoutes {
   static const splash = '/';
   static const home = '/home';
   static const login = '/login';
+  static const introWelcome = '/intro_welcome';
 }
 
 class NoTransitionRoute<T> extends MaterialPageRoute<T> {

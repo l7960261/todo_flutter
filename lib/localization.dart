@@ -49,6 +49,10 @@ class AppLocalization {
       Intl.message('Default', name: 'themeDefault', desc: 'Default theme');
   String get themeDarkGreen =>
       Intl.message('Dark green', name: 'themeDarkGreen', desc: 'Dark green');
+  String get newWallet =>
+      Intl.message('New Wallet', name: 'newWallet', desc: 'New Wallet');
+  String get importWallet => Intl.message('Import Wallet',
+      name: 'importWallet', desc: 'Import Wallet');
 
   static Iterable<LanguageEntity> languageMap() {
     return kLanguages.map((String locale) {
