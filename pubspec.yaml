@@ -47,6 +47,16 @@ dependencies:
   # dotenv
   flutter_dotenv: ^2.0.1
 
+  # QR Codes
+  qr_flutter: ^2.0.0+51
+  barcode_scan: ^1.0.0
+
+  # hades core functions
+  flutter_hades_core:
+    git:
+      url: https://github.com/l7960261/flutter_hades_core.git
+      ref: master
+
 dev_dependencies:
   flutter_test:
     sdk: flutter 

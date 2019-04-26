@@ -17,6 +17,7 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(LoginResponseData.serializer)
       ..add(OrderEntity.serializer)
       ..add(SystemState.serializer)
+      ..add(WalletState.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(LanguageEntity)]),
           () => new ListBuilder<LanguageEntity>())

@@ -6,6 +6,7 @@ import 'package:todo_flutter/redux/app/app_state.dart';
 import 'package:todo_flutter/redux/auth/auth_state.dart';
 import 'package:todo_flutter/redux/dashboard/dashboard_state.dart';
 import 'package:todo_flutter/redux/system/system_state.dart';
+import 'package:todo_flutter/redux/wallet/wallet_state.dart';
 
 part 'serializers.g.dart';
 

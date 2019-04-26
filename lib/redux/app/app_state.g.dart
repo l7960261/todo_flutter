@@ -27,6 +27,9 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
       'dashboradState',
       serializers.serialize(object.dashboradState,
           specifiedType: const FullType(DashboardState)),
+      'walletState',
+      serializers.serialize(object.walletState,
+          specifiedType: const FullType(WalletState)),
     ];
 
     return result;
@@ -55,6 +58,10 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
           result.dashboradState.replace(serializers.deserialize(value,
               specifiedType: const FullType(DashboardState)) as DashboardState);
           break;
+        case 'walletState':
+          result.walletState.replace(serializers.deserialize(value,
+              specifiedType: const FullType(WalletState)) as WalletState);
+          break;
       }
     }
 
@@ -69,11 +76,14 @@ class _$AppState extends AppState {
   final SystemState systemState;
   @override
   final DashboardState dashboradState;
+  @override
+  final WalletState walletState;
 
   factory _$AppState([void updates(AppStateBuilder b)]) =>
       (new AppStateBuilder()..update(updates)).build();
 
-  _$AppState._({this.authState, this.systemState, this.dashboradState})
+  _$AppState._(
+      {this.authState, this.systemState, this.dashboradState, this.walletState})
       : super._() {
     if (authState == null) {
       throw new BuiltValueNullFieldError('AppState', 'authState');
@@ -83,6 +93,9 @@ class _$AppState extends AppState {
     }
     if (dashboradState == null) {
       throw new BuiltValueNullFieldError('AppState', 'dashboradState');
+    }
+    if (walletState == null) {
+      throw new BuiltValueNullFieldError('AppState', 'walletState');
     }
   }
 
@@ -99,13 +112,16 @@ class _$AppState extends AppState {
     return other is AppState &&
         authState == other.authState &&
         systemState == other.systemState &&
-        dashboradState == other.dashboradState;
+        dashboradState == other.dashboradState &&
+        walletState == other.walletState;
   }
 
   @override
   int get hashCode {
-    return $jf($jc($jc($jc(0, authState.hashCode), systemState.hashCode),
-        dashboradState.hashCode));
+    return $jf($jc(
+        $jc($jc($jc(0, authState.hashCode), systemState.hashCode),
+            dashboradState.hashCode),
+        walletState.hashCode));
   }
 
   @override
@@ -113,7 +129,8 @@ class _$AppState extends AppState {
     return (newBuiltValueToStringHelper('AppState')
           ..add('authState', authState)
           ..add('systemState', systemState)
-          ..add('dashboradState', dashboradState))
+          ..add('dashboradState', dashboradState)
+          ..add('walletState', walletState))
         .toString();
   }
 }
@@ -138,6 +155,12 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   set dashboradState(DashboardStateBuilder dashboradState) =>
       _$this._dashboradState = dashboradState;
 
+  WalletStateBuilder _walletState;
+  WalletStateBuilder get walletState =>
+      _$this._walletState ??= new WalletStateBuilder();
+  set walletState(WalletStateBuilder walletState) =>
+      _$this._walletState = walletState;
+
   AppStateBuilder();
 
   AppStateBuilder get _$this {
@@ -145,6 +168,7 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
       _authState = _$v.authState?.toBuilder();
       _systemState = _$v.systemState?.toBuilder();
       _dashboradState = _$v.dashboradState?.toBuilder();
+      _walletState = _$v.walletState?.toBuilder();
       _$v = null;
     }
     return this;
@@ -171,7 +195,8 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
           new _$AppState._(
               authState: authState.build(),
               systemState: systemState.build(),
-              dashboradState: dashboradState.build());
+              dashboradState: dashboradState.build(),
+              walletState: walletState.build());
     } catch (_) {
       String _$failedField;
       try {
@@ -181,6 +206,8 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
         systemState.build();
         _$failedField = 'dashboradState';
         dashboradState.build();
+        _$failedField = 'walletState';
+        walletState.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'AppState', _$failedField, e.toString());

@@ -24,6 +24,9 @@ This project is a starting point for a Flutter application.
 - [shared_preferences](https://pub.dartlang.org/packages/shared_preferences)
 - [dio](https://pub.dartlang.org/packages/dio)
 - [flutter_dotenv](https://pub.dartlang.org/packages/flutter_dotenv)
+- [qr_flutter](https://pub.dartlang.org/packages/qr_flutter)
+- [barcode_scan](https://pub.dartlang.org/packages/barcode_scan)
+- [flutter_hades_core](https://github.com/l7960261/flutter_hades_core)
 
 ## devDependency
 

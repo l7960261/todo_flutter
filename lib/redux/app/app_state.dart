@@ -3,6 +3,7 @@ import 'package:built_value/serializer.dart';
 import 'package:todo_flutter/redux/auth/auth_state.dart';
 import 'package:todo_flutter/redux/dashboard/dashboard_state.dart';
 import 'package:todo_flutter/redux/system/system_state.dart';
+import 'package:todo_flutter/redux/wallet/wallet_state.dart';
 
 part 'app_state.g.dart';
 
@@ -11,13 +12,15 @@ abstract class AppState implements Built<AppState, AppStateBuilder> {
     return _$AppState._(
         authState: AuthState(),
         systemState: SystemState(),
-        dashboradState: DashboardState());
+        dashboradState: DashboardState(),
+        walletState: WalletState());
   }
   AppState._();
 
   AuthState get authState;
   SystemState get systemState;
   DashboardState get dashboradState;
+  WalletState get walletState;
 
   static Serializer<AppState> get serializer => _$appStateSerializer;
 }
