@@ -1,4 +1,8 @@
-class WalletGenerateStart {}
+class WalletGenerateRequest {}
+
+class WalletGenerateSuccess {}
+
+class WalletGenerateFailure {}
 
 class WalletGenerateDone {
   String address;

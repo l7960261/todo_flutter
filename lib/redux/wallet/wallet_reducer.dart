@@ -4,12 +4,12 @@ import 'package:todo_flutter/redux/wallet/wallet_actions.dart';
 import 'package:todo_flutter/redux/wallet/wallet_state.dart';
 
 final Reducer<WalletState> walletStateReducer = combineReducers<WalletState>([
-  TypedReducer<WalletState, WalletGenerateStart>(walletGenerateStartReducer),
+  TypedReducer<WalletState, WalletGenerateRequest>(walletGenerateStartReducer),
   TypedReducer<WalletState, WalletGenerateDone>(walletGenerateDoneReducer)
 ]);
 
 WalletState walletGenerateStartReducer(
-        WalletState walletState, WalletGenerateStart action) =>
+        WalletState walletState, WalletGenerateRequest action) =>
     walletState.rebuild((b) => b..isLoaded = false);
 
 WalletState walletGenerateDoneReducer(
