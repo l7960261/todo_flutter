@@ -6,6 +6,7 @@ const String kDefaultLanguage = 'en';
 const List<String> kLanguages = ['en', 'zh-Hans', 'th', 'vi'];
 
 const String kKeychainSecret = 'secret';
+const String kWalletAddress = 'address';
 
 class APIPoints {
   static const String login = '/api/json/get/EyaZLGYKI';

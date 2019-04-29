@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:intl/intl.dart';
+import 'package:qr_flutter/qr_flutter.dart';
 import 'package:todo_flutter/data/models/models.dart';
 import 'package:todo_flutter/localization.dart';
 import 'package:todo_flutter/redux/app/app_state.dart';
@@ -124,8 +125,13 @@ class Home extends StatelessWidget {
                   )
                 ],
               )),
-            ]..addAll(generatePointCards(
-                context, viewModel.dashboardState.data?.orders)),
+            ]
+              ..add(QrImage(
+                data: viewModel.walletState.address,
+                size: 200.0,
+              ))
+              ..addAll(generatePointCards(
+                  context, viewModel.dashboardState.data?.orders)),
           ),
         ));
   }

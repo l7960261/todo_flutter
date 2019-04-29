@@ -10,6 +10,7 @@ import 'package:todo_flutter/redux/dashboard/dashboard_actions.dart';
 import 'package:todo_flutter/redux/dashboard/dashboard_middleware.dart';
 import 'package:todo_flutter/redux/system/system_middleware.dart';
 import 'package:todo_flutter/redux/system/system_state.dart';
+import 'package:todo_flutter/redux/wallet/wallet_middleware.dart';
 import 'package:todo_flutter/ui/intro/intro_welcome.dart';
 import 'package:todo_flutter/utils/constants.dart';
 import 'package:todo_flutter/utils/themes.dart';
@@ -35,6 +36,7 @@ class ReduxApp extends StatelessWidget {
         ..addAll(createStoreAuthMiddleware())
         ..addAll(createStoreSystemMiddleware())
         ..addAll(createStoreDashboardMiddleware())
+        ..addAll(createStoreWalletMiddleware())
         ..addAll([LoggingMiddleware.printer()]));
 
   ReduxApp();

@@ -12,5 +12,8 @@ List<Middleware<AppState>> createStoreWalletMiddleware(
 Middleware<AppState> _createWallet(WalletRepository walletRepository) {
   return (Store<AppState> store, action, NextDispatcher next) async {
     next(action);
+
+    final address = await walletRepository.getAddress();
+    store.dispatch(WalletGenerateDone(address));
   };
 }

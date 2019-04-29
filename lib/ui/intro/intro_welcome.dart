@@ -4,6 +4,7 @@ import 'package:redux/redux.dart';
 import 'package:todo_flutter/localization.dart';
 import 'package:todo_flutter/redux/app/app_state.dart';
 import 'package:todo_flutter/redux/wallet/wallet_actions.dart';
+import 'package:todo_flutter/routes.dart';
 import 'package:todo_flutter/ui/widgets/buttons.dart';
 import 'package:todo_flutter/utils/dimens.dart';
 
@@ -14,6 +15,7 @@ class IntroWelcomeVM {
   static IntroWelcomeVM fromStore(Store<AppState> store) {
     return IntroWelcomeVM(onNewWalletPressed: (BuildContext context) {
       store.dispatch(WalletGenerateRequest());
+      Navigator.of(context).pushReplacementNamed(AppRoutes.home);
     });
   }
 }
@@ -48,8 +50,9 @@ class IntroWelcome extends StatelessWidget {
                                     context,
                                     AppButtonType.PRIMARY,
                                     AppLocalization.of(context).newWallet,
-                                    Dimens.BUTTON_TOP_DIMENS,
-                                    onPressed: vm.onNewWalletPressed)
+                                    Dimens.BUTTON_TOP_DIMENS, onPressed: () {
+                                  vm.onNewWalletPressed(context);
+                                })
                               ],
                             ),
                             Row(children: <Widget>[
