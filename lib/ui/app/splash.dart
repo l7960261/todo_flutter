@@ -24,7 +24,7 @@ class _SplashViewState extends State<SplashView> {
       if (isAuthenticated) {
         Navigator.of(context).pushReplacementNamed(AppRoutes.home);
       } else {
-        Navigator.of(context).pushReplacementNamed(AppRoutes.introWelcome);
+        Navigator.of(context).pushReplacementNamed(AppRoutes.login);
       }
     });
   }
